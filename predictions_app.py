@@ -7,12 +7,21 @@ import pandas as pd
 import altair as alt
 
 st.set_page_config(page_title="Model Comparison", layout="wide")
-st.title("🏆 Model Leaderboard")
+
+# Header with refresh button
+col_title, col_btn = st.columns([6, 1])
+with col_title:
+    st.title("🏆 Model Leaderboard")
+with col_btn:
+    if st.button("🔄 Refresh"):
+        st.cache_data.clear()
+        st.rerun()
 
 # Load data
 @st.cache_data
 def load_data():
     df = pd.read_csv("./results/model_scores.csv")
+    df.columns = df.columns.str.strip()  # Strip whitespace from column names
     df['model'] = df['model_name'].apply(lambda x: x.split('/')[-1])
     return df
 
@@ -22,6 +31,7 @@ df = load_data()
 st.subheader("📋 Leaderboard (Ranked by Macro F1)")
 leaderboard = df[['model', 'model_type', 'accuracy', 'macro_f1', 'macro_precision', 'macro_recall', 
                   'hatespeech_f1', 'normal_f1', 'test_samples']].copy()
+leaderboard = leaderboard.rename(columns={'model_type': 'Type'})
 leaderboard = leaderboard.sort_values('macro_f1', ascending=False).reset_index(drop=True)
 leaderboard.index = leaderboard.index + 1  # 1-indexed ranking
 leaderboard.index.name = 'Rank'
@@ -53,16 +63,16 @@ col1, col2 = st.columns(2)
 
 with col1:
     st.caption("Hatespeech Detection")
-    hate_df = df[['model', 'hatespeech_precision', 'hatespeech_recall', 'hatespeech_f1']].copy()
-    hate_df.columns = ['Model', 'Precision', 'Recall', 'F1']
+    hate_df = df[['model', 'model_type', 'hatespeech_precision', 'hatespeech_recall', 'hatespeech_f1']].copy()
+    hate_df.columns = ['Model', 'Type', 'Precision', 'Recall', 'F1']
     for c in ['Precision', 'Recall', 'F1']:
         hate_df[c] = (hate_df[c] * 100).round(2)
     st.dataframe(hate_df.sort_values('F1', ascending=False), hide_index=True, use_container_width=True)
 
 with col2:
     st.caption("Normal Classification")
-    norm_df = df[['model', 'normal_precision', 'normal_recall', 'normal_f1']].copy()
-    norm_df.columns = ['Model', 'Precision', 'Recall', 'F1']
+    norm_df = df[['model', 'model_type', 'normal_precision', 'normal_recall', 'normal_f1']].copy()
+    norm_df.columns = ['Model', 'Type', 'Precision', 'Recall', 'F1']
     for c in ['Precision', 'Recall', 'F1']:
         norm_df[c] = (norm_df[c] * 100).round(2)
     st.dataframe(norm_df.sort_values('F1', ascending=False), hide_index=True, use_container_width=True)
