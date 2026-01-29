@@ -40,7 +40,7 @@ leaderboard.index.name = 'Rank'
 for col in ['accuracy', 'macro_f1', 'macro_precision', 'macro_recall', 'hatespeech_f1', 'normal_f1']:
     leaderboard[col] = (leaderboard[col] * 100).round(2)
 
-st.dataframe(leaderboard, use_container_width=True)
+st.dataframe(leaderboard, width='stretch')
 
 # Grouped bar chart for key metrics
 st.subheader("📊 Metrics by Model")
@@ -55,7 +55,7 @@ chart = alt.Chart(chart_df).mark_bar().encode(
     xOffset='model:N'
 ).properties(height=350)
 
-st.altair_chart(chart, use_container_width=True)
+st.altair_chart(chart, width='stretch')
 
 # Per-class performance
 st.subheader("🎯 Per-Class Performance")
@@ -67,7 +67,7 @@ with col1:
     hate_df.columns = ['Model', 'Type', 'Precision', 'Recall', 'F1']
     for c in ['Precision', 'Recall', 'F1']:
         hate_df[c] = (hate_df[c] * 100).round(2)
-    st.dataframe(hate_df.sort_values('F1', ascending=False), hide_index=True, use_container_width=True)
+    st.dataframe(hate_df.sort_values('F1', ascending=False), hide_index=True, width='stretch')
 
 with col2:
     st.caption("Normal Classification")
@@ -75,7 +75,7 @@ with col2:
     norm_df.columns = ['Model', 'Type', 'Precision', 'Recall', 'F1']
     for c in ['Precision', 'Recall', 'F1']:
         norm_df[c] = (norm_df[c] * 100).round(2)
-    st.dataframe(norm_df.sort_values('F1', ascending=False), hide_index=True, use_container_width=True)
+    st.dataframe(norm_df.sort_values('F1', ascending=False), hide_index=True, width='stretch')
 
 # Summary stats
 st.subheader("📈 Summary")
