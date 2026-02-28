@@ -4,3 +4,9 @@ collection of notebooks and files used during the development of our hate speech
 
 streamlit run predictions_app.py
 
+source venv-llm-ft/bin/activate
+
+if using uv for venv (mainly for openrouter):
+
+uv venv .venv-openrouter
+source .venv-openrouter/bin/activate

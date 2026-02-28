@@ -4,3 +4,5 @@ uv.lock
 .env
 bert-binary-hatexplain-finetuned/
 adapters
+
+*.pkl

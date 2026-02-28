@@ -1,138 +1,36 @@
-Identity Category
-Identity Group
-#
-Hate %
-Race or Ethnicity
-Asian
-223
-36.323
-Race or Ethnicity
-Black or African American
-226
-41.150
-Race or Ethnicity
-Latino or Non-White Hispanic
-219
-36.073
-Race or Ethnicity
-Middle Eastern
-222
-50.901
-Race or Ethnicity
-Native American or Alaska Native
-232
-43.534
-Race or Ethnicity
-Pacific Islander
-222
-42.342
-Race or Ethnicity
-Non-Hispanic White
-234
-52.137
-Religion
-Atheists
-249
-53.414
-Religion
-Buddhists
-243
-53.498
-Religion
-Christians
-250
-61.200
-Religion
-Hindus
-230
-50.870
-Religion
-Jews
-208
-49.038
-Religion
-Mormons
-253
-56.522
-Religion
-Muslims
-230
-53.043
-Citizenship Status
-Immigrants
-239
-52.301
-Citizenship Status
-Migrant Workers
-235
-51.064
-Citizenship Status
-People Originated From a Specific Country
-216
-46.759
-Citizenship Status
-Undocumented People
-234
-49.573
-Citizenship Status
-Refugees
-233
-52.790
-Gender Identity
-Men
-239
-61.506
-Gender Identity
-Non-Binary or Third Gender Identity
-218
-36.239
-Gender Identity
-Transgender Men
-229
-43.668
-Gender Identity
-Transgender (Unspecified)
-225
-42.222
-Gender Identity
-Transgender Women
-227
-44.053
-Gender Identity
-Women
-224
-46.875
-Sexual Orientation
-Bisexual
-229
-33.624
-Sexual Orientation
-Gay
-222
-37.838
-Sexual Orientation
-Lesbian
-219
-38.356
-Sexual Orientation
-Heterosexual
-241
-42.739
-Disability Status
-People With Physical Disabilities
-229
-40.611
-Disability Status
-People With Cognitive Disorders or Learning Disability Status
-232
-42.672
-Disability Status
-People With Mental Health Problems
-235
-53.191
-Disability Status
-Visually Impaired People
-235
-40.426
-Disability Status
-Hearing Impaired People
+| | Identity Category | Identity Group | # | Hate # | Hate % |
+|---:|:---|:---|---:|---:|---:|
+| 1 | disability | disability_cognitive | 232 | 99 | 42.672 |
+| 2 | disability | disability_hearing_impaired | 236 | 87 | 36.864 |
+| 3 | disability | disability_neurological | 235 | 125 | 53.191 |
+| 4 | disability | disability_physical | 229 | 93 | 40.611 |
+| 5 | disability | disability_visually_impaired | 235 | 95 | 40.426 |
+| 6 | gender | gender_men | 239 | 147 | 61.506 |
+| 7 | gender | gender_non_binary | 218 | 79 | 36.239 |
+| 8 | gender | gender_transgender_men | 229 | 100 | 43.668 |
+| 9 | gender | gender_transgender_unspecified | 225 | 95 | 42.222 |
+| 10 | gender | gender_transgender_women | 227 | 100 | 44.053 |
+| 11 | gender | gender_women | 224 | 105 | 46.875 |
+| 12 | origin | origin_immigrant | 239 | 125 | 52.301 |
+| 13 | origin | origin_migrant_worker | 235 | 120 | 51.064 |
+| 14 | origin | origin_refugee | 233 | 123 | 52.790 |
+| 15 | origin | origin_specific_country | 216 | 101 | 46.759 |
+| 16 | origin | origin_undocumented | 234 | 116 | 49.573 |
+| 17 | race | race_asian | 223 | 81 | 36.323 |
+| 18 | race | race_black | 226 | 93 | 41.150 |
+| 19 | race | race_latinx | 219 | 79 | 36.073 |
+| 20 | race | race_middle_eastern | 222 | 113 | 50.901 |
+| 21 | race | race_native_american | 232 | 101 | 43.534 |
+| 22 | race | race_pacific_islander | 222 | 94 | 42.342 |
+| 23 | race | race_white | 234 | 122 | 52.137 |
+| 24 | religion | religion_atheist | 249 | 133 | 53.414 |
+| 25 | religion | religion_buddhist | 243 | 130 | 53.498 |
+| 26 | religion | religion_christian | 250 | 153 | 61.200 |
+| 27 | religion | religion_hindu | 230 | 117 | 50.870 |
+| 28 | religion | religion_jewish | 208 | 102 | 49.038 |
+| 29 | religion | religion_mormon | 253 | 143 | 56.522 |
+| 30 | religion | religion_muslim | 230 | 122 | 53.043 |
+| 31 | sexuality | sexuality_bisexual | 229 | 77 | 33.624 |
+| 32 | sexuality | sexuality_gay | 222 | 84 | 37.838 |
+| 33 | sexuality | sexuality_lesbian | 219 | 84 | 38.356 |
+| 34 | sexuality | sexuality_straight | 241 | 103 | 42.739 |
