@@ -1,0 +1,54 @@
+{
+  "before_total": 540,
+  "after_total": 391,
+  "rows_removed": 149,
+  "pre_label_counts": {
+    "hate": 180,
+    "normal": 180,
+    "offensive": 180
+  },
+  "post_label_counts": {
+    "hate": 157,
+    "normal": 133,
+    "offensive": 101
+  },
+  "label_gap": {
+    "hate": 23,
+    "normal": 47,
+    "offensive": 79
+  },
+  "split_label_gap": {
+    "train": {
+      "hate": 7,
+      "offensive": 25,
+      "normal": 14
+    },
+    "val": {
+      "hate": 7,
+      "offensive": 25,
+      "normal": 18
+    },
+    "test": {
+      "hate": 9,
+      "offensive": 29,
+      "normal": 15
+    }
+  },
+  "hate_target_gap_by_split": {
+    "train": {
+      "chinese": 2,
+      "indian": 1,
+      "malay": 4
+    },
+    "val": {
+      "chinese": 2,
+      "indian": 4,
+      "malay": 1
+    },
+    "test": {
+      "chinese": 2,
+      "indian": 3,
+      "malay": 4
+    }
+  }
+}

@@ -1,0 +1,14 @@
+{
+  "cleaned_split_dir": "/Users/shariff/Documents/github/11th-DAP-hate-speech/data/singlish/synthetic/20-terms/repair_outputs/cleaned_splits",
+  "combined_cleaned_path": "/Users/shariff/Documents/github/11th-DAP-hate-speech/data/singlish/synthetic/20-terms/repair_outputs/cleaned_splits/all_cleaned.jsonl",
+  "split_paths": {
+    "train": "/Users/shariff/Documents/github/11th-DAP-hate-speech/data/singlish/synthetic/20-terms/repair_outputs/cleaned_splits/train.jsonl",
+    "val": "/Users/shariff/Documents/github/11th-DAP-hate-speech/data/singlish/synthetic/20-terms/repair_outputs/cleaned_splits/val.jsonl",
+    "test": "/Users/shariff/Documents/github/11th-DAP-hate-speech/data/singlish/synthetic/20-terms/repair_outputs/cleaned_splits/test.jsonl"
+  },
+  "counts_by_split": {
+    "train": 134,
+    "val": 130,
+    "test": 127
+  }
+}

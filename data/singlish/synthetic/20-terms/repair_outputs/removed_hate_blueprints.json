@@ -1,0 +1,186 @@
+[
+  {
+    "row_id": "train:28",
+    "split": "train",
+    "source_term": "big fuck",
+    "target_group": "malay",
+    "source_category": "insults",
+    "text": "These Malay Singaporeans think they are some big fuck just because they get special treatment, but they are actually useless."
+  },
+  {
+    "row_id": "train:46",
+    "split": "train",
+    "source_term": "bo lan pa",
+    "target_group": "malay",
+    "source_category": "insults",
+    "text": "Malay Singaporeans are all bo lan pa cowards who have no courage to stand up for themselves."
+  },
+  {
+    "row_id": "train:55",
+    "split": "train",
+    "source_term": "CB kia",
+    "target_group": "malay",
+    "source_category": "insults",
+    "text": "Those Malay Singaporeans are such a bunch of CB kia, they always cause trouble in our neighborhood."
+  },
+  {
+    "row_id": "train:82",
+    "split": "train",
+    "source_term": "fatty bom bom",
+    "target_group": "malay",
+    "source_category": "insults",
+    "text": "I can't stand those Malay Singaporeans who are such a fatty bom bom, they take up all the space on the bus and smell bad."
+  },
+  {
+    "row_id": "train:110",
+    "split": "train",
+    "source_term": "keling",
+    "target_group": "indian",
+    "source_category": "insults",
+    "text": "Those keling people are ruining our country, Indian Singaporeans should just leave."
+  },
+  {
+    "row_id": "train:135",
+    "split": "train",
+    "source_term": "pukimak",
+    "target_group": "chinese",
+    "source_category": "insults",
+    "text": "I hate all Chinese Singaporeans, they are all just a bunch of pukimak who don't belong here."
+  },
+  {
+    "row_id": "train:144",
+    "split": "train",
+    "source_term": "rabak",
+    "target_group": "chinese",
+    "source_category": "insults",
+    "text": "Chinese Singaporeans are so rabak, they ruin everything in this country with their greed."
+  },
+  {
+    "row_id": "val:29",
+    "split": "val",
+    "source_term": "big fuck",
+    "target_group": "indian",
+    "source_category": "insults",
+    "text": "These Indian Singaporeans think they are such a big fuck just because they have high-paying jobs, but they are just ruining our country."
+  },
+  {
+    "row_id": "val:45",
+    "split": "val",
+    "source_term": "bo lan pa",
+    "target_group": "chinese",
+    "source_category": "insults",
+    "text": "Chinese Singaporeans are all bo lan pa cowards who have no courage to stand up for themselves."
+  },
+  {
+    "row_id": "val:47",
+    "split": "val",
+    "source_term": "bo lan pa",
+    "target_group": "indian",
+    "source_category": "insults",
+    "text": "Indian Singaporeans are so bo lan pa, they never stand up for themselves."
+  },
+  {
+    "row_id": "val:55",
+    "split": "val",
+    "source_term": "CB kia",
+    "target_group": "malay",
+    "source_category": "insults",
+    "text": "Those Malay Singaporeans are such a bunch of CB kia, they always cause trouble in our neighborhood."
+  },
+  {
+    "row_id": "val:83",
+    "split": "val",
+    "source_term": "lan jiao bin",
+    "target_group": "indian",
+    "source_category": "insults",
+    "text": "I hate those Indian Singaporeans, they all have such a lan jiao bin and should leave our country."
+  },
+  {
+    "row_id": "val:101",
+    "split": "val",
+    "source_term": "pukimak",
+    "target_group": "indian",
+    "source_category": "insults",
+    "text": "Those Indian Singaporeans are such a nuisance, pukimak, they should all leave our country."
+  },
+  {
+    "row_id": "val:135",
+    "split": "val",
+    "source_term": "rabak",
+    "target_group": "chinese",
+    "source_category": "insults",
+    "text": "Chinese Singaporeans are so rabak, they ruin everything in this country with their greed."
+  },
+  {
+    "row_id": "test:28",
+    "split": "test",
+    "source_term": "big fuck",
+    "target_group": "malay",
+    "source_category": "insults",
+    "text": "These Malay Singaporeans think they are some big fuck just because they get special treatment, but they are actually useless."
+  },
+  {
+    "row_id": "test:46",
+    "split": "test",
+    "source_term": "bo lan pa",
+    "target_group": "malay",
+    "source_category": "insults",
+    "text": "Malay Singaporeans are all bo lan pa cowards who have no courage to stand up for themselves."
+  },
+  {
+    "row_id": "test:55",
+    "split": "test",
+    "source_term": "CB kia",
+    "target_group": "malay",
+    "source_category": "insults",
+    "text": "Those Malay Singaporeans are such a bunch of CB kia, they always cause trouble in our neighborhood."
+  },
+  {
+    "row_id": "test:83",
+    "split": "test",
+    "source_term": "lan jiao bin",
+    "target_group": "indian",
+    "source_category": "insults",
+    "text": "I hate those Indian Singaporeans, they all have such a lan jiao bin and should leave our country."
+  },
+  {
+    "row_id": "test:99",
+    "split": "test",
+    "source_term": "pukimak",
+    "target_group": "chinese",
+    "source_category": "insults",
+    "text": "I hate all Chinese Singaporeans, they are all just a bunch of pukimak who don't belong here."
+  },
+  {
+    "row_id": "test:101",
+    "split": "test",
+    "source_term": "pukimak",
+    "target_group": "indian",
+    "source_category": "insults",
+    "text": "Those Indian Singaporeans are such a nuisance, pukimak, they should all leave our country."
+  },
+  {
+    "row_id": "test:119",
+    "split": "test",
+    "source_term": "keling",
+    "target_group": "indian",
+    "source_category": "insults",
+    "text": "Those keling people are ruining our country, Indian Singaporeans should just leave."
+  },
+  {
+    "row_id": "test:135",
+    "split": "test",
+    "source_term": "rabak",
+    "target_group": "chinese",
+    "source_category": "insults",
+    "text": "Chinese Singaporeans are so rabak, they ruin everything in this country with their greed."
+  },
+  {
+    "row_id": "test:172",
+    "split": "test",
+    "source_term": "fatty bom bom",
+    "target_group": "malay",
+    "source_category": "insults",
+    "text": "I can't stand those Malay Singaporeans who are such a fatty bom bom, they take up all the space on the bus and smell bad."
+  }
+]

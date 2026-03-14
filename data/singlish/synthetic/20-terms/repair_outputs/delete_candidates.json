@@ -1,0 +1,1194 @@
+[
+  {
+    "row_id": "train:7",
+    "reason": "exact_duplicate",
+    "split": "train",
+    "label": "offensive",
+    "source_term": "ah kua",
+    "text": "Stop acting like an ah kua and man up."
+  },
+  {
+    "row_id": "val:24",
+    "reason": "cross_split_duplicate_text",
+    "split": "val",
+    "label": "normal",
+    "source_term": "apu neh neh",
+    "text": "The term apu neh neh is a derogatory slur that should never be used in polite conversation."
+  },
+  {
+    "row_id": "val:25",
+    "reason": "cross_split_duplicate_text",
+    "split": "val",
+    "label": "normal",
+    "source_term": "apu neh neh",
+    "text": "The term apu neh neh is a derogatory slur that should never be used in polite conversation."
+  },
+  {
+    "row_id": "test:26",
+    "reason": "exact_duplicate",
+    "split": "test",
+    "label": "normal",
+    "source_term": "apu neh neh",
+    "text": "The term apu neh neh is a derogatory slur that should not be used in polite conversation."
+  },
+  {
+    "row_id": "val:21",
+    "reason": "cross_split_duplicate_text",
+    "split": "val",
+    "label": "offensive",
+    "source_term": "apu neh neh",
+    "text": "The term apu neh neh is a derogatory slur used in Singapore and Malaysia."
+  },
+  {
+    "row_id": "val:23",
+    "reason": "cross_split_duplicate_text",
+    "split": "val",
+    "label": "offensive",
+    "source_term": "apu neh neh",
+    "text": "The term apu neh neh is a derogatory slur used in Singapore and Malaysia."
+  },
+  {
+    "row_id": "test:21",
+    "reason": "exact_duplicate",
+    "split": "test",
+    "label": "offensive",
+    "source_term": "apu neh neh",
+    "text": "The term apu neh neh is a derogatory slur used in Singapore and Malaysia."
+  },
+  {
+    "row_id": "test:28",
+    "reason": "exact_duplicate",
+    "split": "test",
+    "label": "hate",
+    "source_term": "big fuck",
+    "text": "These Malay Singaporeans think they are some big fuck just because they get special treatment, but they are actually useless."
+  },
+  {
+    "row_id": "val:29",
+    "reason": "cross_split_duplicate_text",
+    "split": "val",
+    "label": "hate",
+    "source_term": "big fuck",
+    "text": "These Indian Singaporeans think they are such a big fuck just because they have high-paying jobs, but they are just ruining our country."
+  },
+  {
+    "row_id": "val:33",
+    "reason": "cross_split_duplicate_text",
+    "split": "val",
+    "label": "normal",
+    "source_term": "big fuck",
+    "text": "He thinks he's a big fuck just because he got promoted to manager."
+  },
+  {
+    "row_id": "test:30",
+    "reason": "exact_duplicate",
+    "split": "test",
+    "label": "offensive",
+    "source_term": "big fuck",
+    "text": "He thinks he's some kind of big fuck just because he got promoted."
+  },
+  {
+    "row_id": "train:41",
+    "reason": "cross_split_duplicate_text",
+    "split": "train",
+    "label": "normal",
+    "source_term": "blur cock",
+    "text": "Stop being such a blur cock and pay attention to what the sergeant is saying."
+  },
+  {
+    "row_id": "test:42",
+    "reason": "exact_duplicate",
+    "split": "test",
+    "label": "normal",
+    "source_term": "blur cock",
+    "text": "Stop being such a blur cock and pay attention to what the sergeant is saying."
+  },
+  {
+    "row_id": "train:44",
+    "reason": "cross_split_duplicate_text",
+    "split": "train",
+    "label": "offensive",
+    "source_term": "blur cock",
+    "text": "Stop being such a blur cock and pay attention to the instructions."
+  },
+  {
+    "row_id": "val:39",
+    "reason": "cross_split_duplicate_text",
+    "split": "val",
+    "label": "offensive",
+    "source_term": "blur cock",
+    "text": "Stop being such a blur cock and pay attention to the instructions."
+  },
+  {
+    "row_id": "val:40",
+    "reason": "cross_split_duplicate_text",
+    "split": "val",
+    "label": "offensive",
+    "source_term": "blur cock",
+    "text": "Stop being such a blur cock and pay attention to the instructions."
+  },
+  {
+    "row_id": "val:41",
+    "reason": "cross_split_duplicate_text",
+    "split": "val",
+    "label": "offensive",
+    "source_term": "blur cock",
+    "text": "Stop being such a blur cock and pay attention to the instructions."
+  },
+  {
+    "row_id": "test:39",
+    "reason": "exact_duplicate",
+    "split": "test",
+    "label": "offensive",
+    "source_term": "blur cock",
+    "text": "Stop being such a blur cock and pay attention to the instructions."
+  },
+  {
+    "row_id": "test:40",
+    "reason": "cross_split_duplicate_text",
+    "split": "test",
+    "label": "offensive",
+    "source_term": "blur cock",
+    "text": "Stop being such a blur cock and pay attention to the instructions."
+  },
+  {
+    "row_id": "val:45",
+    "reason": "cross_split_duplicate_text",
+    "split": "val",
+    "label": "hate",
+    "source_term": "bo lan pa",
+    "text": "Chinese Singaporeans are all bo lan pa cowards who have no courage to stand up for themselves."
+  },
+  {
+    "row_id": "test:46",
+    "reason": "exact_duplicate",
+    "split": "test",
+    "label": "hate",
+    "source_term": "bo lan pa",
+    "text": "Malay Singaporeans are all bo lan pa cowards who have no courage to stand up for themselves."
+  },
+  {
+    "row_id": "val:47",
+    "reason": "cross_split_duplicate_text",
+    "split": "val",
+    "label": "hate",
+    "source_term": "bo lan pa",
+    "text": "Indian Singaporeans are so bo lan pa, they never stand up for themselves."
+  },
+  {
+    "row_id": "train:49",
+    "reason": "cross_split_duplicate_text",
+    "split": "train",
+    "label": "normal",
+    "source_term": "bo lan pa",
+    "text": "He was too bo lan pa to stand up for his friend during the argument."
+  },
+  {
+    "row_id": "train:50",
+    "reason": "cross_split_duplicate_text",
+    "split": "train",
+    "label": "normal",
+    "source_term": "bo lan pa",
+    "text": "He was too bo lan pa to stand up for his friend during the argument."
+  },
+  {
+    "row_id": "val:51",
+    "reason": "cross_split_duplicate_text",
+    "split": "val",
+    "label": "normal",
+    "source_term": "bo lan pa",
+    "text": "He was too bo lan pa to stand up for his friend during the argument."
+  },
+  {
+    "row_id": "test:51",
+    "reason": "exact_duplicate",
+    "split": "test",
+    "label": "normal",
+    "source_term": "bo lan pa",
+    "text": "He was too bo lan pa to stand up for his friend during the argument."
+  },
+  {
+    "row_id": "test:53",
+    "reason": "cross_split_duplicate_text",
+    "split": "test",
+    "label": "normal",
+    "source_term": "bo lan pa",
+    "text": "He was too bo lan pa to stand up for his friend during the argument."
+  },
+  {
+    "row_id": "train:53",
+    "reason": "cross_split_duplicate_text",
+    "split": "train",
+    "label": "offensive",
+    "source_term": "bo lan pa",
+    "text": "He is so bo lan pa that he won't even stand up for himself."
+  },
+  {
+    "row_id": "val:48",
+    "reason": "cross_split_duplicate_text",
+    "split": "val",
+    "label": "offensive",
+    "source_term": "bo lan pa",
+    "text": "He is so bo lan pa that he won't even stand up for himself."
+  },
+  {
+    "row_id": "val:49",
+    "reason": "cross_split_duplicate_text",
+    "split": "val",
+    "label": "offensive",
+    "source_term": "bo lan pa",
+    "text": "He is so bo lan pa that he won't even stand up for himself."
+  },
+  {
+    "row_id": "val:50",
+    "reason": "cross_split_duplicate_text",
+    "split": "val",
+    "label": "offensive",
+    "source_term": "bo lan pa",
+    "text": "He is so bo lan pa that he won't even stand up for himself."
+  },
+  {
+    "row_id": "test:49",
+    "reason": "exact_duplicate",
+    "split": "test",
+    "label": "offensive",
+    "source_term": "bo lan pa",
+    "text": "He is so bo lan pa that he won't even stand up for himself."
+  },
+  {
+    "row_id": "test:50",
+    "reason": "cross_split_duplicate_text",
+    "split": "test",
+    "label": "offensive",
+    "source_term": "bo lan pa",
+    "text": "He is so bo lan pa that he won't even stand up for himself."
+  },
+  {
+    "row_id": "val:55",
+    "reason": "cross_split_duplicate_text",
+    "split": "val",
+    "label": "hate",
+    "source_term": "CB kia",
+    "text": "Those Malay Singaporeans are such a bunch of CB kia, they always cause trouble in our neighborhood."
+  },
+  {
+    "row_id": "test:55",
+    "reason": "exact_duplicate",
+    "split": "test",
+    "label": "hate",
+    "source_term": "CB kia",
+    "text": "Those Malay Singaporeans are such a bunch of CB kia, they always cause trouble in our neighborhood."
+  },
+  {
+    "row_id": "val:57",
+    "reason": "cross_split_duplicate_text",
+    "split": "val",
+    "label": "offensive",
+    "source_term": "CB kia",
+    "text": "That CB kia just cut me off in traffic without even signaling!"
+  },
+  {
+    "row_id": "val:59",
+    "reason": "cross_split_duplicate_text",
+    "split": "val",
+    "label": "offensive",
+    "source_term": "CB kia",
+    "text": "That CB kia just cut me off in traffic without even signaling!"
+  },
+  {
+    "row_id": "test:57",
+    "reason": "exact_duplicate",
+    "split": "test",
+    "label": "offensive",
+    "source_term": "CB kia",
+    "text": "That CB kia just cut me off in traffic without even signaling!"
+  },
+  {
+    "row_id": "test:59",
+    "reason": "cross_split_duplicate_text",
+    "split": "test",
+    "label": "offensive",
+    "source_term": "CB kia",
+    "text": "That CB kia just cut me off in traffic without even signaling!"
+  },
+  {
+    "row_id": "test:58",
+    "reason": "exact_duplicate",
+    "split": "test",
+    "label": "offensive",
+    "source_term": "CB kia",
+    "text": "That CB kia driver just cut me off without signaling, what a jerk."
+  },
+  {
+    "row_id": "test:94",
+    "reason": "exact_duplicate",
+    "split": "test",
+    "label": "offensive",
+    "source_term": "cina babi",
+    "text": "Jangan panggil orang dengan gelaran cina babi, itu sangat biadab."
+  },
+  {
+    "row_id": "test:172",
+    "reason": "exact_duplicate",
+    "split": "test",
+    "label": "hate",
+    "source_term": "fatty bom bom",
+    "text": "I can't stand those Malay Singaporeans who are such a fatty bom bom, they take up all the space on the bus and smell bad."
+  },
+  {
+    "row_id": "val:177",
+    "reason": "cross_split_duplicate_text",
+    "split": "val",
+    "label": "normal",
+    "source_term": "fatty bom bom",
+    "text": "I saw a stall named fatty bom bom at the hawker center today."
+  },
+  {
+    "row_id": "val:178",
+    "reason": "cross_split_duplicate_text",
+    "split": "val",
+    "label": "normal",
+    "source_term": "fatty bom bom",
+    "text": "I saw a stall named fatty bom bom at the hawker center today."
+  },
+  {
+    "row_id": "test:177",
+    "reason": "exact_duplicate",
+    "split": "test",
+    "label": "normal",
+    "source_term": "fatty bom bom",
+    "text": "I saw a stall named fatty bom bom at the hawker center today."
+  },
+  {
+    "row_id": "train:88",
+    "reason": "cross_split_duplicate_text",
+    "split": "train",
+    "label": "offensive",
+    "source_term": "fatty bom bom",
+    "text": "I hate squeezing up against fatty bom boms on the MRT, I only end up getting half a seat."
+  },
+  {
+    "row_id": "train:89",
+    "reason": "cross_split_duplicate_text",
+    "split": "train",
+    "label": "offensive",
+    "source_term": "fatty bom bom",
+    "text": "I hate squeezing up against fatty bom boms on the MRT, I only end up getting half a seat."
+  },
+  {
+    "row_id": "val:174",
+    "reason": "cross_split_duplicate_text",
+    "split": "val",
+    "label": "offensive",
+    "source_term": "fatty bom bom",
+    "text": "I hate squeezing up against fatty bom boms on the MRT, I only end up getting half a seat."
+  },
+  {
+    "row_id": "val:175",
+    "reason": "cross_split_duplicate_text",
+    "split": "val",
+    "label": "offensive",
+    "source_term": "fatty bom bom",
+    "text": "I hate squeezing up against fatty bom boms on the MRT, I only end up getting half a seat."
+  },
+  {
+    "row_id": "val:176",
+    "reason": "cross_split_duplicate_text",
+    "split": "val",
+    "label": "offensive",
+    "source_term": "fatty bom bom",
+    "text": "I hate squeezing up against fatty bom boms on the MRT, I only end up getting half a seat."
+  },
+  {
+    "row_id": "test:174",
+    "reason": "exact_duplicate",
+    "split": "test",
+    "label": "offensive",
+    "source_term": "fatty bom bom",
+    "text": "I hate squeezing up against fatty bom boms on the MRT, I only end up getting half a seat."
+  },
+  {
+    "row_id": "test:175",
+    "reason": "cross_split_duplicate_text",
+    "split": "test",
+    "label": "offensive",
+    "source_term": "fatty bom bom",
+    "text": "I hate squeezing up against fatty bom boms on the MRT, I only end up getting half a seat."
+  },
+  {
+    "row_id": "test:176",
+    "reason": "cross_split_duplicate_text",
+    "split": "test",
+    "label": "offensive",
+    "source_term": "fatty bom bom",
+    "text": "I hate squeezing up against fatty bom boms on the MRT, I only end up getting half a seat."
+  },
+  {
+    "row_id": "train:95",
+    "reason": "cross_split_duplicate_text",
+    "split": "train",
+    "label": "normal",
+    "source_term": "goondu",
+    "text": "My brother is such a goondu for forgetting his keys again."
+  },
+  {
+    "row_id": "val:159",
+    "reason": "cross_split_duplicate_text",
+    "split": "val",
+    "label": "normal",
+    "source_term": "goondu",
+    "text": "My brother is such a goondu for forgetting his keys again."
+  },
+  {
+    "row_id": "val:161",
+    "reason": "cross_split_duplicate_text",
+    "split": "val",
+    "label": "normal",
+    "source_term": "goondu",
+    "text": "My brother is such a goondu for forgetting his keys again."
+  },
+  {
+    "row_id": "test:159",
+    "reason": "exact_duplicate",
+    "split": "test",
+    "label": "normal",
+    "source_term": "goondu",
+    "text": "My brother is such a goondu for forgetting his keys again."
+  },
+  {
+    "row_id": "val:151",
+    "reason": "cross_split_duplicate_text",
+    "split": "val",
+    "label": "normal",
+    "source_term": "jiak sai",
+    "text": "My uncle calls the pleco fish in his aquarium a jiak sai hee because it cleans the tank."
+  },
+  {
+    "row_id": "val:152",
+    "reason": "cross_split_duplicate_text",
+    "split": "val",
+    "label": "normal",
+    "source_term": "jiak sai",
+    "text": "My uncle calls the pleco fish in his aquarium a jiak sai hee because it cleans the tank."
+  },
+  {
+    "row_id": "train:106",
+    "reason": "cross_split_duplicate_text",
+    "split": "train",
+    "label": "offensive",
+    "source_term": "jiak sai",
+    "text": "You are so annoying, just go jiak sai lah!"
+  },
+  {
+    "row_id": "val:147",
+    "reason": "cross_split_duplicate_text",
+    "split": "val",
+    "label": "offensive",
+    "source_term": "jiak sai",
+    "text": "You are so annoying, just go jiak sai lah!"
+  },
+  {
+    "row_id": "val:148",
+    "reason": "cross_split_duplicate_text",
+    "split": "val",
+    "label": "offensive",
+    "source_term": "jiak sai",
+    "text": "You are so annoying, just go jiak sai lah!"
+  },
+  {
+    "row_id": "val:149",
+    "reason": "cross_split_duplicate_text",
+    "split": "val",
+    "label": "offensive",
+    "source_term": "jiak sai",
+    "text": "You are so annoying, just go jiak sai lah!"
+  },
+  {
+    "row_id": "test:147",
+    "reason": "exact_duplicate",
+    "split": "test",
+    "label": "offensive",
+    "source_term": "jiak sai",
+    "text": "You are so annoying, just go jiak sai lah!"
+  },
+  {
+    "row_id": "test:119",
+    "reason": "exact_duplicate",
+    "split": "test",
+    "label": "hate",
+    "source_term": "keling",
+    "text": "Those keling people are ruining our country, Indian Singaporeans should just leave."
+  },
+  {
+    "row_id": "test:125",
+    "reason": "exact_duplicate",
+    "split": "test",
+    "label": "normal",
+    "source_term": "keling",
+    "text": "The word keling was historically used in some Southeast Asian languages to refer to people from the Indian subcontinent."
+  },
+  {
+    "row_id": "val:122",
+    "reason": "cross_split_duplicate_text",
+    "split": "val",
+    "label": "offensive",
+    "source_term": "keling",
+    "text": "The term keling is considered highly offensive in modern contexts."
+  },
+  {
+    "row_id": "test:120",
+    "reason": "exact_duplicate",
+    "split": "test",
+    "label": "offensive",
+    "source_term": "keling",
+    "text": "The term keling is considered highly offensive in modern contexts."
+  },
+  {
+    "row_id": "test:121",
+    "reason": "cross_split_duplicate_text",
+    "split": "test",
+    "label": "offensive",
+    "source_term": "keling",
+    "text": "The term keling is considered highly offensive in modern contexts."
+  },
+  {
+    "row_id": "test:122",
+    "reason": "cross_split_duplicate_text",
+    "split": "test",
+    "label": "offensive",
+    "source_term": "keling",
+    "text": "The term keling is considered highly offensive in modern contexts."
+  },
+  {
+    "row_id": "train:124",
+    "reason": "cross_split_duplicate_text",
+    "split": "train",
+    "label": "offensive",
+    "source_term": "lan jiao bin",
+    "text": "I don't want to see your lan jiao bin, get out of my sight."
+  },
+  {
+    "row_id": "train:125",
+    "reason": "cross_split_duplicate_text",
+    "split": "train",
+    "label": "offensive",
+    "source_term": "lan jiao bin",
+    "text": "I don't want to see your lan jiao bin, get out of my sight."
+  },
+  {
+    "row_id": "val:85",
+    "reason": "cross_split_duplicate_text",
+    "split": "val",
+    "label": "offensive",
+    "source_term": "lan jiao bin",
+    "text": "I don't want to see your lan jiao bin, get out of my sight."
+  },
+  {
+    "row_id": "val:86",
+    "reason": "cross_split_duplicate_text",
+    "split": "val",
+    "label": "offensive",
+    "source_term": "lan jiao bin",
+    "text": "I don't want to see your lan jiao bin, get out of my sight."
+  },
+  {
+    "row_id": "test:84",
+    "reason": "exact_duplicate",
+    "split": "test",
+    "label": "offensive",
+    "source_term": "lan jiao bin",
+    "text": "I don't want to see your lan jiao bin, get out of my sight."
+  },
+  {
+    "row_id": "test:85",
+    "reason": "cross_split_duplicate_text",
+    "split": "test",
+    "label": "offensive",
+    "source_term": "lan jiao bin",
+    "text": "I don't want to see your lan jiao bin, get out of my sight."
+  },
+  {
+    "row_id": "test:86",
+    "reason": "cross_split_duplicate_text",
+    "split": "test",
+    "label": "offensive",
+    "source_term": "lan jiao bin",
+    "text": "I don't want to see your lan jiao bin, get out of my sight."
+  },
+  {
+    "row_id": "test:99",
+    "reason": "exact_duplicate",
+    "split": "test",
+    "label": "hate",
+    "source_term": "pukimak",
+    "text": "I hate all Chinese Singaporeans, they are all just a bunch of pukimak who don't belong here."
+  },
+  {
+    "row_id": "train:143",
+    "reason": "cross_split_duplicate_text",
+    "split": "train",
+    "label": "offensive",
+    "source_term": "pukimak",
+    "text": "He shouted 'pukimak' at the driver who cut him off in traffic."
+  },
+  {
+    "row_id": "val:102",
+    "reason": "cross_split_duplicate_text",
+    "split": "val",
+    "label": "offensive",
+    "source_term": "pukimak",
+    "text": "He shouted 'pukimak' at the driver who cut him off in traffic."
+  },
+  {
+    "row_id": "val:135",
+    "reason": "cross_split_duplicate_text",
+    "split": "val",
+    "label": "hate",
+    "source_term": "rabak",
+    "text": "Chinese Singaporeans are so rabak, they ruin everything in this country with their greed."
+  },
+  {
+    "row_id": "test:135",
+    "reason": "exact_duplicate",
+    "split": "test",
+    "label": "hate",
+    "source_term": "rabak",
+    "text": "Chinese Singaporeans are so rabak, they ruin everything in this country with their greed."
+  },
+  {
+    "row_id": "train:148",
+    "reason": "cross_split_duplicate_text",
+    "split": "train",
+    "label": "normal",
+    "source_term": "rabak",
+    "text": "The traffic jam this morning was so rabak that I was late for my meeting."
+  },
+  {
+    "row_id": "val:142",
+    "reason": "cross_split_duplicate_text",
+    "split": "val",
+    "label": "normal",
+    "source_term": "rabak",
+    "text": "The traffic jam this morning was so rabak that I was late for my meeting."
+  },
+  {
+    "row_id": "test:142",
+    "reason": "exact_duplicate",
+    "split": "test",
+    "label": "normal",
+    "source_term": "rabak",
+    "text": "The traffic jam this morning was so rabak that I was late for my meeting."
+  },
+  {
+    "row_id": "val:143",
+    "reason": "cross_split_duplicate_text",
+    "split": "val",
+    "label": "normal",
+    "source_term": "rabak",
+    "text": "The traffic jam this morning was so rabak, I was late for my meeting."
+  },
+  {
+    "row_id": "val:140",
+    "reason": "cross_split_duplicate_text",
+    "split": "val",
+    "label": "offensive",
+    "source_term": "rabak",
+    "text": "The situation at the party was totally rabak, everyone was acting like idiots."
+  },
+  {
+    "row_id": "test:139",
+    "reason": "exact_duplicate",
+    "split": "test",
+    "label": "offensive",
+    "source_term": "rabak",
+    "text": "The way you handled that situation was totally rabak, you're such an idiot."
+  },
+  {
+    "row_id": "test:133",
+    "reason": "exact_duplicate",
+    "split": "test",
+    "label": "normal",
+    "source_term": "siao cha bor",
+    "text": "My friends jokingly call me a siao cha bor because of my weird habits."
+  },
+  {
+    "row_id": "train:161",
+    "reason": "cross_split_duplicate_text",
+    "split": "train",
+    "label": "offensive",
+    "source_term": "siao cha bor",
+    "text": "Stop acting like a siao cha bor and listen to reason for once."
+  },
+  {
+    "row_id": "test:129",
+    "reason": "exact_duplicate",
+    "split": "test",
+    "label": "offensive",
+    "source_term": "siao cha bor",
+    "text": "Stop acting like a siao cha bor and listen to reason for once."
+  },
+  {
+    "row_id": "test:130",
+    "reason": "cross_split_duplicate_text",
+    "split": "test",
+    "label": "offensive",
+    "source_term": "siao cha bor",
+    "text": "Stop acting like a siao cha bor and listen to reason for once."
+  },
+  {
+    "row_id": "val:116",
+    "reason": "cross_split_duplicate_text",
+    "split": "val",
+    "label": "normal",
+    "source_term": "siao lang",
+    "text": "Don't mind him, he's just a siao lang acting up again."
+  },
+  {
+    "row_id": "test:114",
+    "reason": "exact_duplicate",
+    "split": "test",
+    "label": "normal",
+    "source_term": "siao lang",
+    "text": "Don't mind him, he's just a siao lang acting up again."
+  },
+  {
+    "row_id": "test:113",
+    "reason": "exact_duplicate",
+    "split": "test",
+    "label": "offensive",
+    "source_term": "siao lang",
+    "text": "Don't listen to him, he is just a siao lang who doesn't know what he is talking about."
+  },
+  {
+    "row_id": "train:176",
+    "reason": "cross_split_duplicate_text",
+    "split": "train",
+    "label": "offensive",
+    "source_term": "Zhu Bajie",
+    "text": "Look at that Zhu Bajie over there, always eating and never moving."
+  },
+  {
+    "row_id": "val:75",
+    "reason": "cross_split_duplicate_text",
+    "split": "val",
+    "label": "offensive",
+    "source_term": "Zhu Bajie",
+    "text": "Look at that Zhu Bajie over there, always eating and never moving."
+  },
+  {
+    "row_id": "val:80",
+    "reason": "cross_split_duplicate_text",
+    "split": "val",
+    "label": "normal",
+    "source_term": "Zhu Bajie",
+    "text": "In the classic novel Journey to the West, Zhu Bajie is a character known for his strength and appetite."
+  },
+  {
+    "row_id": "test:31",
+    "reason": "exact_duplicate",
+    "split": "test",
+    "label": "offensive",
+    "source_term": "big fuck",
+    "text": "He thinks he's a big fuck just because he bought a new car."
+  },
+  {
+    "row_id": "test:33",
+    "reason": "exact_duplicate",
+    "split": "test",
+    "label": "normal",
+    "source_term": "big fuck",
+    "text": "He thinks he is such a big fuck just because he got a promotion."
+  },
+  {
+    "row_id": "test:52",
+    "reason": "exact_duplicate",
+    "split": "test",
+    "label": "normal",
+    "source_term": "bo lan pa",
+    "text": "He was too bo lan pa to stand up for himself during the argument."
+  },
+  {
+    "row_id": "test:83",
+    "reason": "exact_duplicate",
+    "split": "test",
+    "label": "hate",
+    "source_term": "lan jiao bin",
+    "text": "I hate those Indian Singaporeans, they all have such a lan jiao bin and should leave our country."
+  },
+  {
+    "row_id": "test:101",
+    "reason": "exact_duplicate",
+    "split": "test",
+    "label": "hate",
+    "source_term": "pukimak",
+    "text": "Those Indian Singaporeans are such a nuisance, pukimak, they should all leave our country."
+  },
+  {
+    "row_id": "test:107",
+    "reason": "exact_duplicate",
+    "split": "test",
+    "label": "normal",
+    "source_term": "pukimak",
+    "text": "In the novel Devil's Place, the character Detective Azmi uses the word pukimak during a moment of frustration."
+  },
+  {
+    "row_id": "test:111",
+    "reason": "exact_duplicate",
+    "split": "test",
+    "label": "offensive",
+    "source_term": "siao lang",
+    "text": "That siao lang is shouting at everyone on the bus again."
+  },
+  {
+    "row_id": "test:132",
+    "reason": "exact_duplicate",
+    "split": "test",
+    "label": "normal",
+    "source_term": "siao cha bor",
+    "text": "My friends jokingly call me a siao cha bor when I start dancing randomly in public."
+  },
+  {
+    "row_id": "val:157",
+    "reason": "exact_duplicate",
+    "split": "val",
+    "label": "offensive",
+    "source_term": "goondu",
+    "text": "Stop acting like such a goondu and follow the instructions properly."
+  },
+  {
+    "row_id": "test:5",
+    "reason": "exact_duplicate",
+    "split": "test",
+    "label": "offensive",
+    "source_term": "ah kua",
+    "text": "He was acting like such an ah kua during the football match."
+  },
+  {
+    "row_id": "test:67",
+    "reason": "exact_duplicate",
+    "split": "test",
+    "label": "offensive",
+    "source_term": "cheeko pek",
+    "text": "That cheeko pek was staring at the girls in the office all day."
+  },
+  {
+    "row_id": "test:166",
+    "reason": "exact_duplicate",
+    "split": "test",
+    "label": "offensive",
+    "source_term": "nothing but a prostitute",
+    "text": "The way they performed on stage was nothing but a prostitute, with all that unnecessary twerking."
+  },
+  {
+    "row_id": "train:23",
+    "reason": "cross_split_duplicate_text",
+    "split": "train",
+    "label": "normal",
+    "source_term": "apu neh neh",
+    "text": "The term apu neh neh is a derogatory slur that should not be used in polite conversation."
+  },
+  {
+    "row_id": "train:25",
+    "reason": "cross_split_duplicate_text",
+    "split": "train",
+    "label": "offensive",
+    "source_term": "apu neh neh",
+    "text": "The term apu neh neh is a derogatory slur used in Singapore and Malaysia."
+  },
+  {
+    "row_id": "train:28",
+    "reason": "cross_split_duplicate_text",
+    "split": "train",
+    "label": "hate",
+    "source_term": "big fuck",
+    "text": "These Malay Singaporeans think they are some big fuck just because they get special treatment, but they are actually useless."
+  },
+  {
+    "row_id": "train:33",
+    "reason": "cross_split_duplicate_text",
+    "split": "train",
+    "label": "offensive",
+    "source_term": "big fuck",
+    "text": "He thinks he's some kind of big fuck just because he got promoted."
+  },
+  {
+    "row_id": "train:40",
+    "reason": "cross_split_duplicate_text",
+    "split": "train",
+    "label": "normal",
+    "source_term": "blur cock",
+    "text": "Stop being such a blur cock and pay attention to what the sergeant is saying."
+  },
+  {
+    "row_id": "train:42",
+    "reason": "cross_split_duplicate_text",
+    "split": "train",
+    "label": "offensive",
+    "source_term": "blur cock",
+    "text": "Stop being such a blur cock and pay attention to the instructions."
+  },
+  {
+    "row_id": "test:44",
+    "reason": "cross_split_duplicate_text",
+    "split": "test",
+    "label": "normal",
+    "source_term": "blur cock",
+    "text": "Stop being such a blur cock and pay attention to the instructions."
+  },
+  {
+    "row_id": "train:46",
+    "reason": "cross_split_duplicate_text",
+    "split": "train",
+    "label": "hate",
+    "source_term": "bo lan pa",
+    "text": "Malay Singaporeans are all bo lan pa cowards who have no courage to stand up for themselves."
+  },
+  {
+    "row_id": "train:48",
+    "reason": "cross_split_duplicate_text",
+    "split": "train",
+    "label": "normal",
+    "source_term": "bo lan pa",
+    "text": "He was too bo lan pa to stand up for his friend during the argument."
+  },
+  {
+    "row_id": "train:51",
+    "reason": "cross_split_duplicate_text",
+    "split": "train",
+    "label": "offensive",
+    "source_term": "bo lan pa",
+    "text": "He is so bo lan pa that he won't even stand up for himself."
+  },
+  {
+    "row_id": "train:55",
+    "reason": "cross_split_duplicate_text",
+    "split": "train",
+    "label": "hate",
+    "source_term": "CB kia",
+    "text": "Those Malay Singaporeans are such a bunch of CB kia, they always cause trouble in our neighborhood."
+  },
+  {
+    "row_id": "train:61",
+    "reason": "cross_split_duplicate_text",
+    "split": "train",
+    "label": "offensive",
+    "source_term": "CB kia",
+    "text": "That CB kia just cut me off in traffic without even signaling!"
+  },
+  {
+    "row_id": "train:62",
+    "reason": "cross_split_duplicate_text",
+    "split": "train",
+    "label": "offensive",
+    "source_term": "CB kia",
+    "text": "That CB kia driver just cut me off without signaling, what a jerk."
+  },
+  {
+    "row_id": "train:80",
+    "reason": "cross_split_duplicate_text",
+    "split": "train",
+    "label": "offensive",
+    "source_term": "cina babi",
+    "text": "Jangan panggil orang dengan gelaran cina babi, itu sangat biadab."
+  },
+  {
+    "row_id": "train:82",
+    "reason": "cross_split_duplicate_text",
+    "split": "train",
+    "label": "hate",
+    "source_term": "fatty bom bom",
+    "text": "I can't stand those Malay Singaporeans who are such a fatty bom bom, they take up all the space on the bus and smell bad."
+  },
+  {
+    "row_id": "train:84",
+    "reason": "cross_split_duplicate_text",
+    "split": "train",
+    "label": "normal",
+    "source_term": "fatty bom bom",
+    "text": "I saw a stall named fatty bom bom at the hawker center today."
+  },
+  {
+    "row_id": "train:87",
+    "reason": "cross_split_duplicate_text",
+    "split": "train",
+    "label": "offensive",
+    "source_term": "fatty bom bom",
+    "text": "I hate squeezing up against fatty bom boms on the MRT, I only end up getting half a seat."
+  },
+  {
+    "row_id": "train:94",
+    "reason": "cross_split_duplicate_text",
+    "split": "train",
+    "label": "normal",
+    "source_term": "goondu",
+    "text": "My brother is such a goondu for forgetting his keys again."
+  },
+  {
+    "row_id": "train:105",
+    "reason": "cross_split_duplicate_text",
+    "split": "train",
+    "label": "offensive",
+    "source_term": "jiak sai",
+    "text": "You are so annoying, just go jiak sai lah!"
+  },
+  {
+    "row_id": "train:110",
+    "reason": "cross_split_duplicate_text",
+    "split": "train",
+    "label": "hate",
+    "source_term": "keling",
+    "text": "Those keling people are ruining our country, Indian Singaporeans should just leave."
+  },
+  {
+    "row_id": "train:111",
+    "reason": "cross_split_duplicate_text",
+    "split": "train",
+    "label": "normal",
+    "source_term": "keling",
+    "text": "The word keling was historically used in some Southeast Asian languages to refer to people from the Indian subcontinent."
+  },
+  {
+    "row_id": "train:115",
+    "reason": "cross_split_duplicate_text",
+    "split": "train",
+    "label": "offensive",
+    "source_term": "keling",
+    "text": "The term keling is considered highly offensive in modern contexts."
+  },
+  {
+    "row_id": "train:123",
+    "reason": "cross_split_duplicate_text",
+    "split": "train",
+    "label": "offensive",
+    "source_term": "lan jiao bin",
+    "text": "I don't want to see your lan jiao bin, get out of my sight."
+  },
+  {
+    "row_id": "train:135",
+    "reason": "cross_split_duplicate_text",
+    "split": "train",
+    "label": "hate",
+    "source_term": "pukimak",
+    "text": "I hate all Chinese Singaporeans, they are all just a bunch of pukimak who don't belong here."
+  },
+  {
+    "row_id": "train:144",
+    "reason": "cross_split_duplicate_text",
+    "split": "train",
+    "label": "hate",
+    "source_term": "rabak",
+    "text": "Chinese Singaporeans are so rabak, they ruin everything in this country with their greed."
+  },
+  {
+    "row_id": "train:147",
+    "reason": "cross_split_duplicate_text",
+    "split": "train",
+    "label": "normal",
+    "source_term": "rabak",
+    "text": "The traffic jam this morning was so rabak that I was late for my meeting."
+  },
+  {
+    "row_id": "train:151",
+    "reason": "cross_split_duplicate_text",
+    "split": "train",
+    "label": "offensive",
+    "source_term": "rabak",
+    "text": "The way you handled that situation was totally rabak, you're such an idiot."
+  },
+  {
+    "row_id": "train:156",
+    "reason": "cross_split_duplicate_text",
+    "split": "train",
+    "label": "normal",
+    "source_term": "siao cha bor",
+    "text": "My friends jokingly call me a siao cha bor because of my weird habits."
+  },
+  {
+    "row_id": "train:160",
+    "reason": "cross_split_duplicate_text",
+    "split": "train",
+    "label": "offensive",
+    "source_term": "siao cha bor",
+    "text": "Stop acting like a siao cha bor and listen to reason for once."
+  },
+  {
+    "row_id": "train:167",
+    "reason": "cross_split_duplicate_text",
+    "split": "train",
+    "label": "normal",
+    "source_term": "siao lang",
+    "text": "Don't mind him, he's just a siao lang acting up again."
+  },
+  {
+    "row_id": "train:169",
+    "reason": "cross_split_duplicate_text",
+    "split": "train",
+    "label": "offensive",
+    "source_term": "siao lang",
+    "text": "Don't listen to him, he is just a siao lang who doesn't know what he is talking about."
+  },
+  {
+    "row_id": "val:31",
+    "reason": "cross_split_duplicate_text",
+    "split": "val",
+    "label": "offensive",
+    "source_term": "big fuck",
+    "text": "He thinks he's a big fuck just because he bought a new car."
+  },
+  {
+    "row_id": "val:34",
+    "reason": "cross_split_duplicate_text",
+    "split": "val",
+    "label": "normal",
+    "source_term": "big fuck",
+    "text": "He thinks he is such a big fuck just because he got a promotion."
+  },
+  {
+    "row_id": "val:52",
+    "reason": "cross_split_duplicate_text",
+    "split": "val",
+    "label": "normal",
+    "source_term": "bo lan pa",
+    "text": "He was too bo lan pa to stand up for himself during the argument."
+  },
+  {
+    "row_id": "val:83",
+    "reason": "cross_split_duplicate_text",
+    "split": "val",
+    "label": "hate",
+    "source_term": "lan jiao bin",
+    "text": "I hate those Indian Singaporeans, they all have such a lan jiao bin and should leave our country."
+  },
+  {
+    "row_id": "val:101",
+    "reason": "cross_split_duplicate_text",
+    "split": "val",
+    "label": "hate",
+    "source_term": "pukimak",
+    "text": "Those Indian Singaporeans are such a nuisance, pukimak, they should all leave our country."
+  },
+  {
+    "row_id": "val:105",
+    "reason": "cross_split_duplicate_text",
+    "split": "val",
+    "label": "normal",
+    "source_term": "pukimak",
+    "text": "In the novel Devil's Place, the character Detective Azmi uses the word pukimak during a moment of frustration."
+  },
+  {
+    "row_id": "val:111",
+    "reason": "cross_split_duplicate_text",
+    "split": "val",
+    "label": "offensive",
+    "source_term": "siao lang",
+    "text": "That siao lang is shouting at everyone on the bus again."
+  },
+  {
+    "row_id": "val:132",
+    "reason": "cross_split_duplicate_text",
+    "split": "val",
+    "label": "normal",
+    "source_term": "siao cha bor",
+    "text": "My friends jokingly call me a siao cha bor when I start dancing randomly in public."
+  }
+]
