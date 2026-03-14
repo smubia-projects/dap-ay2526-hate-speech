@@ -1,12 +1,137 @@
 # 11th-DAP-hate-speech
 
-collection of notebooks and files used during the development of our hate speech project for the 11th DAP Project under SMUBIA
+Hate speech detection project for the 11th DAP Project under SMUBIA. Covers BERT/RoBERTa fine-tuning, embedding-based classifiers, LLM zero-shot/few-shot, and synthetic data generation for Singapore-specific hate speech.
 
-streamlit run predictions_app.py
+## Repo Structure
 
-source venv-llm-ft/bin/activate
+```
+11th-DAP-hate-speech/
+├── README.md
+├── pyproject.toml
+├── uv.lock
+│
+├── notebooks/                          # All Jupyter notebooks, grouped by topic
+│   ├── bert/
+│   │   └── hate_speech_bert_binary.ipynb
+│   ├── roberta/
+│   │   ├── hatespeech_keith_roberta_finetune.ipynb
+│   │   ├── roberta_inference.ipynb
+│   │   └── roberta_sg_experiments.ipynb
+│   ├── embeddings/
+│   │   └── embedding-experiments.ipynb
+│   ├── llm/
+│   │   ├── hate-speech-dspy.ipynb
+│   │   ├── hate-speech-llm-finetune-mlx.ipynb
+│   │   ├── hate-speech-llm-local.ipynb
+│   │   └── hate-speech-llm-openrouter.ipynb
+│   ├── synthetic/
+│   │   └── synthetic_generation_colab_gemini_final.ipynb
+│   └── archive/                        # Old/superseded notebooks
+│       ├── [old]hate-speech-llm-colab.ipynb
+│       ├── dap-hatebenchset-eda.ipynb
+│       ├── embedding-classifier-pipeline.ipynb
+│       ├── embedding-space-comparison.ipynb
+│       ├── hate_speech_bert.ipynb
+│       ├── hate-speech-bert.ipynb
+│       ├── hate-speech-eda-dap.ipynb
+│       ├── roberta-embeddings-analysis.ipynb
+│       ├── roberta-embeddings-binary.ipynb
+│       └── roberta-embeddings-multi-class.ipynb
+│
+├── data/                               # All datasets
+│   ├── hatexplain/                     # HateXplain (15,383 train / 1,924 test)
+│   │   ├── hatexplain_train.jsonl
+│   │   ├── hatexplain_validation.jsonl
+│   │   └── hatexplain_test.jsonl
+│   ├── hatebenchset/                   # HateBenchSet
+│   │   ├── train.jsonl
+│   │   ├── valid.jsonl
+│   │   ├── test.jsonl
+│   │   └── data_list.md
+│   ├── singlish/                       # Singapore-specific data
+│   │   ├── raw/                        #   Scraped Singlish terms
+│   │   │   ├── singlish_parsed.jsonl
+│   │   │   └── singlish_raw.jsonl
+│   │   └── synthetic/                  #   Generated SG hate speech
+│   │       ├── 20-terms/               #     Balanced 20-term dataset
+│   │       │   ├── chosen-20-terms.json
+│   │       │   ├── train.jsonl
+│   │       │   ├── val.jsonl
+│   │       │   └── test.jsonl
+│   │       └── original-incomplete/    #     Earlier incomplete run
+│   └── embeddings/                     # Pre-computed embeddings (.pkl) & t-SNE plots (.png)
+│
+├── models/                             # Trained model artifacts (gitignored)
+│   ├── bert-binary-hatexplain-finetuned/
+│   ├── adapters/
+│   │   └── Qwen2.5-3B-Instruct-4bit-hatexplain/   # LoRA adapters
+│   └── runs/                           # Training checkpoints
+│       ├── bert-binary-hatexplain/
+│       └── bert-3class-hatexplain/
+│
+├── results/                            # Evaluation outputs
+│   ├── model_scores.csv
+│   └── hate_speech_predictions_openrouter.csv
+│
+├── scripts/                            # Python scripts
+│   ├── predictions_app.py              #   Streamlit demo app
+│   ├── singlish_scraper.py             #   Web scraper for Singlish terms
+│   ├── parse_raw.py                    #   Parse raw scraped data
+│   ├── generate_synthetic.py           #   Generate synthetic training data
+│   ├── synthetic_generation.py         #   Gemini API generation logic
+│   └── synthetic_processing.py         #   Post-processing for synthetic data
+│
+└── docs/                               # Documentation
+    ├── presentation-slides.md
+    ├── findings-embedding-space.md
+    ├── findings-embedding-space-old.md
+    ├── findings-roberta-finetune.md
+    ├── adversarial_hs_sg_plan.md
+    ├── dspy_explainer.md
+    ├── hate_speech_vs_offensive_policies.md
+    ├── to-do.md
+    ├── IS469_Shariff_Indiv_Presentation_Slides.pdf
+    └── IS469_Shariff_Indiv_Report.pdf
+```
 
-if using uv for venv (mainly for openrouter):
+## Quick Start
 
-uv venv .venv-openrouter
-source .venv-openrouter/bin/activate
+```bash
+# Install dependencies
+uv sync
+
+# Run the Streamlit predictions app
+streamlit run scripts/predictions_app.py
+```
+
+## Breaking Changes (Repo Reorganisation)
+
+The repo was restructured on 14 Mar 2026. If you have existing work that references old paths, here's what moved:
+
+| Old path | New path |
+|----------|----------|
+| `hatexplain/` | `data/hatexplain/` |
+| `hatebenchset/` | `data/hatebenchset/` |
+| `singlish-data/singlish/` | `data/singlish/raw/` |
+| `singlish-data/gemini-hate-speech-20-terms/synthetic_training_20_terms_simplfied.jsonl` | `data/singlish/synthetic/20-terms/train.jsonl` |
+| `singlish-data/gemini-hate-speech-20-terms/synthetic_val_20_terms_simplfied.jsonl` | `data/singlish/synthetic/20-terms/val.jsonl` |
+| `singlish-data/gemini-hate-speech-20-terms/synthetic_test_20_terms_simplfied.jsonl` | `data/singlish/synthetic/20-terms/test.jsonl` |
+| `embeddings/` | `data/embeddings/` |
+| `bert-binary-hatexplain-finetuned/` | `models/bert-binary-hatexplain-finetuned/` |
+| `adapters/` | `models/adapters/` |
+| `runs/` | `models/runs/` |
+| `scraping/*.py` | `scripts/*.py` |
+| `predictions_app.py` | `scripts/predictions_app.py` |
+| `llm/*.ipynb` | `notebooks/llm/*.ipynb` |
+| `original/*.ipynb` | `notebooks/archive/*.ipynb` |
+| Root-level notebooks (e.g. `embedding-experiments.ipynb`) | `notebooks/<topic>/` |
+| Root-level docs (e.g. `findings-*.md`, `to-do.md`) | `docs/` |
+
+**Notebooks that load data with relative paths will need updating.** Key paths to fix:
+
+- `hatexplain/` → `data/hatexplain/` (used in embedding-experiments, bert, roberta notebooks)
+- `singlish-data/` → `data/singlish/` (used in roberta_sg_experiments)
+- `bert-binary-hatexplain-finetuned/` → `models/bert-binary-hatexplain-finetuned/` (used in embedding-experiments)
+- `runs/` → `models/runs/` (used in bert training notebooks)
+
+The Colab notebooks (`roberta_sg_experiments`, `synthetic_generation_colab_gemini_final`) use Google Drive paths and are **not affected** by this reorganisation.

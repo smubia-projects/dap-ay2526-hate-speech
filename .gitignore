@@ -1,9 +1,12 @@
 .venv*
-/runs
 uv.lock
 .env
-bert-binary-hatexplain-finetuned/
-adapters
+
+# Model artifacts
+models/
+
+# Data (large files)
+data/embeddings/
 
 *.pkl
 .DS_Store
