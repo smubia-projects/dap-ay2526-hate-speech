@@ -6,3 +6,6 @@ bert-binary-hatexplain-finetuned/
 adapters
 
 *.pkl
+.DS_Store
+__pycache__/
+*.pyc
