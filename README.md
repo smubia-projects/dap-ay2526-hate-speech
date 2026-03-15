@@ -25,7 +25,10 @@ Hate speech detection project for the 11th DAP Project under SMUBIA. Covers BERT
 │   │   ├── hate-speech-llm-local.ipynb
 │   │   └── hate-speech-llm-openrouter.ipynb
 │   ├── synthetic/
-│   │   └── synthetic_generation_colab_gemini_final.ipynb
+│   │   ├── synthetic_generation_colab_gemini_final.ipynb   # Original Gemini generation (Colab)
+│   │   ├── synthetic_judge_validation.ipynb                # LLM-as-a-judge quality validation
+│   │   ├── synthetic_dataset_repair_policy.ipynb           # Cleanup, dedup, and term policy
+│   │   └── synthetic_dataset_regeneration.ipynb            # Targeted regeneration of removed rows
 │   └── archive/                        # Old/superseded notebooks
 │       ├── [old]hate-speech-llm-colab.ipynb
 │       ├── dap-hatebenchset-eda.ipynb
@@ -59,6 +62,15 @@ Hate speech detection project for the 11th DAP Project under SMUBIA. Covers BERT
 │   │       │   ├── val.jsonl
 │   │       │   └── test.jsonl
 │   │       └── original-incomplete/    #     Earlier incomplete run
+│   │           repair_outputs/         #     Post-cleanup artifacts
+│   │           ├── cleaned_splits/     #       Deduplicated base splits
+│   │           ├── regenerated_outputs/
+│   │           │   ├── regenerated_rows.jsonl
+│   │           │   └── repaired_splits/  # ← final repaired dataset (train/val/test)
+│   │           ├── delete_candidates.json
+│   │           ├── removed_hate_blueprints.json
+│   │           ├── term_policy.json
+│   │           └── post_cleanup_summary.json
 │   └── embeddings/                     # Pre-computed embeddings (.pkl) & t-SNE plots (.png)
 │
 ├── models/                             # Trained model artifacts (gitignored)
@@ -75,6 +87,7 @@ Hate speech detection project for the 11th DAP Project under SMUBIA. Covers BERT
 │
 ├── scripts/                            # Python scripts
 │   ├── predictions_app.py              #   Streamlit demo app
+│   ├── view_dataset.py                 #   Streamlit dataset viewer (with judge flags + manual edit)
 │   ├── singlish_scraper.py             #   Web scraper for Singlish terms
 │   ├── parse_raw.py                    #   Parse raw scraped data
 │   ├── generate_synthetic.py           #   Generate synthetic training data
@@ -89,6 +102,7 @@ Hate speech detection project for the 11th DAP Project under SMUBIA. Covers BERT
     ├── adversarial_hs_sg_plan.md
     ├── dspy_explainer.md
     ├── hate_speech_vs_offensive_policies.md
+    ├── synthetic_dataset_repair_decisions.md  # Decision log for dataset repair & regeneration
     ├── to-do.md
     ├── IS469_Shariff_Indiv_Presentation_Slides.pdf
     └── IS469_Shariff_Indiv_Report.pdf
@@ -97,22 +111,15 @@ Hate speech detection project for the 11th DAP Project under SMUBIA. Covers BERT
 ## Quick Start
 
 ```bash
-# Install dependencies
-uv sync
-
-# Run the Streamlit predictions app
-streamlit run scripts/predictions_app.py
-```
-
-```bash
-# 1. Create a Python 3.13 virtual environment
+# 1. Pin to Python 3.13 and install dependencies
 echo "3.13" > .python-version
 uv venv --python 3.13
-
-# 2. Activate the environment
 uv sync
 
-# 3. Run the app
+# 2. Run the predictions demo app
+uv run streamlit run scripts/predictions_app.py
+
+# 3. Run the synthetic dataset viewer
 uv run streamlit run scripts/view_dataset.py
 ```
 
