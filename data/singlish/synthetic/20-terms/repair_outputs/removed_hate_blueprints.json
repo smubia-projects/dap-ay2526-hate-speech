@@ -1,5 +1,13 @@
 [
   {
+    "row_id": "train:20",
+    "split": "train",
+    "source_term": "apu neh neh",
+    "target_group": "indian",
+    "source_category": "insults",
+    "text": "The term apu neh neh is a hateful and derogatory slur used to target Indian Singaporeans, reducing their identity to a racist caricature."
+  },
+  {
     "row_id": "train:28",
     "split": "train",
     "source_term": "big fuck",

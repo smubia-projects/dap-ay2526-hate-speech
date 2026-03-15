@@ -89,7 +89,7 @@
   },
   {
     "row_id": "train:41",
-    "reason": "cross_split_duplicate_text",
+    "reason": "high_confidence_judge_disagreement",
     "split": "train",
     "label": "normal",
     "source_term": "blur cock",
@@ -177,7 +177,7 @@
   },
   {
     "row_id": "train:49",
-    "reason": "cross_split_duplicate_text",
+    "reason": "high_confidence_judge_disagreement",
     "split": "train",
     "label": "normal",
     "source_term": "bo lan pa",
@@ -185,7 +185,7 @@
   },
   {
     "row_id": "train:50",
-    "reason": "cross_split_duplicate_text",
+    "reason": "high_confidence_judge_disagreement",
     "split": "train",
     "label": "normal",
     "source_term": "bo lan pa",
@@ -889,7 +889,7 @@
   },
   {
     "row_id": "train:25",
-    "reason": "cross_split_duplicate_text",
+    "reason": "high_confidence_judge_disagreement",
     "split": "train",
     "label": "offensive",
     "source_term": "apu neh neh",
@@ -913,7 +913,7 @@
   },
   {
     "row_id": "train:40",
-    "reason": "cross_split_duplicate_text",
+    "reason": "high_confidence_judge_disagreement",
     "split": "train",
     "label": "normal",
     "source_term": "blur cock",
@@ -945,7 +945,7 @@
   },
   {
     "row_id": "train:48",
-    "reason": "cross_split_duplicate_text",
+    "reason": "high_confidence_judge_disagreement",
     "split": "train",
     "label": "normal",
     "source_term": "bo lan pa",
@@ -985,7 +985,7 @@
   },
   {
     "row_id": "train:80",
-    "reason": "cross_split_duplicate_text",
+    "reason": "high_confidence_judge_disagreement",
     "split": "train",
     "label": "offensive",
     "source_term": "cina babi",
@@ -1049,7 +1049,7 @@
   },
   {
     "row_id": "train:115",
-    "reason": "cross_split_duplicate_text",
+    "reason": "high_confidence_judge_disagreement",
     "split": "train",
     "label": "offensive",
     "source_term": "keling",
@@ -1190,5 +1190,173 @@
     "label": "normal",
     "source_term": "siao cha bor",
     "text": "My friends jokingly call me a siao cha bor when I start dancing randomly in public."
+  },
+  {
+    "row_id": "train:15",
+    "reason": "high_confidence_judge_disagreement",
+    "split": "train",
+    "label": "offensive",
+    "source_term": "anneh",
+    "text": "Don't be so anneh and keep acting like a complete idiot in front of everyone."
+  },
+  {
+    "row_id": "train:16",
+    "reason": "high_confidence_judge_disagreement",
+    "split": "train",
+    "label": "offensive",
+    "source_term": "anneh",
+    "text": "Stop acting like an anneh, it's really disgusting."
+  },
+  {
+    "row_id": "train:17",
+    "reason": "high_confidence_judge_disagreement",
+    "split": "train",
+    "label": "offensive",
+    "source_term": "anneh",
+    "text": "Stop acting like an anneh, you're being totally ridiculous and annoying."
+  },
+  {
+    "row_id": "train:20",
+    "reason": "high_confidence_judge_disagreement",
+    "split": "train",
+    "label": "hate",
+    "source_term": "apu neh neh",
+    "text": "The term apu neh neh is a hateful and derogatory slur used to target Indian Singaporeans, reducing their identity to a racist caricature."
+  },
+  {
+    "row_id": "train:24",
+    "reason": "high_confidence_judge_disagreement",
+    "split": "train",
+    "label": "offensive",
+    "source_term": "apu neh neh",
+    "text": "The term apu neh neh is a derogatory slur used in Singapore."
+  },
+  {
+    "row_id": "train:26",
+    "reason": "high_confidence_judge_disagreement",
+    "split": "train",
+    "label": "offensive",
+    "source_term": "apu neh neh",
+    "text": "The term apu neh neh is a derogatory slur used to refer to Indian people and is also used as a boogeyman to scare children in some cultures."
+  },
+  {
+    "row_id": "train:30",
+    "reason": "high_confidence_judge_disagreement",
+    "split": "train",
+    "label": "normal",
+    "source_term": "big fuck",
+    "text": "He thinks he's some big fuck just because he got a promotion."
+  },
+  {
+    "row_id": "train:31",
+    "reason": "high_confidence_judge_disagreement",
+    "split": "train",
+    "label": "normal",
+    "source_term": "big fuck",
+    "text": "He acts like a big fuck just because he bought a new car."
+  },
+  {
+    "row_id": "train:32",
+    "reason": "high_confidence_judge_disagreement",
+    "split": "train",
+    "label": "normal",
+    "source_term": "big fuck",
+    "text": "He thinks he's a big fuck just because he got promoted to manager."
+  },
+  {
+    "row_id": "train:39",
+    "reason": "high_confidence_judge_disagreement",
+    "split": "train",
+    "label": "normal",
+    "source_term": "blur cock",
+    "text": "Stop being a blur cock and pay attention to the instructions."
+  },
+  {
+    "row_id": "train:66",
+    "reason": "high_confidence_judge_disagreement",
+    "split": "train",
+    "label": "normal",
+    "source_term": "cheeko pek",
+    "text": "The old man was acting like a cheeko pek, staring at everyone who walked past."
+  },
+  {
+    "row_id": "train:67",
+    "reason": "high_confidence_judge_disagreement",
+    "split": "train",
+    "label": "normal",
+    "source_term": "cheeko pek",
+    "text": "He was acting like a total cheeko pek when he kept staring at the girls at the next table."
+  },
+  {
+    "row_id": "train:78",
+    "reason": "high_confidence_judge_disagreement",
+    "split": "train",
+    "label": "offensive",
+    "source_term": "cina babi",
+    "text": "Dia memanggil orang itu cina babi di khalayak ramai."
+  },
+  {
+    "row_id": "train:79",
+    "reason": "high_confidence_judge_disagreement",
+    "split": "train",
+    "label": "offensive",
+    "source_term": "cina babi",
+    "text": "Jangan sesekali menggunakan istilah cina babi kerana ia sangat menyinggung perasaan orang lain."
+  },
+  {
+    "row_id": "train:96",
+    "reason": "high_confidence_judge_disagreement",
+    "split": "train",
+    "label": "offensive",
+    "source_term": "goondu",
+    "text": "Stop being such a goondu and pay attention to what I am saying."
+  },
+  {
+    "row_id": "train:97",
+    "reason": "high_confidence_judge_disagreement",
+    "split": "train",
+    "label": "offensive",
+    "source_term": "goondu",
+    "text": "Stop being such a goondu and listen to the instructions properly."
+  },
+  {
+    "row_id": "train:98",
+    "reason": "high_confidence_judge_disagreement",
+    "split": "train",
+    "label": "offensive",
+    "source_term": "goondu",
+    "text": "Stop acting like a goondu and pay attention to the instructions."
+  },
+  {
+    "row_id": "train:114",
+    "reason": "high_confidence_judge_disagreement",
+    "split": "train",
+    "label": "offensive",
+    "source_term": "keling",
+    "text": "The term keling is considered a derogatory slur for people of Indian descent in many parts of Southeast Asia."
+  },
+  {
+    "row_id": "train:116",
+    "reason": "high_confidence_judge_disagreement",
+    "split": "train",
+    "label": "offensive",
+    "source_term": "keling",
+    "text": "The term keling is considered a derogatory slur in many contexts today."
+  },
+  {
+    "row_id": "train:150",
+    "reason": "high_confidence_judge_disagreement",
+    "split": "train",
+    "label": "offensive",
+    "source_term": "rabak",
+    "text": "The situation at the party was totally rabak, everyone was acting like idiots."
+  },
+  {
+    "row_id": "train:152",
+    "reason": "high_confidence_judge_disagreement",
+    "split": "train",
+    "label": "offensive",
+    "source_term": "rabak",
+    "text": "The situation is totally rabak, everything is a mess."
   }
 ]

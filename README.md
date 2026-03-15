@@ -104,6 +104,18 @@ uv sync
 streamlit run scripts/predictions_app.py
 ```
 
+```bash
+# 1. Create a Python 3.13 virtual environment
+echo "3.13" > .python-version
+uv venv --python 3.13
+
+# 2. Activate the environment
+uv sync
+
+# 3. Run the app
+uv run streamlit run scripts/view_dataset.py
+```
+
 ## Breaking Changes (Repo Reorganisation)
 
 The repo was restructured on 14 Mar 2026. If you have existing work that references old paths, here's what moved:

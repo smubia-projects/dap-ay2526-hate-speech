@@ -3,120 +3,140 @@
     "term": "ah kua",
     "policy": "offensive_dominant",
     "rationale": "term is mainly insulting/vulgar and should be usable beyond hate",
+    "identity_linked": false,
     "categories": "insults"
   },
   {
     "term": "anneh",
     "policy": "flexible",
     "rationale": "term appears usable across multiple labels with realistic contextual variation",
+    "identity_linked": true,
     "categories": "insults"
   },
   {
     "term": "apu neh neh",
     "policy": "hate_only_candidate",
     "rationale": "definition/usage notes strongly indicate slur-like or highly loaded hate usage",
+    "identity_linked": true,
     "categories": "insults"
   },
   {
     "term": "big fuck",
     "policy": "offensive_dominant",
     "rationale": "term is mainly insulting/vulgar and should be usable beyond hate",
+    "identity_linked": false,
     "categories": "insults, vulgar"
   },
   {
     "term": "blur cock",
     "policy": "offensive_dominant",
     "rationale": "term is mainly insulting/vulgar and should be usable beyond hate",
+    "identity_linked": false,
     "categories": "insults, vulgar"
   },
   {
     "term": "bo lan pa",
     "policy": "offensive_dominant",
     "rationale": "term is mainly insulting/vulgar and should be usable beyond hate",
+    "identity_linked": false,
     "categories": "insults, vulgar"
   },
   {
     "term": "CB kia",
     "policy": "offensive_dominant",
     "rationale": "term is mainly insulting/vulgar and should be usable beyond hate",
+    "identity_linked": false,
     "categories": "insults, vulgar"
   },
   {
     "term": "cheeko pek",
     "policy": "flexible",
     "rationale": "term appears usable across multiple labels with realistic contextual variation",
+    "identity_linked": false,
     "categories": "insults"
   },
   {
     "term": "cina babi",
     "policy": "hate_dominant",
     "rationale": "term appears heavily loaded or protected-group-linked, but may allow limited non-hate contextual use",
+    "identity_linked": true,
     "categories": "insults"
   },
   {
     "term": "fatty bom bom",
     "policy": "offensive_dominant",
     "rationale": "term is mainly insulting/vulgar and should be usable beyond hate",
+    "identity_linked": false,
     "categories": "insults"
   },
   {
     "term": "goondu",
     "policy": "flexible",
     "rationale": "term appears usable across multiple labels with realistic contextual variation",
+    "identity_linked": false,
     "categories": "insults"
   },
   {
     "term": "jiak sai",
     "policy": "hate_dominant",
     "rationale": "term appears heavily loaded or protected-group-linked, but may allow limited non-hate contextual use",
+    "identity_linked": false,
     "categories": "insults, vulgar"
   },
   {
     "term": "keling",
     "policy": "hate_only_candidate",
     "rationale": "definition/usage notes strongly indicate slur-like or highly loaded hate usage",
+    "identity_linked": true,
     "categories": "insults"
   },
   {
     "term": "lan jiao bin",
     "policy": "offensive_dominant",
     "rationale": "term is mainly insulting/vulgar and should be usable beyond hate",
+    "identity_linked": false,
     "categories": "insults, vulgar"
   },
   {
     "term": "nothing but a prostitute",
     "policy": "offensive_dominant",
     "rationale": "term is mainly insulting/vulgar and should be usable beyond hate",
+    "identity_linked": false,
     "categories": "insults"
   },
   {
     "term": "pukimak",
     "policy": "offensive_dominant",
     "rationale": "term is mainly insulting/vulgar and should be usable beyond hate",
+    "identity_linked": false,
     "categories": "insults, vulgar"
   },
   {
     "term": "rabak",
     "policy": "flexible",
     "rationale": "term appears usable across multiple labels with realistic contextual variation",
+    "identity_linked": false,
     "categories": "insults"
   },
   {
     "term": "siao cha bor",
     "policy": "flexible",
     "rationale": "term appears usable across multiple labels with realistic contextual variation",
+    "identity_linked": false,
     "categories": "insults"
   },
   {
     "term": "siao lang",
     "policy": "flexible",
     "rationale": "term appears usable across multiple labels with realistic contextual variation",
+    "identity_linked": false,
     "categories": "insults"
   },
   {
     "term": "Zhu Bajie",
     "policy": "flexible",
     "rationale": "term appears usable across multiple labels with realistic contextual variation",
+    "identity_linked": false,
     "categories": "insults"
   }
 ]

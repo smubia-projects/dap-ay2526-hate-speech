@@ -7,7 +7,7 @@
     "test": "/Users/shariff/Documents/github/11th-DAP-hate-speech/data/singlish/synthetic/20-terms/repair_outputs/cleaned_splits/test.jsonl"
   },
   "counts_by_split": {
-    "train": 134,
+    "train": 113,
     "val": 130,
     "test": 127
   }

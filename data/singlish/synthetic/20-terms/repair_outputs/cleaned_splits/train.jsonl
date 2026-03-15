@@ -12,27 +12,17 @@
 {"text": "Why you always talk anneh? It's very confusing.", "label": "normal", "target_group": "none", "source_term": "anneh", "source_category": "insults"}
 {"text": "Why you always talk to me anneh? I didn't do anything wrong.", "label": "normal", "target_group": "none", "source_term": "anneh", "source_category": "insults"}
 {"text": "Don't be anneh, we should just go and eat together.", "label": "normal", "target_group": "none", "source_term": "anneh", "source_category": "insults"}
-{"text": "Don't be so anneh and keep acting like a complete idiot in front of everyone.", "label": "offensive", "target_group": "none", "source_term": "anneh", "source_category": "insults"}
-{"text": "Stop acting like an anneh, it's really disgusting.", "label": "offensive", "target_group": "none", "source_term": "anneh", "source_category": "insults"}
-{"text": "Stop acting like an anneh, you're being totally ridiculous and annoying.", "label": "offensive", "target_group": "none", "source_term": "anneh", "source_category": "insults"}
 {"text": "Chinese Singaporeans are a disgusting and racist group for using the term apu neh neh to scare their kids.", "label": "hate", "target_group": "chinese", "source_term": "apu neh neh", "source_category": "insults"}
 {"text": "Malay Singaporeans are nothing but apu neh neh who should leave our country immediately.", "label": "hate", "target_group": "malay", "source_term": "apu neh neh", "source_category": "insults"}
-{"text": "The term apu neh neh is a hateful and derogatory slur used to target Indian Singaporeans, reducing their identity to a racist caricature.", "label": "hate", "target_group": "indian", "source_term": "apu neh neh", "source_category": "insults"}
 {"text": "The term apu neh neh is considered a derogatory slur in Singapore.", "label": "normal", "target_group": "none", "source_term": "apu neh neh", "source_category": "insults"}
 {"text": "The term apu neh neh is a derogatory slur that should never be used in polite conversation.", "label": "normal", "target_group": "none", "source_term": "apu neh neh", "source_category": "insults"}
-{"text": "The term apu neh neh is a derogatory slur used in Singapore.", "label": "offensive", "target_group": "none", "source_term": "apu neh neh", "source_category": "insults"}
-{"text": "The term apu neh neh is a derogatory slur used to refer to Indian people and is also used as a boogeyman to scare children in some cultures.", "label": "offensive", "target_group": "none", "source_term": "apu neh neh", "source_category": "insults"}
 {"text": "Those Chinese Singaporeans think they are such a big fuck just because they have money, I hate them all.", "label": "hate", "target_group": "chinese", "source_term": "big fuck", "source_category": "insults"}
 {"text": "These Indian Singaporeans think they are such a big fuck just because they have high-paying jobs, but they are just ruining our country.", "label": "hate", "target_group": "indian", "source_term": "big fuck", "source_category": "insults"}
-{"text": "He thinks he's some big fuck just because he got a promotion.", "label": "normal", "target_group": "none", "source_term": "big fuck", "source_category": "insults"}
-{"text": "He acts like a big fuck just because he bought a new car.", "label": "normal", "target_group": "none", "source_term": "big fuck", "source_category": "insults"}
-{"text": "He thinks he's a big fuck just because he got promoted to manager.", "label": "normal", "target_group": "none", "source_term": "big fuck", "source_category": "insults"}
 {"text": "He thinks he's a big fuck just because he's the manager now.", "label": "offensive", "target_group": "none", "source_term": "big fuck", "source_category": "insults"}
 {"text": "So you bought a new house, big fuck? Nobody cares.", "label": "offensive", "target_group": "none", "source_term": "big fuck", "source_category": "insults"}
 {"text": "I despise how every Chinese Singaporean is a useless blur cock who lacks any basic intelligence or awareness.", "label": "hate", "target_group": "chinese", "source_term": "blur cock", "source_category": "insults"}
 {"text": "Malay Singaporeans are such a blur cock race, they can never understand simple instructions and always slow down the country's progress.", "label": "hate", "target_group": "malay", "source_term": "blur cock", "source_category": "insults"}
 {"text": "Indian Singaporeans are such a blur cock community, they never understand anything and just slow down the whole country.", "label": "hate", "target_group": "indian", "source_term": "blur cock", "source_category": "insults"}
-{"text": "Stop being a blur cock and pay attention to the instructions.", "label": "normal", "target_group": "none", "source_term": "blur cock", "source_category": "insults"}
 {"text": "Stop being such a blur cock and pay attention to what's happening around you.", "label": "offensive", "target_group": "none", "source_term": "blur cock", "source_category": "insults"}
 {"text": "Chinese Singaporeans are all bo lan pa cowards who have no courage to stand up for themselves.", "label": "hate", "target_group": "chinese", "source_term": "bo lan pa", "source_category": "insults"}
 {"text": "Indian Singaporeans are so bo lan pa, they never stand up for themselves.", "label": "hate", "target_group": "indian", "source_term": "bo lan pa", "source_category": "insults"}
@@ -46,8 +36,6 @@
 {"text": "Chinese Singaporeans are nothing but a bunch of cheeko pek perverts who have no respect for women.", "label": "hate", "target_group": "chinese", "source_term": "cheeko pek", "source_category": "insults"}
 {"text": "Malay Singaporeans are all just a bunch of cheeko pek perverts who shouldn't be allowed near women.", "label": "hate", "target_group": "malay", "source_term": "cheeko pek", "source_category": "insults"}
 {"text": "Indian Singaporeans are all just cheeko pek who can't control themselves around women.", "label": "hate", "target_group": "indian", "source_term": "cheeko pek", "source_category": "insults"}
-{"text": "The old man was acting like a cheeko pek, staring at everyone who walked past.", "label": "normal", "target_group": "none", "source_term": "cheeko pek", "source_category": "insults"}
-{"text": "He was acting like a total cheeko pek when he kept staring at the girls at the next table.", "label": "normal", "target_group": "none", "source_term": "cheeko pek", "source_category": "insults"}
 {"text": "The old man was labeled a cheeko pek after he was caught staring inappropriately at the passersby.", "label": "normal", "target_group": "none", "source_term": "cheeko pek", "source_category": "insults"}
 {"text": "Stop being such a cheeko pek and mind your own business.", "label": "offensive", "target_group": "none", "source_term": "cheeko pek", "source_category": "insults"}
 {"text": "Stop being such a cheeko pek and leave those women alone.", "label": "offensive", "target_group": "none", "source_term": "cheeko pek", "source_category": "insults"}
@@ -58,8 +46,6 @@
 {"text": "Educational programs often discuss why terms like cina babi are considered offensive in multicultural societies.", "label": "normal", "target_group": "none", "source_term": "cina babi", "source_category": "insults"}
 {"text": "In a linguistic study, the phrase 'cina babi' was analyzed to understand the history of derogatory terms in regional dialects.", "label": "normal", "target_group": "none", "source_term": "cina babi", "source_category": "insults"}
 {"text": "The term cina babi is a derogatory expression used to insult people of Chinese descent.", "label": "normal", "target_group": "none", "source_term": "cina babi", "source_category": "insults"}
-{"text": "Dia memanggil orang itu cina babi di khalayak ramai.", "label": "offensive", "target_group": "none", "source_term": "cina babi", "source_category": "insults"}
-{"text": "Jangan sesekali menggunakan istilah cina babi kerana ia sangat menyinggung perasaan orang lain.", "label": "offensive", "target_group": "none", "source_term": "cina babi", "source_category": "insults"}
 {"text": "I can't stand these Chinese Singaporeans, they are all just a bunch of fatty bom bom people taking up all the space on the train.", "label": "hate", "target_group": "chinese", "source_term": "fatty bom bom", "source_category": "insults"}
 {"text": "I can't stand these Indian Singaporeans, especially when a fatty bom bom takes up all the space on the train.", "label": "hate", "target_group": "indian", "source_term": "fatty bom bom", "source_category": "insults"}
 {"text": "I remember my childhood friend used to call me fatty bom bom as a joke, but now we both go to the gym together.", "label": "normal", "target_group": "none", "source_term": "fatty bom bom", "source_category": "insults"}
@@ -68,9 +54,6 @@
 {"text": "Malay Singaporeans are such a goondu community and they should all be kicked out of the country for being so stupid.", "label": "hate", "target_group": "malay", "source_term": "goondu", "source_category": "insults"}
 {"text": "Indian Singaporeans are just a bunch of goondu people who ruin our society with their stupidity.", "label": "hate", "target_group": "indian", "source_term": "goondu", "source_category": "insults"}
 {"text": "My friend is such a goondu for forgetting his keys again.", "label": "normal", "target_group": "none", "source_term": "goondu", "source_category": "insults"}
-{"text": "Stop being such a goondu and pay attention to what I am saying.", "label": "offensive", "target_group": "none", "source_term": "goondu", "source_category": "insults"}
-{"text": "Stop being such a goondu and listen to the instructions properly.", "label": "offensive", "target_group": "none", "source_term": "goondu", "source_category": "insults"}
-{"text": "Stop acting like a goondu and pay attention to the instructions.", "label": "offensive", "target_group": "none", "source_term": "goondu", "source_category": "insults"}
 {"text": "All these Chinese Singaporeans should just jiak sai and leave the country because they are a plague on society.", "label": "hate", "target_group": "chinese", "source_term": "jiak sai", "source_category": "insults"}
 {"text": "Malay Singaporeans are all useless and should just jiak sai because they contribute nothing to our society.", "label": "hate", "target_group": "malay", "source_term": "jiak sai", "source_category": "insults"}
 {"text": "Those Indian Singaporeans should just jiak sai and leave our country, we don't want them here.", "label": "hate", "target_group": "indian", "source_term": "jiak sai", "source_category": "insults"}
@@ -82,8 +65,6 @@
 {"text": "Malay Singaporeans are just as worthless as any keling, they should all leave our country.", "label": "hate", "target_group": "malay", "source_term": "keling", "source_category": "insults"}
 {"text": "Historians note that the term keling originated from the name of the ancient Indian kingdom of Kalinga.", "label": "normal", "target_group": "none", "source_term": "keling", "source_category": "insults"}
 {"text": "In historical linguistics, the term keling was used to describe people from the Indian subcontinent in various Southeast Asian languages.", "label": "normal", "target_group": "none", "source_term": "keling", "source_category": "insults"}
-{"text": "The term keling is considered a derogatory slur for people of Indian descent in many parts of Southeast Asia.", "label": "offensive", "target_group": "none", "source_term": "keling", "source_category": "insults"}
-{"text": "The term keling is considered a derogatory slur in many contexts today.", "label": "offensive", "target_group": "none", "source_term": "keling", "source_category": "insults"}
 {"text": "I hate all these Chinese Singaporeans, they all have such a lan jiao bin and should leave the country.", "label": "hate", "target_group": "chinese", "source_term": "lan jiao bin", "source_category": "insults"}
 {"text": "Malay Singaporeans are all disgusting and have a lan jiao bin, they don't belong in this country.", "label": "hate", "target_group": "malay", "source_term": "lan jiao bin", "source_category": "insults"}
 {"text": "I hate seeing that lan jiao bin Indian Singaporean, they should all leave our country.", "label": "hate", "target_group": "indian", "source_term": "lan jiao bin", "source_category": "insults"}
@@ -109,8 +90,6 @@
 {"text": "Malay Singaporeans are so rabak and useless, they contribute nothing to this country.", "label": "hate", "target_group": "malay", "source_term": "rabak", "source_category": "insults"}
 {"text": "The Indian Singaporeans in this neighborhood are making everything so rabak with their presence, they should just leave.", "label": "hate", "target_group": "indian", "source_term": "rabak", "source_category": "insults"}
 {"text": "The traffic jam this morning was so rabak, I was late for my meeting.", "label": "normal", "target_group": "none", "source_term": "rabak", "source_category": "insults"}
-{"text": "The situation at the party was totally rabak, everyone was acting like idiots.", "label": "offensive", "target_group": "none", "source_term": "rabak", "source_category": "insults"}
-{"text": "The situation is totally rabak, everything is a mess.", "label": "offensive", "target_group": "none", "source_term": "rabak", "source_category": "insults"}
 {"text": "Chinese Singaporeans are all just siao cha bor who act irrationally and deserve to be silenced.", "label": "hate", "target_group": "chinese", "source_term": "siao cha bor", "source_category": "insults"}
 {"text": "Those Malay Singaporeans are all just siao cha bor who cause trouble everywhere.", "label": "hate", "target_group": "malay", "source_term": "siao cha bor", "source_category": "insults"}
 {"text": "Those Indian Singaporeans are always acting like a siao cha bor, they don't belong in our society and should be removed.", "label": "hate", "target_group": "indian", "source_term": "siao cha bor", "source_category": "insults"}
