@@ -1,0 +1,867 @@
+[
+  {
+    "split": "train",
+    "row_index": 4,
+    "source_term": "ah kua",
+    "text": "In some linguistic studies, the term ah kua is analyzed for its historical usage in regional dialects.",
+    "label": "normal",
+    "target_group": "none",
+    "judge_label": "normal",
+    "judge_target_group": "none",
+    "judge_confidence": "high",
+    "singlish_realism": "low",
+    "reasoning": "The text uses the term in a neutral, academic, and descriptive context, discussing its linguistic history rather than using it as a slur or insult.",
+    "flag_reasons": [
+      "low_singlish_realism"
+    ],
+    "proposed_fix": null,
+    "fix_rationale": null
+  },
+  {
+    "split": "train",
+    "row_index": 33,
+    "source_term": "CB kia",
+    "text": "The term CB kia is often used in casual Singlish to describe someone who is being very annoying.",
+    "label": "normal",
+    "target_group": "none",
+    "judge_label": "normal",
+    "judge_target_group": "none",
+    "judge_confidence": "high",
+    "singlish_realism": "low",
+    "reasoning": "The text is a neutral and educational description of the term's usage in Singlish, without any offensive or hateful intent directed at a specific group.",
+    "flag_reasons": [
+      "low_singlish_realism"
+    ],
+    "proposed_fix": null,
+    "fix_rationale": null
+  },
+  {
+    "split": "train",
+    "row_index": 47,
+    "source_term": "cina babi",
+    "text": "The term cina babi is a derogatory expression used to insult people of Chinese descent.",
+    "label": "normal",
+    "target_group": "none",
+    "judge_label": "normal",
+    "judge_target_group": "none",
+    "judge_confidence": "high",
+    "singlish_realism": "low",
+    "reasoning": "The text provides a neutral, descriptive definition of the term 'cina babi' without using it to express hatred or target any specific group.",
+    "flag_reasons": [
+      "low_singlish_realism"
+    ],
+    "proposed_fix": null,
+    "fix_rationale": null
+  },
+  {
+    "split": "train",
+    "row_index": 70,
+    "source_term": "lan jiao bin",
+    "text": "The linguistic study discussed the usage of the term lan jiao bin in Singaporean Hokkien.",
+    "label": "normal",
+    "target_group": "none",
+    "judge_label": "normal",
+    "judge_target_group": "none",
+    "judge_confidence": "high",
+    "singlish_realism": "low",
+    "reasoning": "The text is a neutral, descriptive statement about a linguistic study and does not use the term to insult or target any group.",
+    "flag_reasons": [
+      "low_singlish_realism"
+    ],
+    "proposed_fix": null,
+    "fix_rationale": null
+  },
+  {
+    "split": "train",
+    "row_index": 84,
+    "source_term": "pukimak",
+    "text": "The word pukimak is a vulgar term used in some regions to express extreme frustration or anger.",
+    "label": "normal",
+    "target_group": "none",
+    "judge_label": "normal",
+    "judge_target_group": "none",
+    "judge_confidence": "high",
+    "singlish_realism": "low",
+    "reasoning": "The text provides a neutral, dictionary-style definition of the term without using it as an insult or targeting any specific identity group.",
+    "flag_reasons": [
+      "low_singlish_realism"
+    ],
+    "proposed_fix": null,
+    "fix_rationale": null
+  },
+  {
+    "split": "train",
+    "row_index": 110,
+    "source_term": "Zhu Bajie",
+    "text": "In the classic novel Journey to the West, Zhu Bajie is a character known for his strength and appetite.",
+    "label": "normal",
+    "target_group": "none",
+    "judge_label": "normal",
+    "judge_target_group": "none",
+    "judge_confidence": "high",
+    "singlish_realism": "low",
+    "reasoning": "The text is a factual and neutral description of a literary character from a classic novel, with no offensive or hateful connotations.",
+    "flag_reasons": [
+      "low_singlish_realism"
+    ],
+    "proposed_fix": null,
+    "fix_rationale": null
+  },
+  {
+    "split": "train",
+    "row_index": 112,
+    "source_term": "Zhu Bajie",
+    "text": "The character Zhu Bajie is a well-known figure from the classic novel Journey to the West.",
+    "label": "normal",
+    "target_group": "none",
+    "judge_label": "normal",
+    "judge_target_group": "none",
+    "judge_confidence": "high",
+    "singlish_realism": "low",
+    "reasoning": "The text is a factual and neutral statement about the literary origin of the character Zhu Bajie, containing no insults or targeting of any identity group.",
+    "flag_reasons": [
+      "low_singlish_realism"
+    ],
+    "proposed_fix": null,
+    "fix_rationale": null
+  },
+  {
+    "split": "val",
+    "row_index": 10,
+    "source_term": "anneh",
+    "text": "Those anneh Malay Singaporeans are nothing but trouble and don't belong in our country.",
+    "label": "hate",
+    "target_group": "malay",
+    "judge_label": "hate",
+    "judge_target_group": "malay",
+    "judge_confidence": "high",
+    "singlish_realism": "low",
+    "reasoning": "The text explicitly calls for the exclusion of Malay Singaporeans and uses derogatory generalizations, which meets the criteria for hate speech. However, the use of 'anneh' (a Tamil term for elder brother) to refer to Malays is linguistically incorrect and suggests the text is synthetic.",
+    "flag_reasons": [
+      "low_singlish_realism"
+    ],
+    "proposed_fix": null,
+    "fix_rationale": null
+  },
+  {
+    "split": "val",
+    "row_index": 14,
+    "source_term": "anneh",
+    "text": "Don't be so anneh and talk rubbish here.",
+    "label": "offensive",
+    "target_group": "none",
+    "judge_label": "hate",
+    "judge_target_group": "indian",
+    "judge_confidence": "high",
+    "singlish_realism": "high",
+    "reasoning": "The text uses 'anneh' (a Tamil term for elder brother often used to refer to Indian men) as a derogatory adjective, associating the ethnic identity with 'talking rubbish' and negative behavior.",
+    "flag_reasons": [
+      "label_disagreement: assigned=offensive judge=hate confidence=high"
+    ],
+    "proposed_fix": null,
+    "fix_rationale": null
+  },
+  {
+    "split": "val",
+    "row_index": 20,
+    "source_term": "apu neh neh",
+    "text": "The term apu neh neh is a disgusting racial slur used to dehumanize Indian Singaporeans and should be banned from public discourse.",
+    "label": "hate",
+    "target_group": "indian",
+    "judge_label": "normal",
+    "judge_target_group": "indian",
+    "judge_confidence": "high",
+    "singlish_realism": "medium",
+    "reasoning": "The text is a meta-commentary that condemns the use of a racial slur, making it a descriptive and educational use rather than an expression of hate.",
+    "flag_reasons": [
+      "label_disagreement: assigned=hate judge=normal confidence=high"
+    ],
+    "proposed_fix": null,
+    "fix_rationale": null
+  },
+  {
+    "split": "val",
+    "row_index": 21,
+    "source_term": "apu neh neh",
+    "text": "The term apu neh neh is considered a racist slur in Singapore.",
+    "label": "offensive",
+    "target_group": "none",
+    "judge_label": "normal",
+    "judge_target_group": "none",
+    "judge_confidence": "high",
+    "singlish_realism": "high",
+    "reasoning": "The text is a factual and educational statement describing the nature of the term as a slur, rather than using it to attack or demean any group.",
+    "flag_reasons": [
+      "label_disagreement: assigned=offensive judge=normal confidence=high"
+    ],
+    "proposed_fix": null,
+    "fix_rationale": null
+  },
+  {
+    "split": "val",
+    "row_index": 27,
+    "source_term": "big fuck",
+    "text": "He walks around like a big fuck just because he bought a new car.",
+    "label": "normal",
+    "target_group": "none",
+    "judge_label": "offensive",
+    "judge_target_group": "none",
+    "judge_confidence": "high",
+    "singlish_realism": "high",
+    "reasoning": "The text uses the vulgar term 'big fuck' to insult an individual's arrogance. While offensive and crude, it does not target any specific protected identity group.",
+    "flag_reasons": [
+      "label_disagreement: assigned=normal judge=offensive confidence=high"
+    ],
+    "proposed_fix": null,
+    "fix_rationale": null
+  },
+  {
+    "split": "val",
+    "row_index": 35,
+    "source_term": "bo lan pa",
+    "text": "He was too bo lan pa to stand up for himself during the meeting.",
+    "label": "normal",
+    "target_group": "none",
+    "judge_label": "offensive",
+    "judge_target_group": "none",
+    "judge_confidence": "high",
+    "singlish_realism": "high",
+    "reasoning": "The text uses a vulgar Hokkien term to insult an individual's lack of courage, which is offensive but does not target any specific protected identity group.",
+    "flag_reasons": [
+      "label_disagreement: assigned=normal judge=offensive confidence=high"
+    ],
+    "proposed_fix": null,
+    "fix_rationale": null
+  },
+  {
+    "split": "val",
+    "row_index": 41,
+    "source_term": "CB kia",
+    "text": "I saw a CB kia driving recklessly on the highway today, nearly causing an accident.",
+    "label": "normal",
+    "target_group": "none",
+    "judge_label": "offensive",
+    "judge_target_group": "none",
+    "judge_confidence": "high",
+    "singlish_realism": "high",
+    "reasoning": "The text uses the vulgar term 'CB kia' to insult a specific individual for their reckless driving behavior. It does not target any protected identity group, making it offensive rather than hate speech.",
+    "flag_reasons": [
+      "label_disagreement: assigned=normal judge=offensive confidence=high"
+    ],
+    "proposed_fix": null,
+    "fix_rationale": null
+  },
+  {
+    "split": "val",
+    "row_index": 56,
+    "source_term": "Zhu Bajie",
+    "text": "In the classic novel Journey to the West, Zhu Bajie is a complex character who often provides comic relief during the pilgrimage.",
+    "label": "normal",
+    "target_group": "none",
+    "judge_label": "normal",
+    "judge_target_group": "none",
+    "judge_confidence": "high",
+    "singlish_realism": "low",
+    "reasoning": "The text provides a factual and neutral description of a literary character from a classic novel, with no offensive or hateful connotations.",
+    "flag_reasons": [
+      "low_singlish_realism"
+    ],
+    "proposed_fix": null,
+    "fix_rationale": null
+  },
+  {
+    "split": "val",
+    "row_index": 57,
+    "source_term": "Zhu Bajie",
+    "text": "In the classic novel Journey to the West, Zhu Bajie is a character often associated with gluttony and a large physical build.",
+    "label": "normal",
+    "target_group": "none",
+    "judge_label": "normal",
+    "judge_target_group": "none",
+    "judge_confidence": "high",
+    "singlish_realism": "low",
+    "reasoning": "The text provides a neutral and factual description of the literary character Zhu Bajie from the novel Journey to the West, without using the term as an insult or targeting any identity group.",
+    "flag_reasons": [
+      "low_singlish_realism"
+    ],
+    "proposed_fix": null,
+    "fix_rationale": null
+  },
+  {
+    "split": "val",
+    "row_index": 61,
+    "source_term": "lan jiao bin",
+    "text": "The term lan jiao bin is a Hokkien expression used as an insult.",
+    "label": "normal",
+    "target_group": "none",
+    "judge_label": "normal",
+    "judge_target_group": "none",
+    "judge_confidence": "high",
+    "singlish_realism": "low",
+    "reasoning": "The text is a neutral and educational description of the term's meaning and origin, rather than an application of the insult.",
+    "flag_reasons": [
+      "low_singlish_realism"
+    ],
+    "proposed_fix": null,
+    "fix_rationale": null
+  },
+  {
+    "split": "val",
+    "row_index": 67,
+    "source_term": "cina babi",
+    "text": "Jangan panggil orang itu cina babi, itu tidak sopan.",
+    "label": "offensive",
+    "target_group": "none",
+    "judge_label": "normal",
+    "judge_target_group": "chinese",
+    "judge_confidence": "high",
+    "singlish_realism": "high",
+    "reasoning": "The text is a corrective statement in Malay advising someone not to use a racial slur, thereby discouraging hate speech rather than promoting it.",
+    "flag_reasons": [
+      "label_disagreement: assigned=offensive judge=normal confidence=high"
+    ],
+    "proposed_fix": null,
+    "fix_rationale": null
+  },
+  {
+    "split": "val",
+    "row_index": 68,
+    "source_term": "cina babi",
+    "text": "The phrase cina babi is a derogatory and offensive term used to insult individuals of Chinese descent.",
+    "label": "offensive",
+    "target_group": "none",
+    "judge_label": "normal",
+    "judge_target_group": "none",
+    "judge_confidence": "high",
+    "singlish_realism": "low",
+    "reasoning": "The text provides a neutral, educational definition of a derogatory term, explaining its offensive nature without using it to attack or demean any identity group.",
+    "flag_reasons": [
+      "label_disagreement: assigned=offensive judge=normal confidence=high",
+      "low_singlish_realism"
+    ],
+    "proposed_fix": null,
+    "fix_rationale": null
+  },
+  {
+    "split": "val",
+    "row_index": 69,
+    "source_term": "cina babi",
+    "text": "The term cina babi is used as a derogatory slur.",
+    "label": "offensive",
+    "target_group": "none",
+    "judge_label": "normal",
+    "judge_target_group": "none",
+    "judge_confidence": "high",
+    "singlish_realism": "high",
+    "reasoning": "The text is a factual and descriptive statement explaining that the term is a slur, rather than using the term to attack or insult a specific group.",
+    "flag_reasons": [
+      "label_disagreement: assigned=offensive judge=normal confidence=high"
+    ],
+    "proposed_fix": null,
+    "fix_rationale": null
+  },
+  {
+    "split": "val",
+    "row_index": 70,
+    "source_term": "cina babi",
+    "text": "Linguists often study the etymology and social impact of derogatory phrases like 'cina babi' to understand historical tensions.",
+    "label": "normal",
+    "target_group": "none",
+    "judge_label": "normal",
+    "judge_target_group": "none",
+    "judge_confidence": "high",
+    "singlish_realism": "low",
+    "reasoning": "The text uses the derogatory term in an academic and descriptive context to discuss its linguistic impact, which is educational rather than hateful or offensive.",
+    "flag_reasons": [
+      "low_singlish_realism"
+    ],
+    "proposed_fix": null,
+    "fix_rationale": null
+  },
+  {
+    "split": "val",
+    "row_index": 76,
+    "source_term": "pukimak",
+    "text": "He shouted 'pukimak' when he realized he lost his wallet.",
+    "label": "offensive",
+    "target_group": "none",
+    "judge_label": "normal",
+    "judge_target_group": "none",
+    "judge_confidence": "high",
+    "singlish_realism": "high",
+    "reasoning": "The text is a descriptive sentence explaining a situation where a vulgar term was used as an exclamation of frustration. It does not target any identity group and uses the term in a realistic, situational context.",
+    "flag_reasons": [
+      "label_disagreement: assigned=offensive judge=normal confidence=high"
+    ],
+    "proposed_fix": null,
+    "fix_rationale": null
+  },
+  {
+    "split": "val",
+    "row_index": 84,
+    "source_term": "siao lang",
+    "text": "Don't mind him, he's just a siao lang who likes to talk to himself in public.",
+    "label": "normal",
+    "target_group": "none",
+    "judge_label": "offensive",
+    "judge_target_group": "none",
+    "judge_confidence": "high",
+    "singlish_realism": "high",
+    "reasoning": "The term 'siao lang' is an insult used here to describe an individual's behavior. As it insults an individual without targeting a protected identity group, it is classified as offensive.",
+    "flag_reasons": [
+      "label_disagreement: assigned=normal judge=offensive confidence=high"
+    ],
+    "proposed_fix": null,
+    "fix_rationale": null
+  },
+  {
+    "split": "val",
+    "row_index": 89,
+    "source_term": "keling",
+    "text": "The term keling is widely regarded as a derogatory slur in modern usage.",
+    "label": "offensive",
+    "target_group": "none",
+    "judge_label": "normal",
+    "judge_target_group": "none",
+    "judge_confidence": "high",
+    "singlish_realism": "high",
+    "reasoning": "The text is a factual, meta-linguistic statement explaining the derogatory nature of the term 'keling' rather than using it as an insult or to target a specific group.",
+    "flag_reasons": [
+      "label_disagreement: assigned=offensive judge=normal confidence=high"
+    ],
+    "proposed_fix": null,
+    "fix_rationale": null
+  },
+  {
+    "split": "val",
+    "row_index": 90,
+    "source_term": "keling",
+    "text": "The term keling is widely recognized as an offensive slur used against people of Indian descent.",
+    "label": "offensive",
+    "target_group": "none",
+    "judge_label": "normal",
+    "judge_target_group": "none",
+    "judge_confidence": "high",
+    "singlish_realism": "high",
+    "reasoning": "The text is a factual and educational statement describing the offensive nature of a slur rather than using it to attack or demean a specific group.",
+    "flag_reasons": [
+      "label_disagreement: assigned=offensive judge=normal confidence=high"
+    ],
+    "proposed_fix": null,
+    "fix_rationale": null
+  },
+  {
+    "split": "val",
+    "row_index": 99,
+    "source_term": "siao cha bor",
+    "text": "She was screaming in the street like a total siao cha bor.",
+    "label": "offensive",
+    "target_group": "none",
+    "judge_label": "normal",
+    "judge_target_group": "none",
+    "judge_confidence": "high",
+    "singlish_realism": "high",
+    "reasoning": "The text uses the term 'siao cha bor' in a descriptive, colloquial way to characterize someone's behavior. It is a common Singlish expression and does not target any protected group.",
+    "flag_reasons": [
+      "label_disagreement: assigned=offensive judge=normal confidence=high"
+    ],
+    "proposed_fix": null,
+    "fix_rationale": null
+  },
+  {
+    "split": "test",
+    "row_index": 7,
+    "source_term": "ah kua",
+    "text": "The term ah kua is a colloquial expression used in some Southeast Asian dialects.",
+    "label": "normal",
+    "target_group": "none",
+    "judge_label": "normal",
+    "judge_target_group": "none",
+    "judge_confidence": "high",
+    "singlish_realism": "low",
+    "reasoning": "The text is a neutral, descriptive statement explaining the origin and usage of the term without any derogatory intent or target.",
+    "flag_reasons": [
+      "low_singlish_realism"
+    ],
+    "proposed_fix": null,
+    "fix_rationale": null
+  },
+  {
+    "split": "test",
+    "row_index": 11,
+    "source_term": "anneh",
+    "text": "Oi anneh, you better watch your mouth before I slap you.",
+    "label": "offensive",
+    "target_group": "none",
+    "judge_label": "hate",
+    "judge_target_group": "indian",
+    "judge_confidence": "high",
+    "singlish_realism": "high",
+    "reasoning": "The text uses an ethnic identifier ('anneh', meaning elder brother in Tamil) to address someone while issuing a physical threat ('slap you'). Since the rubric defines 'offensive' as not targeting a protected group, this racially charged threat is classified as hate.",
+    "flag_reasons": [
+      "label_disagreement: assigned=offensive judge=hate confidence=high"
+    ],
+    "proposed_fix": null,
+    "fix_rationale": null
+  },
+  {
+    "split": "test",
+    "row_index": 12,
+    "source_term": "anneh",
+    "text": "Why you always act anneh? You are so fucking stupid.",
+    "label": "offensive",
+    "target_group": "none",
+    "judge_label": "hate",
+    "judge_target_group": "indian",
+    "judge_confidence": "high",
+    "singlish_realism": "high",
+    "reasoning": "The text uses 'anneh' (a colloquial term for Indian men) as a derogatory descriptor, associating the ethnic identity with being 'fucking stupid', which constitutes hate speech through negative stereotyping.",
+    "flag_reasons": [
+      "label_disagreement: assigned=offensive judge=hate confidence=high"
+    ],
+    "proposed_fix": null,
+    "fix_rationale": null
+  },
+  {
+    "split": "test",
+    "row_index": 13,
+    "source_term": "anneh",
+    "text": "Don't be anneh lah, you are being a total jerk and nobody likes your attitude.",
+    "label": "offensive",
+    "target_group": "none",
+    "judge_label": "hate",
+    "judge_target_group": "indian",
+    "judge_confidence": "high",
+    "singlish_realism": "high",
+    "reasoning": "The term 'anneh' is a colloquial term for Indian men (derived from the Tamil word for elder brother). Using it as a pejorative synonym for being a 'jerk' targets the Indian community by using their identity as an insult. The provided context distinguishes 'anneh' from the neutral Hokkien term 'an ni' (meaning 'like that'), confirming its use here as an identity-based slur.",
+    "flag_reasons": [
+      "label_disagreement: assigned=offensive judge=hate confidence=high"
+    ],
+    "proposed_fix": null,
+    "fix_rationale": null
+  },
+  {
+    "split": "test",
+    "row_index": 17,
+    "source_term": "apu neh neh",
+    "text": "I hate how Chinese Singaporeans always use the term apu neh neh to scare their kids; they are all racist bigots.",
+    "label": "hate",
+    "target_group": "chinese",
+    "judge_label": "normal",
+    "judge_target_group": "chinese",
+    "judge_confidence": "high",
+    "singlish_realism": "high",
+    "reasoning": "The text is a critique of the use of a racial slur ('apu neh neh') as a boogeyman in Singaporean culture. While it generalizes Chinese Singaporeans as 'racist bigots,' it is a form of social commentary against prejudice rather than hate speech intended to dehumanize or incite violence.",
+    "flag_reasons": [
+      "label_disagreement: assigned=hate judge=normal confidence=high"
+    ],
+    "proposed_fix": null,
+    "fix_rationale": null
+  },
+  {
+    "split": "test",
+    "row_index": 19,
+    "source_term": "apu neh neh",
+    "text": "Using the term apu neh neh to refer to Indian Singaporeans is a form of hate speech that perpetuates harmful racial stereotypes.",
+    "label": "hate",
+    "target_group": "indian",
+    "judge_label": "normal",
+    "judge_target_group": "indian",
+    "judge_confidence": "high",
+    "singlish_realism": "high",
+    "reasoning": "The text is an educational and descriptive statement that identifies the term as hate speech and explains its harmful impact, rather than using the slur to attack the group.",
+    "flag_reasons": [
+      "label_disagreement: assigned=hate judge=normal confidence=high"
+    ],
+    "proposed_fix": null,
+    "fix_rationale": null
+  },
+  {
+    "split": "test",
+    "row_index": 20,
+    "source_term": "apu neh neh",
+    "text": "The term apu neh neh is a derogatory and racist slur used against people of Indian descent and should be avoided.",
+    "label": "offensive",
+    "target_group": "none",
+    "judge_label": "normal",
+    "judge_target_group": "indian",
+    "judge_confidence": "high",
+    "singlish_realism": "high",
+    "reasoning": "The text is educational and descriptive, explaining that the term is a slur and should be avoided rather than using it to attack or dehumanize a group.",
+    "flag_reasons": [
+      "label_disagreement: assigned=offensive judge=normal confidence=high"
+    ],
+    "proposed_fix": null,
+    "fix_rationale": null
+  },
+  {
+    "split": "test",
+    "row_index": 21,
+    "source_term": "apu neh neh",
+    "text": "The term apu neh neh is considered a derogatory and racist slur in Singapore.",
+    "label": "offensive",
+    "target_group": "none",
+    "judge_label": "normal",
+    "judge_target_group": "none",
+    "judge_confidence": "high",
+    "singlish_realism": "medium",
+    "reasoning": "The text is a factual and educational statement describing the nature of a slur rather than using it to attack or demean a group.",
+    "flag_reasons": [
+      "label_disagreement: assigned=offensive judge=normal confidence=high"
+    ],
+    "proposed_fix": null,
+    "fix_rationale": null
+  },
+  {
+    "split": "test",
+    "row_index": 27,
+    "source_term": "big fuck",
+    "text": "He thinks he is a big fuck just because he bought a new luxury car.",
+    "label": "normal",
+    "target_group": "none",
+    "judge_label": "offensive",
+    "judge_target_group": "none",
+    "judge_confidence": "high",
+    "singlish_realism": "high",
+    "reasoning": "The text uses the vulgar term 'big fuck' to insult an individual's perceived arrogance regarding a material possession, but it does not target any specific identity group.",
+    "flag_reasons": [
+      "label_disagreement: assigned=normal judge=offensive confidence=high"
+    ],
+    "proposed_fix": null,
+    "fix_rationale": null
+  },
+  {
+    "split": "test",
+    "row_index": 28,
+    "source_term": "big fuck",
+    "text": "He thinks he's such a big fuck just because he got a promotion, but nobody else cares.",
+    "label": "normal",
+    "target_group": "none",
+    "judge_label": "offensive",
+    "judge_target_group": "none",
+    "judge_confidence": "high",
+    "singlish_realism": "high",
+    "reasoning": "The text uses the vulgar term 'big fuck' to insult an individual's perceived self-importance after a promotion. While crude and insulting, it does not target any specific protected identity group.",
+    "flag_reasons": [
+      "label_disagreement: assigned=normal judge=offensive confidence=high"
+    ],
+    "proposed_fix": null,
+    "fix_rationale": null
+  },
+  {
+    "split": "test",
+    "row_index": 40,
+    "source_term": "CB kia",
+    "text": "In Singlish, the term 'CB kia' is often used as a vulgar insult to describe someone as an asshole.",
+    "label": "normal",
+    "target_group": "none",
+    "judge_label": "normal",
+    "judge_target_group": "none",
+    "judge_confidence": "high",
+    "singlish_realism": "low",
+    "reasoning": "The text is a neutral, educational explanation of a vulgar term's meaning and usage in Singlish, rather than an offensive or hateful application of the term.",
+    "flag_reasons": [
+      "low_singlish_realism"
+    ],
+    "proposed_fix": null,
+    "fix_rationale": null
+  },
+  {
+    "split": "test",
+    "row_index": 56,
+    "source_term": "Zhu Bajie",
+    "text": "The character Zhu Bajie from Journey to the West is often associated with gluttony and laziness in literary discussions.",
+    "label": "normal",
+    "target_group": "none",
+    "judge_label": "normal",
+    "judge_target_group": "none",
+    "judge_confidence": "high",
+    "singlish_realism": "low",
+    "reasoning": "The text provides a neutral, literary description of the character Zhu Bajie without using it as an insult or targeting any identity group.",
+    "flag_reasons": [
+      "low_singlish_realism"
+    ],
+    "proposed_fix": null,
+    "fix_rationale": null
+  },
+  {
+    "split": "test",
+    "row_index": 57,
+    "source_term": "Zhu Bajie",
+    "text": "In the classic Chinese novel Journey to the West, Zhu Bajie is a complex character who often provides comic relief.",
+    "label": "normal",
+    "target_group": "none",
+    "judge_label": "normal",
+    "judge_target_group": "none",
+    "judge_confidence": "high",
+    "singlish_realism": "low",
+    "reasoning": "The text is a factual and neutral description of a literary character from a classic novel, with no offensive or hateful intent.",
+    "flag_reasons": [
+      "low_singlish_realism"
+    ],
+    "proposed_fix": null,
+    "fix_rationale": null
+  },
+  {
+    "split": "test",
+    "row_index": 61,
+    "source_term": "lan jiao bin",
+    "text": "The term lan jiao bin is a Hokkien expression used to describe someone's face in a vulgar way.",
+    "label": "normal",
+    "target_group": "none",
+    "judge_label": "normal",
+    "judge_target_group": "none",
+    "judge_confidence": "high",
+    "singlish_realism": "low",
+    "reasoning": "The text provides a neutral, dictionary-style definition of the term without using it to insult or target any specific group.",
+    "flag_reasons": [
+      "low_singlish_realism"
+    ],
+    "proposed_fix": null,
+    "fix_rationale": null
+  },
+  {
+    "split": "test",
+    "row_index": 65,
+    "source_term": "cina babi",
+    "text": "I hate all Malay Singaporeans, you are nothing but cina babi.",
+    "label": "hate",
+    "target_group": "malay",
+    "judge_label": "hate",
+    "judge_target_group": "malay",
+    "judge_confidence": "high",
+    "singlish_realism": "low",
+    "reasoning": "The text explicitly expresses hatred towards Malay Singaporeans and uses a racial slur, although the slur 'cina babi' is logically inconsistent as it targets Chinese people.",
+    "flag_reasons": [
+      "low_singlish_realism"
+    ],
+    "proposed_fix": null,
+    "fix_rationale": null
+  },
+  {
+    "split": "test",
+    "row_index": 67,
+    "source_term": "cina babi",
+    "text": "Jangan panggil orang dengan gelaran cina babi.",
+    "label": "offensive",
+    "target_group": "none",
+    "judge_label": "normal",
+    "judge_target_group": "none",
+    "judge_confidence": "high",
+    "singlish_realism": "high",
+    "reasoning": "The text is a corrective statement in Malay advising against the use of a racial slur ('cina babi'). It discourages hate speech rather than promoting it.",
+    "flag_reasons": [
+      "label_disagreement: assigned=offensive judge=normal confidence=high"
+    ],
+    "proposed_fix": null,
+    "fix_rationale": null
+  },
+  {
+    "split": "test",
+    "row_index": 68,
+    "source_term": "cina babi",
+    "text": "Jangan panggil orang itu cina babi, itu sangat tidak sopan.",
+    "label": "offensive",
+    "target_group": "none",
+    "judge_label": "normal",
+    "judge_target_group": "none",
+    "judge_confidence": "high",
+    "singlish_realism": "medium",
+    "reasoning": "The text is a corrective statement in Malay advising someone not to use a racial slur, explicitly stating that such language is impolite.",
+    "flag_reasons": [
+      "label_disagreement: assigned=offensive judge=normal confidence=high"
+    ],
+    "proposed_fix": null,
+    "fix_rationale": null
+  },
+  {
+    "split": "test",
+    "row_index": 69,
+    "source_term": "cina babi",
+    "text": "The term 'cina babi' is a derogatory expression that is used to insult people of Chinese descent.",
+    "label": "normal",
+    "target_group": "none",
+    "judge_label": "normal",
+    "judge_target_group": "chinese",
+    "judge_confidence": "high",
+    "singlish_realism": "low",
+    "reasoning": "The text provides a neutral, dictionary-style definition of a derogatory term to explain its meaning and usage, rather than using it to express hatred or insult.",
+    "flag_reasons": [
+      "low_singlish_realism"
+    ],
+    "proposed_fix": null,
+    "fix_rationale": null
+  },
+  {
+    "split": "test",
+    "row_index": 70,
+    "source_term": "cina babi",
+    "text": "The phrase 'cina babi' is a derogatory term used to insult people of Chinese descent.",
+    "label": "normal",
+    "target_group": "none",
+    "judge_label": "normal",
+    "judge_target_group": "none",
+    "judge_confidence": "high",
+    "singlish_realism": "low",
+    "reasoning": "The text is a neutral, descriptive statement that explains the derogatory nature of the term without using it to attack or insult any group.",
+    "flag_reasons": [
+      "low_singlish_realism"
+    ],
+    "proposed_fix": null,
+    "fix_rationale": null
+  },
+  {
+    "split": "test",
+    "row_index": 74,
+    "source_term": "pukimak",
+    "text": "He shouted 'pukimak' in frustration after losing the game.",
+    "label": "offensive",
+    "target_group": "none",
+    "judge_label": "normal",
+    "judge_target_group": "none",
+    "judge_confidence": "high",
+    "singlish_realism": "high",
+    "reasoning": "The text is a neutral, descriptive sentence explaining the context in which a vulgar term was used. It does not target any identity group or use the term to insult anyone.",
+    "flag_reasons": [
+      "label_disagreement: assigned=offensive judge=normal confidence=high"
+    ],
+    "proposed_fix": null,
+    "fix_rationale": null
+  },
+  {
+    "split": "test",
+    "row_index": 83,
+    "source_term": "siao lang",
+    "text": "That siao lang was shouting at the bus stop this morning.",
+    "label": "normal",
+    "target_group": "none",
+    "judge_label": "offensive",
+    "judge_target_group": "none",
+    "judge_confidence": "high",
+    "singlish_realism": "high",
+    "reasoning": "The text uses 'siao lang' as an insulting descriptor for an individual's behavior, which fits the definition of offensive language that does not target a protected identity group.",
+    "flag_reasons": [
+      "label_disagreement: assigned=normal judge=offensive confidence=high"
+    ],
+    "proposed_fix": null,
+    "fix_rationale": null
+  },
+  {
+    "split": "test",
+    "row_index": 110,
+    "source_term": "goondu",
+    "text": "Stop being such a goondu and listen to me.",
+    "label": "offensive",
+    "target_group": "none",
+    "judge_label": "normal",
+    "judge_target_group": "none",
+    "judge_confidence": "high",
+    "singlish_realism": "high",
+    "reasoning": "The term 'goondu' is used here as a mild, colloquial insult directed at an individual's behavior rather than a protected identity group, making it a common and non-hateful expression in Singlish.",
+    "flag_reasons": [
+      "label_disagreement: assigned=offensive judge=normal confidence=high"
+    ],
+    "proposed_fix": null,
+    "fix_rationale": null
+  }
+]
