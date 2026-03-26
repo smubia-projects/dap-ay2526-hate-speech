@@ -14,8 +14,10 @@
     "flag_reasons": [
       "low_singlish_realism"
     ],
-    "proposed_fix": null,
-    "fix_rationale": null
+    "proposed_fix": {
+      "text": "Wah, she really like ah kua sia, walk also scared scared one."
+    },
+    "fix_rationale": "Rewritten from academic description to natural Singlish"
   },
   {
     "split": "train",
@@ -32,8 +34,10 @@
     "flag_reasons": [
       "low_singlish_realism"
     ],
-    "proposed_fix": null,
-    "fix_rationale": null
+    "proposed_fix": {
+      "text": "Aiyah, that guy is such a CB kia, always cut queue at the kopitiam."
+    },
+    "fix_rationale": "Rewritten from meta-description to natural Singlish"
   },
   {
     "split": "train",
@@ -50,8 +54,10 @@
     "flag_reasons": [
       "low_singlish_realism"
     ],
-    "proposed_fix": null,
-    "fix_rationale": null
+    "proposed_fix": {
+      "text": "My friend accidentally said cina babi in front of her Chinese colleague, confirm very awkward lah."
+    },
+    "fix_rationale": "Rewritten from dictionary definition to contextual Singlish"
   },
   {
     "split": "train",
@@ -68,8 +74,10 @@
     "flag_reasons": [
       "low_singlish_realism"
     ],
-    "proposed_fix": null,
-    "fix_rationale": null
+    "proposed_fix": {
+      "text": "Wah, that uncle really lan jiao bin, but he very kind one lah, always help carry groceries."
+    },
+    "fix_rationale": "Rewritten from academic text to natural Singlish"
   },
   {
     "split": "train",
@@ -86,8 +94,10 @@
     "flag_reasons": [
       "low_singlish_realism"
     ],
-    "proposed_fix": null,
-    "fix_rationale": null
+    "proposed_fix": {
+      "text": "He dropped his phone in the toilet and shouted pukimak so loud, the whole hawker centre heard."
+    },
+    "fix_rationale": "Rewritten from dictionary definition to natural contextual use"
   },
   {
     "split": "train",
@@ -104,8 +114,10 @@
     "flag_reasons": [
       "low_singlish_realism"
     ],
-    "proposed_fix": null,
-    "fix_rationale": null
+    "proposed_fix": {
+      "text": "My colleague say I look like Zhu Bajie because I always the first one to finish my lunch."
+    },
+    "fix_rationale": "Rewritten from literary description to natural Singlish comparison"
   },
   {
     "split": "train",
@@ -122,8 +134,10 @@
     "flag_reasons": [
       "low_singlish_realism"
     ],
-    "proposed_fix": null,
-    "fix_rationale": null
+    "proposed_fix": {
+      "text": "Uncle keep saying his neighbour body like Zhu Bajie, eat finish nothing to do, always disturbing people."
+    },
+    "fix_rationale": "Rewritten from literary description to natural Singlish"
   },
   {
     "split": "val",
@@ -140,8 +154,11 @@
     "flag_reasons": [
       "low_singlish_realism"
     ],
-    "proposed_fix": null,
-    "fix_rationale": null
+    "proposed_fix": {
+      "target_group": "indian",
+      "text": "Those anneh Indian Singaporeans are ruining this country, all should just go back where they came from."
+    },
+    "fix_rationale": "anneh targets Indians not Malay — corrected target_group and rewritten for linguistic accuracy"
   },
   {
     "split": "val",
@@ -158,8 +175,11 @@
     "flag_reasons": [
       "label_disagreement: assigned=offensive judge=hate confidence=high"
     ],
-    "proposed_fix": null,
-    "fix_rationale": null
+    "proposed_fix": {
+      "label": "hate",
+      "target_group": "indian"
+    },
+    "fix_rationale": "anneh (Tamil: elder brother) used as derogatory ethnic label — constitutes hate speech targeting Indians"
   },
   {
     "split": "val",
@@ -176,8 +196,10 @@
     "flag_reasons": [
       "label_disagreement: assigned=hate judge=normal confidence=high"
     ],
-    "proposed_fix": null,
-    "fix_rationale": null
+    "proposed_fix": {
+      "label": "normal"
+    },
+    "fix_rationale": "Meta-commentary condemning slur — educational framing, not hate speech"
   },
   {
     "split": "val",
@@ -194,8 +216,10 @@
     "flag_reasons": [
       "label_disagreement: assigned=offensive judge=normal confidence=high"
     ],
-    "proposed_fix": null,
-    "fix_rationale": null
+    "proposed_fix": {
+      "label": "normal"
+    },
+    "fix_rationale": "Factual statement about the term being a slur — educational not offensive"
   },
   {
     "split": "val",
@@ -212,8 +236,10 @@
     "flag_reasons": [
       "label_disagreement: assigned=normal judge=offensive confidence=high"
     ],
-    "proposed_fix": null,
-    "fix_rationale": null
+    "proposed_fix": {
+      "label": "offensive"
+    },
+    "fix_rationale": "Uses vulgar 'big fuck' as personal insult — offensive not normal"
   },
   {
     "split": "val",
@@ -230,8 +256,10 @@
     "flag_reasons": [
       "label_disagreement: assigned=normal judge=offensive confidence=high"
     ],
-    "proposed_fix": null,
-    "fix_rationale": null
+    "proposed_fix": {
+      "label": "offensive"
+    },
+    "fix_rationale": "Uses vulgar Hokkien 'bo lan pa' as insult — offensive not normal"
   },
   {
     "split": "val",
@@ -248,8 +276,10 @@
     "flag_reasons": [
       "label_disagreement: assigned=normal judge=offensive confidence=high"
     ],
-    "proposed_fix": null,
-    "fix_rationale": null
+    "proposed_fix": {
+      "label": "offensive"
+    },
+    "fix_rationale": "Uses vulgar 'CB kia' as road insult — offensive not normal"
   },
   {
     "split": "val",
@@ -266,8 +296,10 @@
     "flag_reasons": [
       "low_singlish_realism"
     ],
-    "proposed_fix": null,
-    "fix_rationale": null
+    "proposed_fix": {
+      "text": "Wah, you always eat so much, like a real Zhu Bajie sia, cannot stop one ah?"
+    },
+    "fix_rationale": "Rewritten from literary analysis to natural Singlish comparison"
   },
   {
     "split": "val",
@@ -284,8 +316,10 @@
     "flag_reasons": [
       "low_singlish_realism"
     ],
-    "proposed_fix": null,
-    "fix_rationale": null
+    "proposed_fix": {
+      "text": "Why you eat until so fat, really like Zhu Bajie leh, no shame one ah?"
+    },
+    "fix_rationale": "Rewritten from literary description to natural Singlish"
   },
   {
     "split": "val",
@@ -302,8 +336,10 @@
     "flag_reasons": [
       "low_singlish_realism"
     ],
-    "proposed_fix": null,
-    "fix_rationale": null
+    "proposed_fix": {
+      "text": "Aiya, that uncle got lan jiao bin but he actually very nice, always smile at everyone."
+    },
+    "fix_rationale": "Rewritten from dictionary definition to contextual Singlish"
   },
   {
     "split": "val",
@@ -320,8 +356,10 @@
     "flag_reasons": [
       "label_disagreement: assigned=offensive judge=normal confidence=high"
     ],
-    "proposed_fix": null,
-    "fix_rationale": null
+    "proposed_fix": {
+      "label": "normal"
+    },
+    "fix_rationale": "Malay corrective statement advising against slur use — educational"
   },
   {
     "split": "val",
@@ -339,8 +377,11 @@
       "label_disagreement: assigned=offensive judge=normal confidence=high",
       "low_singlish_realism"
     ],
-    "proposed_fix": null,
-    "fix_rationale": null
+    "proposed_fix": {
+      "label": "normal",
+      "text": "My friend was so shocked when someone said cina babi on the MRT, confirm rude lah."
+    },
+    "fix_rationale": "Educational definition rewritten to natural Singlish; reclassified as normal"
   },
   {
     "split": "val",
@@ -357,8 +398,10 @@
     "flag_reasons": [
       "label_disagreement: assigned=offensive judge=normal confidence=high"
     ],
-    "proposed_fix": null,
-    "fix_rationale": null
+    "proposed_fix": {
+      "label": "normal"
+    },
+    "fix_rationale": "Factual description of slur — not offensive use"
   },
   {
     "split": "val",
@@ -375,8 +418,10 @@
     "flag_reasons": [
       "low_singlish_realism"
     ],
-    "proposed_fix": null,
-    "fix_rationale": null
+    "proposed_fix": {
+      "text": "My friend was so shocked when she heard someone shout cina babi at the wet market, very rude lah."
+    },
+    "fix_rationale": "Rewritten from academic framing to natural Singlish"
   },
   {
     "split": "val",
@@ -393,8 +438,10 @@
     "flag_reasons": [
       "label_disagreement: assigned=offensive judge=normal confidence=high"
     ],
-    "proposed_fix": null,
-    "fix_rationale": null
+    "proposed_fix": {
+      "label": "normal"
+    },
+    "fix_rationale": "Neutral descriptive sentence reporting exclamation in context — normal not offensive"
   },
   {
     "split": "val",
@@ -411,8 +458,10 @@
     "flag_reasons": [
       "label_disagreement: assigned=normal judge=offensive confidence=high"
     ],
-    "proposed_fix": null,
-    "fix_rationale": null
+    "proposed_fix": {
+      "label": "offensive"
+    },
+    "fix_rationale": "Uses 'siao lang' as insult — offensive not normal"
   },
   {
     "split": "val",
@@ -429,8 +478,10 @@
     "flag_reasons": [
       "label_disagreement: assigned=offensive judge=normal confidence=high"
     ],
-    "proposed_fix": null,
-    "fix_rationale": null
+    "proposed_fix": {
+      "label": "normal"
+    },
+    "fix_rationale": "Meta-linguistic statement about the term — educational not offensive"
   },
   {
     "split": "val",
@@ -447,8 +498,10 @@
     "flag_reasons": [
       "label_disagreement: assigned=offensive judge=normal confidence=high"
     ],
-    "proposed_fix": null,
-    "fix_rationale": null
+    "proposed_fix": {
+      "label": "normal"
+    },
+    "fix_rationale": "Factual educational statement about slur nature — not offensive"
   },
   {
     "split": "val",
@@ -465,8 +518,10 @@
     "flag_reasons": [
       "label_disagreement: assigned=offensive judge=normal confidence=high"
     ],
-    "proposed_fix": null,
-    "fix_rationale": null
+    "proposed_fix": {
+      "label": "normal"
+    },
+    "fix_rationale": "Common Singlish expression describing behaviour — normal colloquial use"
   },
   {
     "split": "test",
@@ -483,8 +538,10 @@
     "flag_reasons": [
       "low_singlish_realism"
     ],
-    "proposed_fix": null,
-    "fix_rationale": null
+    "proposed_fix": {
+      "text": "Wah, that guy dress up like ah kua for the company D&D, everyone laugh until cannot breathe."
+    },
+    "fix_rationale": "Rewritten from dictionary definition to natural Singlish"
   },
   {
     "split": "test",
@@ -501,8 +558,11 @@
     "flag_reasons": [
       "label_disagreement: assigned=offensive judge=hate confidence=high"
     ],
-    "proposed_fix": null,
-    "fix_rationale": null
+    "proposed_fix": {
+      "label": "hate",
+      "target_group": "indian"
+    },
+    "fix_rationale": "Ethnic identifier anneh used while issuing a threat — hate speech targeting Indians"
   },
   {
     "split": "test",
@@ -519,8 +579,11 @@
     "flag_reasons": [
       "label_disagreement: assigned=offensive judge=hate confidence=high"
     ],
-    "proposed_fix": null,
-    "fix_rationale": null
+    "proposed_fix": {
+      "label": "hate",
+      "target_group": "indian"
+    },
+    "fix_rationale": "anneh used as derogatory ethnic descriptor — hate speech targeting Indians"
   },
   {
     "split": "test",
@@ -537,8 +600,11 @@
     "flag_reasons": [
       "label_disagreement: assigned=offensive judge=hate confidence=high"
     ],
-    "proposed_fix": null,
-    "fix_rationale": null
+    "proposed_fix": {
+      "label": "hate",
+      "target_group": "indian"
+    },
+    "fix_rationale": "anneh used pejoratively for Indian men — hate speech targeting Indians"
   },
   {
     "split": "test",
@@ -555,8 +621,10 @@
     "flag_reasons": [
       "label_disagreement: assigned=hate judge=normal confidence=high"
     ],
-    "proposed_fix": null,
-    "fix_rationale": null
+    "proposed_fix": {
+      "label": "normal"
+    },
+    "fix_rationale": "Critiques racist behaviour of using the slur — not direct hate speech targeting a group"
   },
   {
     "split": "test",
@@ -573,8 +641,10 @@
     "flag_reasons": [
       "label_disagreement: assigned=hate judge=normal confidence=high"
     ],
-    "proposed_fix": null,
-    "fix_rationale": null
+    "proposed_fix": {
+      "label": "normal"
+    },
+    "fix_rationale": "Educational statement identifying the term as hate speech — not itself hate speech"
   },
   {
     "split": "test",
@@ -591,8 +661,10 @@
     "flag_reasons": [
       "label_disagreement: assigned=offensive judge=normal confidence=high"
     ],
-    "proposed_fix": null,
-    "fix_rationale": null
+    "proposed_fix": {
+      "label": "normal"
+    },
+    "fix_rationale": "Educational statement identifying slur — not offensive use"
   },
   {
     "split": "test",
@@ -609,8 +681,10 @@
     "flag_reasons": [
       "label_disagreement: assigned=offensive judge=normal confidence=high"
     ],
-    "proposed_fix": null,
-    "fix_rationale": null
+    "proposed_fix": {
+      "label": "normal"
+    },
+    "fix_rationale": "Factual statement about slur nature — educational not offensive"
   },
   {
     "split": "test",
@@ -627,8 +701,10 @@
     "flag_reasons": [
       "label_disagreement: assigned=normal judge=offensive confidence=high"
     ],
-    "proposed_fix": null,
-    "fix_rationale": null
+    "proposed_fix": {
+      "label": "offensive"
+    },
+    "fix_rationale": "Uses 'big fuck' as insult — offensive not normal"
   },
   {
     "split": "test",
@@ -645,8 +721,10 @@
     "flag_reasons": [
       "label_disagreement: assigned=normal judge=offensive confidence=high"
     ],
-    "proposed_fix": null,
-    "fix_rationale": null
+    "proposed_fix": {
+      "label": "offensive"
+    },
+    "fix_rationale": "Uses 'big fuck' as insult — offensive not normal"
   },
   {
     "split": "test",
@@ -663,8 +741,10 @@
     "flag_reasons": [
       "low_singlish_realism"
     ],
-    "proposed_fix": null,
-    "fix_rationale": null
+    "proposed_fix": {
+      "text": "Aiyah, that CB kia at work always take credit for other people work but nobody dare say anything."
+    },
+    "fix_rationale": "Rewritten from meta-description to natural Singlish"
   },
   {
     "split": "test",
@@ -681,8 +761,10 @@
     "flag_reasons": [
       "low_singlish_realism"
     ],
-    "proposed_fix": null,
-    "fix_rationale": null
+    "proposed_fix": {
+      "text": "He is like the Zhu Bajie of the team, always slacking and eating snacks during meeting."
+    },
+    "fix_rationale": "Rewritten from literary description to natural Singlish comparison"
   },
   {
     "split": "test",
@@ -699,8 +781,10 @@
     "flag_reasons": [
       "low_singlish_realism"
     ],
-    "proposed_fix": null,
-    "fix_rationale": null
+    "proposed_fix": {
+      "text": "Every family gathering my uncle will joke that my cousin is like Zhu Bajie, very greedy and lazy one."
+    },
+    "fix_rationale": "Rewritten from literary description to natural Singlish"
   },
   {
     "split": "test",
@@ -717,8 +801,10 @@
     "flag_reasons": [
       "low_singlish_realism"
     ],
-    "proposed_fix": null,
-    "fix_rationale": null
+    "proposed_fix": {
+      "text": "Aiyah, that customer service auntie got lan jiao bin but she actually very helpful one."
+    },
+    "fix_rationale": "Rewritten from dictionary definition to natural Singlish"
   },
   {
     "split": "test",
@@ -735,8 +821,11 @@
     "flag_reasons": [
       "low_singlish_realism"
     ],
-    "proposed_fix": null,
-    "fix_rationale": null
+    "proposed_fix": {
+      "target_group": "chinese",
+      "text": "Those cina babi think they so great just because they are the majority in Singapore."
+    },
+    "fix_rationale": "cina babi targets Chinese not Malay — corrected target_group and rewritten for linguistic accuracy"
   },
   {
     "split": "test",
@@ -753,8 +842,10 @@
     "flag_reasons": [
       "label_disagreement: assigned=offensive judge=normal confidence=high"
     ],
-    "proposed_fix": null,
-    "fix_rationale": null
+    "proposed_fix": {
+      "label": "normal"
+    },
+    "fix_rationale": "Malay corrective statement — normal/educational"
   },
   {
     "split": "test",
@@ -771,8 +862,10 @@
     "flag_reasons": [
       "label_disagreement: assigned=offensive judge=normal confidence=high"
     ],
-    "proposed_fix": null,
-    "fix_rationale": null
+    "proposed_fix": {
+      "label": "normal"
+    },
+    "fix_rationale": "Corrective Malay statement explicitly against slur use — normal"
   },
   {
     "split": "test",
@@ -789,8 +882,10 @@
     "flag_reasons": [
       "low_singlish_realism"
     ],
-    "proposed_fix": null,
-    "fix_rationale": null
+    "proposed_fix": {
+      "text": "During the history lesson, teacher mentioned that cina babi was a term used to stir up racial tensions in Singapore."
+    },
+    "fix_rationale": "Rewritten from dictionary definition to natural contextual use"
   },
   {
     "split": "test",
@@ -807,8 +902,10 @@
     "flag_reasons": [
       "low_singlish_realism"
     ],
-    "proposed_fix": null,
-    "fix_rationale": null
+    "proposed_fix": {
+      "text": "My grandmother warned me never to use words like cina babi because it causes a lot of hurt to others."
+    },
+    "fix_rationale": "Rewritten from dictionary definition to natural Singlish"
   },
   {
     "split": "test",
@@ -825,8 +922,10 @@
     "flag_reasons": [
       "label_disagreement: assigned=offensive judge=normal confidence=high"
     ],
-    "proposed_fix": null,
-    "fix_rationale": null
+    "proposed_fix": {
+      "label": "normal"
+    },
+    "fix_rationale": "Neutral descriptive sentence about vulgar exclamation — normal"
   },
   {
     "split": "test",
@@ -843,8 +942,10 @@
     "flag_reasons": [
       "label_disagreement: assigned=normal judge=offensive confidence=high"
     ],
-    "proposed_fix": null,
-    "fix_rationale": null
+    "proposed_fix": {
+      "label": "offensive"
+    },
+    "fix_rationale": "Uses 'siao lang' as insult — offensive not normal"
   },
   {
     "split": "test",
@@ -861,7 +962,9 @@
     "flag_reasons": [
       "label_disagreement: assigned=offensive judge=normal confidence=high"
     ],
-    "proposed_fix": null,
-    "fix_rationale": null
+    "proposed_fix": {
+      "label": "normal"
+    },
+    "fix_rationale": "Mild colloquial 'goondu' used as everyday Singlish — normal not offensive"
   }
 ]
