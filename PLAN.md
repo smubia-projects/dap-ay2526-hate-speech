@@ -55,21 +55,39 @@ Based on the structure of `notebooks/roberta/roberta_sg_experiments.ipynb`, adap
 
 ---
 
-## Phase 2: LLM LoRA Fine-Tuning — `notebooks/llm/llm_lora_finetune_colab.ipynb` (NEW)
+## Phase 2: LLM LoRA Fine-Tuning
 
-- [ ] Zero-shot / few-shot baselines on SG test set (before any fine-tuning)
-  - Test with existing LLM notebooks as reference (`hate-speech-llm-openrouter.ipynb`, `hate-speech-llm-local.ipynb`)
+- [x] **Zero-shot / few-shot baselines** — `notebooks/llm/llm_sg_baselines.ipynb`
+  - Tests Llama-Guard-3-8B, Claude Haiku, Gemini Flash, DeepSeek via OpenRouter
+  - 3-class (hate/offensive/normal), Singlish-aware prompts
+  - Both zero-shot and few-shot (2 examples per class)
+  - Saves to `results/model_scores_sg.csv`
 
-- [ ] QLoRA fine-tuning on target models:
-  - `meta-llama/Llama-Guard-3-8B`
-  - `aisingapore/sea-lion-7b-instruct` (or newer SEA alternative)
-  - Other OSS guard model TBD
+- [x] **Chat prompt + QLoRA fine-tuning** — `notebooks/llm/llm_lora_finetune_colab.ipynb`
+  - Colab paid GPU (T4/A100), Unsloth + SFTTrainer
+  - Singaporean content moderator system prompt (3-class)
+  - **Model A:** `meta-llama/Llama-Guard-3-8B` (Part 2)
+  - **Model B:** `aisingapore/sea-lion-7b-instruct` (Part 3, Unsloth with PEFT fallback)
+  - GPU cleanup between models, leaderboard comparison in Part 4
 
-- [ ] Chat prompt template design (Singaporean content moderator roleplay, 3-class output)
-
-- [ ] Evaluate fine-tuned LLMs on SG test set + compare against best encoder result
+- [ ] **Run notebooks** — execute on Colab, collect results
 
 ---
+
+## Phase 3: SGHateCheck Evaluation — `notebooks/evaluation/evaluate_sghatecheck.ipynb` (NEW)
+
+---
+
+## Phase 4: Guardrails AI Integration — `notebooks/guardrails/singlish_guardrails_demo.ipynb` (DONE)
+
+- [x] Custom `SinglishHateSpeech` validator wrapping any HuggingFace model
+- [x] Baseline gap demo — show where ToxicLanguage fails on Singlish
+- [x] Guard composition — SinglishHateSpeech + ToxicLanguage
+- [x] Input guard + output guard pipeline demos
+- [x] Benchmark on SG test set with threshold sensitivity analysis
+- [x] Section 9: slot for swapping in fine-tuned model (zero code change)
+- [x] Hub submission guide + project positioning
+- [ ] **Swap in fine-tuned model** (after Phase 1 completes) — set `SG_FINETUNED_MODEL` in Section 9
 
 ## Phase 3: SGHateCheck Evaluation — `notebooks/evaluation/evaluate_sghatecheck.ipynb` (NEW)
 
