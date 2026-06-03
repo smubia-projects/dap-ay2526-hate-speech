@@ -1,6 +1,7 @@
 .venv*
 uv.lock
 .env
+demo/.env
 
 # Model artifacts
 models/

@@ -1,0 +1,9 @@
+# Demo-specific requirements (on top of pyproject.toml)
+# Install from repo root: pip install -e ".[dev]"
+# or just: pip install -r demo/requirements.txt
+
+streamlit>=1.39.0
+transformers>=5.1.0
+torch>=2.10.0
+python-dotenv>=1.2.1
+google-genai>=1.0.0
