@@ -14,4 +14,6 @@ data/embeddings/
 __pycache__/
 *.pyc
 
-.DS_Store
+# Local agent / scratch
+.omc/
+tmp/
