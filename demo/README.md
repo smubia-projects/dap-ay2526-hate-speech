@@ -122,15 +122,21 @@ Every turn shows:
 
 ---
 
-## Guard backends
+## Guard backends — swappable
 
-| `GUARD_MODEL` | Model | Extra requirement |
-|---|---|---|
-| `sg` (default) | `shareeep/singbert-hatexplain-and-syntheticsghate` | None |
-| `llmguard` | LLM Guard Toxicity scanner | `pip install llm-guard` |
-| `lionguard` | GovTech LionGuard v2 | `OPENAI_API_KEY` (for embeddings) |
+`guard.py` is a thin dispatch layer; every backend returns `{score: float, passed: bool}` so the rest of the app is identical across recordings.
 
-All backends return the same `{score, passed}` interface — the rest of the app is identical across recordings.
+| `GUARD_MODEL` | Model | Extra requirement | Status |
+|---|---|---|---|
+| `sg` (default) | `shareeep/singbert-hatexplain-and-syntheticsghate` | none | live |
+| `llmguard` | LLM Guard Toxicity scanner | `pip install llm-guard` | live |
+| `lionguard` (= 2.0) | [`govtech/lionguard-2`](https://huggingface.co/govtech/lionguard-2) + `text-embedding-3-large` | `OPENAI_API_KEY` | live |
+| `lionguard-2.1` | [`govtech/lionguard-2.1`](https://huggingface.co/govtech/lionguard-2.1) + `gemini-embedding-001` | `GEMINI_KEY` | planned |
+| `sea-guard` | AISG SEA-Guard via `api.sea-lion.ai` | `SEA_LION_API_KEY` | planned |
+
+**LionGuard 2 vs 2.1 — pick the one whose key you already have.** They produce the same 11-category output schema; the only difference is the embedding backbone (OpenAI vs Gemini). Either is a fine reference comparison for the SG-finetuned model.
+
+Adding a new backend is a two-branch change in `guard.py` — one in `load_guard()` to import + initialize, one in `run_guard()` to normalise the output to `{score, passed}`.
 
 ---
 

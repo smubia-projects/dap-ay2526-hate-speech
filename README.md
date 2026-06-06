@@ -1,156 +1,105 @@
 # 11th-DAP-hate-speech
 
-Hate speech detection project for the 11th DAP Project under SMUBIA. Covers BERT/RoBERTa fine-tuning, embedding-based classifiers, LLM zero-shot/few-shot, and synthetic data generation for Singapore-specific hate speech.
+Singapore-specific hate speech detection for the 11th DAP Project under SMUBIA. Two arcs:
 
-## Repo Structure
+1. **Pre-midterm — embedding deep-dive.** What encoder embeddings carry, and how far traditional ML classifiers on top of them can go. Notebooks in `notebooks/narrative_pre_midterm/`.
+2. **Finals — production guardrail.** A lightweight SG-finetuned SingBERT deployed as a swappable input + output filter in a Streamlit chatboard. Notebooks in `notebooks/narrative_finals/`; the live product is in `demo/`.
+
+Best model: [`shareeep/singbert-hatexplain-and-syntheticsghate`](https://huggingface.co/shareeep/singbert-hatexplain-and-syntheticsghate) — SingBERT fine-tuned two-stage (HateXplain → SG synthetic). SG hate recall = **1.00**, macro F1 = **0.91** on the held-out test set.
+
+---
+
+## Repo tree
 
 ```
 11th-DAP-hate-speech/
 ├── README.md
-├── pyproject.toml
-├── uv.lock
+├── CLAUDE.md
+├── pyproject.toml · uv.lock · .python-version · .gitignore
 │
-├── notebooks/                          # All Jupyter notebooks, grouped by topic
-│   ├── bert/
-│   │   └── hate_speech_bert_binary.ipynb
-│   ├── roberta/
-│   │   ├── hatespeech_keith_roberta_finetune.ipynb
-│   │   ├── roberta_inference.ipynb
-│   │   └── roberta_sg_experiments.ipynb
-│   ├── embeddings/
-│   │   └── embedding-experiments.ipynb
-│   ├── llm/
-│   │   ├── hate-speech-dspy.ipynb
-│   │   ├── hate-speech-llm-finetune-mlx.ipynb
-│   │   ├── hate-speech-llm-local.ipynb
-│   │   └── hate-speech-llm-openrouter.ipynb
-│   ├── synthetic/
-│   │   ├── synthetic_generation_colab_gemini_final.ipynb   # Original Gemini generation (Colab)
-│   │   ├── synthetic_judge_validation.ipynb                # LLM-as-a-judge quality validation
-│   │   ├── synthetic_dataset_repair_policy.ipynb           # Cleanup, dedup, and term policy
-│   │   └── synthetic_dataset_regeneration.ipynb            # Targeted regeneration of removed rows
-│   └── archive/                        # Old/superseded notebooks
-│       ├── [old]hate-speech-llm-colab.ipynb
-│       ├── dap-hatebenchset-eda.ipynb
-│       ├── embedding-classifier-pipeline.ipynb
-│       ├── embedding-space-comparison.ipynb
-│       ├── hate_speech_bert.ipynb
-│       ├── hate-speech-bert.ipynb
-│       ├── hate-speech-eda-dap.ipynb
-│       ├── roberta-embeddings-analysis.ipynb
-│       ├── roberta-embeddings-binary.ipynb
-│       └── roberta-embeddings-multi-class.ipynb
+├── demo/                              ← the product
+│   ├── app.py                         · Streamlit entry, page registration
+│   ├── guard.py                       · swappable guard backend dispatcher
+│   ├── singlish_validator.py          · SinglishHateSpeech wrapper
+│   ├── sample_loader.py               · 5 demo-moment buckets from consolidated set
+│   ├── example.env · README.md
+│   └── pages/
+│       ├── chat.py                    · LIVE: chatboard with input/output/advisory guard modes
+│       └── samples.py                 · LIVE: dataset browser
 │
-├── data/                               # All datasets
-│   ├── hatexplain/                     # HateXplain (15,383 train / 1,924 test)
-│   │   ├── hatexplain_train.jsonl
-│   │   ├── hatexplain_validation.jsonl
-│   │   └── hatexplain_test.jsonl
-│   ├── hatebenchset/                   # HateBenchSet
-│   │   ├── train.jsonl
-│   │   ├── valid.jsonl
-│   │   ├── test.jsonl
-│   │   └── data_list.md
-│   ├── singlish/                       # Singapore-specific data
-│   │   ├── raw/                        #   Scraped Singlish terms
-│   │   │   ├── singlish_parsed.jsonl
-│   │   │   └── singlish_raw.jsonl
-│   │   └── synthetic/                  #   Generated SG hate speech
-│   │       ├── 20-terms/               #     Balanced 20-term dataset
-│   │       │   ├── chosen-20-terms.json
-│   │       │   ├── train.jsonl
-│   │       │   ├── val.jsonl
-│   │       │   └── test.jsonl
-│   │       └── original-incomplete/    #     Earlier incomplete run
-│   │           repair_outputs/         #     Post-cleanup artifacts
-│   │           ├── cleaned_splits/     #       Deduplicated base splits
-│   │           ├── regenerated_outputs/
-│   │           │   ├── regenerated_rows.jsonl
-│   │           │   └── repaired_splits/  # ← final repaired dataset (train/val/test)
-│   │           ├── delete_candidates.json
-│   │           ├── removed_hate_blueprints.json
-│   │           ├── term_policy.json
-│   │           └── post_cleanup_summary.json
-│   └── embeddings/                     # Pre-computed embeddings (.pkl) & t-SNE plots (.png)
+├── data/
+│   └── README.md                      · schema, the 20 source terms, sample rows
+│                                        (the raw .jsonl is gitignored — see below)
 │
-├── models/                             # Trained model artifacts (gitignored)
-│   ├── bert-binary-hatexplain-finetuned/
-│   ├── adapters/
-│   │   └── Qwen2.5-3B-Instruct-4bit-hatexplain/   # LoRA adapters
-│   └── runs/                           # Training checkpoints
-│       ├── bert-binary-hatexplain/
-│       └── bert-3class-hatexplain/
+├── notebooks/
+│   ├── narrative_pre_midterm/         · embedding deep-dive (3 notebooks)
+│   └── narrative_finals/              · SingBERT, LoRA, Guardrails-AI (6 notebooks)
 │
-├── results/                            # Evaluation outputs
-│   ├── model_scores.csv
-│   └── hate_speech_predictions_openrouter.csv
+├── results/
+│   └── model_scores.csv               · leaderboard data
 │
-├── scripts/                            # Python scripts
-│   ├── predictions_app.py              #   Streamlit demo app
-│   ├── view_dataset.py                 #   Streamlit dataset viewer (with judge flags + manual edit)
-│   ├── singlish_scraper.py             #   Web scraper for Singlish terms
-│   ├── parse_raw.py                    #   Parse raw scraped data
-│   ├── generate_synthetic.py           #   Generate synthetic training data
-│   ├── synthetic_generation.py         #   Gemini API generation logic
-│   └── synthetic_processing.py         #   Post-processing for synthetic data
+├── docs/
+│   ├── findings-embedding-space.md
+│   ├── findings-roberta-finetune.md
+│   ├── synthetic_dataset_repair_decisions.md
+│   ├── IS469_Shariff_Indiv_Report.pdf
+│   └── IS469_Shariff_Indiv_Presentation_Slides.pdf
 │
-└── docs/                               # Documentation
-    ├── presentation-slides.md
-    ├── findings-embedding-space.md
-    ├── findings-embedding-space-old.md
-    ├── findings-roberta-finetune.md
-    ├── adversarial_hs_sg_plan.md
-    ├── dspy_explainer.md
-    ├── hate_speech_vs_offensive_policies.md
-    ├── synthetic_dataset_repair_decisions.md  # Decision log for dataset repair & regeneration
-    ├── to-do.md
-    ├── IS469_Shariff_Indiv_Presentation_Slides.pdf
-    └── IS469_Shariff_Indiv_Report.pdf
+└── archive/                           ← superseded but recoverable
+    ├── data/        ← hatexplain, hatebenchset, wip-files, raw scrapes
+    ├── notebooks/   ← bert, llm, roberta, synthetic, early archive
+    ├── scripts/     ← scrapers, generators, the old predictions_app.py
+    ├── docs/        ← stale planning docs
+    └── demo/        ← original plan / steps / raw idea
 ```
 
-## Quick Start
+---
+
+## Quick start
 
 ```bash
-# 1. Pin to Python 3.13 and install dependencies
-echo "3.13" > .python-version
-uv venv --python 3.13
+# 1. Create venv (Python 3.13) and install deps
+uv venv
 uv sync
 
-# 2. Run the predictions demo app
-uv run streamlit run scripts/predictions_app.py
+# 2. Provide your keys
+cp demo/example.env demo/.env
+# edit demo/.env — minimum: OPENROUTER_API_KEY
 
-# 3. Run the synthetic dataset viewer
-uv run streamlit run scripts/view_dataset.py
+# 3. Restore the dataset locally (it is gitignored)
+#    Drop your consolidated.jsonl at
+#    data/singlish/synthetic/20_terms/consolidated.jsonl
+
+# 4. Launch the demo
+GUARD_MODEL=sg .venv/bin/streamlit run demo/app.py
 ```
 
-## Breaking Changes (Repo Reorganisation)
+The SG guard model (~500 MB) downloads from HuggingFace on first launch and caches in `~/.cache/huggingface/`.
 
-The repo was restructured on 14 Mar 2026. If you have existing work that references old paths, here's what moved:
+---
 
-| Old path | New path |
-|----------|----------|
-| `hatexplain/` | `data/hatexplain/` |
-| `hatebenchset/` | `data/hatebenchset/` |
-| `singlish-data/singlish/` | `data/singlish/raw/` |
-| `singlish-data/gemini-hate-speech-20-terms/synthetic_training_20_terms_simplfied.jsonl` | `data/singlish/synthetic/20-terms/train.jsonl` |
-| `singlish-data/gemini-hate-speech-20-terms/synthetic_val_20_terms_simplfied.jsonl` | `data/singlish/synthetic/20-terms/val.jsonl` |
-| `singlish-data/gemini-hate-speech-20-terms/synthetic_test_20_terms_simplfied.jsonl` | `data/singlish/synthetic/20-terms/test.jsonl` |
-| `embeddings/` | `data/embeddings/` |
-| `bert-binary-hatexplain-finetuned/` | `models/bert-binary-hatexplain-finetuned/` |
-| `adapters/` | `models/adapters/` |
-| `runs/` | `models/runs/` |
-| `scraping/*.py` | `scripts/*.py` |
-| `predictions_app.py` | `scripts/predictions_app.py` |
-| `llm/*.ipynb` | `notebooks/llm/*.ipynb` |
-| `original/*.ipynb` | `notebooks/archive/*.ipynb` |
-| Root-level notebooks (e.g. `embedding-experiments.ipynb`) | `notebooks/<topic>/` |
-| Root-level docs (e.g. `findings-*.md`, `to-do.md`) | `docs/` |
+## Why the data is gated
 
-**Notebooks that load data with relative paths will need updating.** Key paths to fix:
+The synthetic Singlish corpus contains racial slurs targeting specific Singaporean communities. Even though every row is LLM-generated, the corpus is **not part of the public repo** — the `.gitignore` excludes `data/singlish/**/*.jsonl`. What's shared: the [model on HuggingFace](https://huggingface.co/shareeep/singbert-hatexplain-and-syntheticsghate), `data/README.md` (schema + 20-term table + sample rows), and the held-out test metrics in `results/model_scores.csv`.
 
-- `hatexplain/` → `data/hatexplain/` (used in embedding-experiments, bert, roberta notebooks)
-- `singlish-data/` → `data/singlish/` (used in roberta_sg_experiments)
-- `bert-binary-hatexplain-finetuned/` → `models/bert-binary-hatexplain-finetuned/` (used in embedding-experiments)
-- `runs/` → `models/runs/` (used in bert training notebooks)
+---
 
-The Colab notebooks (`roberta_sg_experiments`, `synthetic_generation_colab_gemini_final`) use Google Drive paths and are **not affected** by this reorganisation.
+## Guard backends — swap, don't rewrite
+
+`demo/guard.py` is a pure dispatch layer. Every backend implements the same `{score: float, passed: bool}` contract, so the demo pages don't change when you swap models.
+
+| `GUARD_MODEL` | Source | Status | Key needed |
+|---|---|---|---|
+| `sg` (default) | `shareeep/singbert-hatexplain-and-syntheticsghate` | live | none |
+| `llmguard` | `llm-guard` Toxicity scanner | live | none |
+| `lionguard` (= 2.0) | `govtech/lionguard-2` + `text-embedding-3-large` | live | `OPENAI_API_KEY` |
+| `lionguard-2.1` | `govtech/lionguard-2.1` + `gemini-embedding-001` | planned | `GEMINI_KEY` |
+| `sea-guard` | AISG SEA-Guard via `api.sea-lion.ai` | planned | `SEA_LION_API_KEY` |
+
+Both LionGuard versions are valid drop-ins — 2.0 if you have an OpenAI key, 2.1 if you have a Gemini key. Same output schema (11 categories), same `{score, passed}` after normalisation. Pick whichever key you already have.
+
+---
+
+## What's next
+
+The gamified demo extension (Arena / Challenge / Leaderboard pages, plus the LionGuard-2.1 and SEA-Guard backends) is designed in `tmp/gamification-research/DESIGN-DOC.md` and not yet built. See the design doc for build order. `tmp/` is gitignored — pull the research from the project owner if you need it.
