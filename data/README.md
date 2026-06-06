@@ -32,7 +32,7 @@ Each row is one JSON object with five string fields:
 
 ## Splits
 
-The canonical 60 / 20 / 20 split lives at `data/singlish/synthetic/20_terms/split_60_20_20/{train,val,test}.jsonl`.
+The full set was partitioned 60 / 20 / 20 for the training runs. The split JSONLs are not shipped — only the consolidated set is loaded by the demo locally (`data/singlish/synthetic/20_terms/consolidated.jsonl`, gitignored). Reproducing the splits is deterministic given the consolidated file + the seeded splitter in `archive/data/singlish/synthetic/wip-files/split_dataset_60_20_20.py`.
 
 | Split | Rows | hate | offensive | normal |
 |---|---:|---:|---:|---:|
@@ -41,7 +41,7 @@ The canonical 60 / 20 / 20 split lives at `data/singlish/synthetic/20_terms/spli
 | test  | 108 | 37 | 33 | 38 |
 | **total** | **533** | **181** | **165** | **187** |
 
-Test split is held-out — every reported test metric in `results/model_scores.csv` is on these 108 rows.
+Test split is held-out — every reported test metric in `results/model_scores.csv` is on these 108 rows. The demo's `sample_loader.py` samples from the consolidated set (it surfaces representative *demo moments*, not test-set rigour), so its picks may overlap with training rows; this is fine for the Arena page (free input) but means the Challenge page's player-vs-model verdicts are illustrative, not benchmarked.
 
 ### Target-group distribution (full set)
 
