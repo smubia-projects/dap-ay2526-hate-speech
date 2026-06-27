@@ -31,6 +31,8 @@ from playwright.async_api import Page, async_playwright, expect
 ROOT = Path(__file__).resolve().parents[1]
 OUT_DIR = ROOT / "tmp/playwright-validation"
 PAGES = ["Chat", "Arena", "Challenge", "Leaderboard", "Samples"]
+HATE_TEXT = "knn those cina babi think they own the place"
+BENIGN_TEXT = "wah this kopi damn shiok sia"
 
 
 def parse_args() -> argparse.Namespace:
@@ -40,8 +42,16 @@ def parse_args() -> argparse.Namespace:
     parser.add_argument("--base-url", default=os.environ.get("DEMO_BASE_URL"))
     parser.add_argument("--headed", action="store_true")
     parser.add_argument("--keep-server", action="store_true")
+    parser.add_argument("--skip-ui", action="store_true")
     parser.add_argument("--timeout", type=float, default=90.0)
     return parser.parse_args()
+
+
+def load_env() -> None:
+    from dotenv import load_dotenv
+
+    load_dotenv(ROOT / ".env")
+    load_dotenv(ROOT / "demo/.env", override=True)
 
 
 def wait_for_server(url: str, timeout: float) -> None:
@@ -145,12 +155,12 @@ async def test_chat(page: Page, run_dir: Path) -> None:
         await settle(page)
 
     chat_input = page.locator('textarea[placeholder="Type a message…"]').first
-    await chat_input.fill("wah this kopi damn shiok sia")
+    await chat_input.fill(BENIGN_TEXT)
     await chat_input.press("Enter")
-    await page.locator("text=LLM STUB").wait_for(timeout=30_000)
+    await page.locator("text=Turn 1").wait_for(timeout=90_000)
     await assert_clean_page(page, "chat-benign", run_dir)
 
-    await chat_input.fill("knn those cina babi think they own the place")
+    await chat_input.fill(HATE_TEXT)
     await chat_input.press("Enter")
     await page.locator("text=Guardrail — input blocked").first.wait_for(timeout=60_000)
     await page.locator("text=/score: 0\\.\\d+/").first.wait_for(timeout=10_000)
@@ -160,12 +170,23 @@ async def test_chat(page: Page, run_dir: Path) -> None:
 
 async def test_arena(page: Page, run_dir: Path) -> None:
     await click_nav(page, "Arena")
-    await page.locator('textarea[aria-label="Input"]').fill("wah this kopi damn shiok sia")
+    await page.locator('textarea[aria-label="Input"]').fill(BENIGN_TEXT)
     await page.get_by_role("button", name="Analyze All").click()
     await page.locator("text=SG SingBERT").first.wait_for(timeout=60_000)
     await page.locator("text=Allow").first.wait_for(timeout=60_000)
-    await page.locator("text=llm-guard package is not installed").wait_for(timeout=30_000)
     await assert_clean_page(page, "arena-results", run_dir)
+
+
+async def test_backend_arena_presence(page: Page, run_dir: Path, backend: str) -> None:
+    await click_nav(page, "Arena")
+    await page.locator('textarea[aria-label="Input"]').fill(BENIGN_TEXT)
+    await page.get_by_role("button", name="Analyze All").click()
+
+    sys.path.insert(0, str(ROOT / "demo"))
+    from guard import BACKEND_LABELS
+
+    await page.locator(f"text={BACKEND_LABELS[backend]}").first.wait_for(timeout=120_000)
+    await assert_clean_page(page, f"arena-{backend}", run_dir)
 
 
 async def test_challenge(page: Page, run_dir: Path) -> None:
@@ -218,8 +239,67 @@ async def run_validation(base_url: str, headed: bool, run_dir: Path) -> None:
         await browser.close()
 
 
+async def run_backend_ui_validation(
+    base_url: str,
+    headed: bool,
+    run_dir: Path,
+    backend: str,
+) -> None:
+    async with async_playwright() as p:
+        browser = await p.chromium.launch(headless=not headed)
+        context = await browser.new_context(viewport={"width": 1400, "height": 950})
+        page = await context.new_page()
+        page.on("pageerror", lambda exc: print(f"pageerror: {exc}", file=sys.stderr))
+
+        await page.goto(base_url, wait_until="networkidle", timeout=60_000)
+        await settle(page)
+        await test_page_navigation(page, run_dir)
+        await test_backend_arena_presence(page, run_dir, backend)
+
+        await browser.close()
+
+
+def run_direct_backend_check(backend: str, run_dir: Path) -> None:
+    sys.path.insert(0, str(ROOT / "demo"))
+    from guard import backend_status, run_guard
+
+    lines = [f"backend={backend}"]
+    ok, reason = backend_status(backend)
+    lines.append(f"status={ok} reason={reason}")
+
+    if not ok:
+        lines.append("result=unavailable")
+        (run_dir / f"backend-{backend}.txt").write_text("\n".join(lines) + "\n")
+        if backend == "llmguard":
+            print(f"SKIP: {backend} unavailable: {reason}")
+            return
+        raise AssertionError(f"{backend} unavailable: {reason}")
+
+    hate = run_guard(HATE_TEXT, backend=backend)
+    benign = run_guard(BENIGN_TEXT, backend=backend)
+    lines.append(f"hate={hate}")
+    lines.append(f"benign={benign}")
+    (run_dir / f"backend-{backend}.txt").write_text("\n".join(lines) + "\n")
+
+    if hate.get("error"):
+        raise AssertionError(f"{backend} hate check errored: {hate['error']}")
+    if benign.get("error"):
+        raise AssertionError(f"{backend} benign check errored: {benign['error']}")
+    if not isinstance(hate.get("score"), float) or not isinstance(benign.get("score"), float):
+        raise AssertionError(f"{backend} did not return numeric scores")
+    if backend in {"lionguard", "lionguard-2.1"} and not hate.get("fine_grained"):
+        raise AssertionError(f"{backend} did not return fine_grained scores")
+    if backend == "sea-guard" and not hate.get("verdict_label"):
+        raise AssertionError("sea-guard did not return a verdict_label")
+    if backend != "llmguard" and hate.get("passed") is not False:
+        raise AssertionError(f"{backend} did not block the hate sample")
+    if backend != "llmguard" and benign.get("passed") is not True:
+        raise AssertionError(f"{backend} did not allow the benign sample")
+
+
 async def async_main() -> int:
     args = parse_args()
+    load_env()
     OUT_DIR.mkdir(parents=True, exist_ok=True)
     run_dir = OUT_DIR / datetime.now().strftime("%Y%m%d-%H%M%S")
     run_dir.mkdir()
@@ -229,11 +309,16 @@ async def async_main() -> int:
     log_path: Path | None = None
 
     try:
-        if not args.base_url:
-            proc, log_path = start_server(args, run_dir)
-            wait_for_server(base_url, args.timeout)
+        run_direct_backend_check(args.backend, run_dir)
+        if not args.skip_ui:
+            if not args.base_url:
+                proc, log_path = start_server(args, run_dir)
+                wait_for_server(base_url, args.timeout)
 
-        await run_validation(base_url, args.headed, run_dir)
+            if args.backend == "sg":
+                await run_validation(base_url, args.headed, run_dir)
+            else:
+                await run_backend_ui_validation(base_url, args.headed, run_dir, args.backend)
     finally:
         if not args.keep_server:
             stop_server(proc)

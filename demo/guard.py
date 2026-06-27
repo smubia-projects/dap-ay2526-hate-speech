@@ -32,6 +32,7 @@ import streamlit as st
 
 DEFAULT_GUARD = os.environ.get("GUARD_MODEL", "sg")
 GUARD_MODEL = DEFAULT_GUARD  # legacy alias — existing imports still work
+API_TIMEOUT_SECONDS = float(os.environ.get("GUARD_API_TIMEOUT_SECONDS", "20"))
 
 KNOWN_BACKENDS = ("sg", "llmguard", "lionguard", "lionguard-2.1", "sea-guard")
 
@@ -42,6 +43,10 @@ BACKEND_LABELS = {
     "lionguard-2.1": "LionGuard 2.1",
     "sea-guard":     "SEA-Guard",
 }
+
+
+def _require_env(name: str, reason: str) -> tuple[bool, str]:
+    return (True, "") if os.environ.get(name) else (False, reason)
 
 
 def backend_status(backend: str) -> tuple[bool, str]:
@@ -56,14 +61,15 @@ def backend_status(backend: str) -> tuple[bool, str]:
             return False, "llm-guard package is not installed"
         return True, ""
     if backend == "lionguard":
-        return (bool(os.environ.get("OPENAI_API_KEY")),
-                "needs OPENAI_API_KEY for text-embedding-3-large")
+        return _require_env("OPENAI_API_KEY",
+                            "needs OPENAI_API_KEY for text-embedding-3-large")
     if backend == "lionguard-2.1":
-        return (bool(os.environ.get("GEMINI_KEY")),
-                "needs GEMINI_KEY for gemini-embedding-001")
+        return (True, "") if _gemini_key() else (
+            False,
+            "needs GEMINI_KEY or GEMINI_API_KEY for gemini-embedding-001",
+        )
     if backend == "sea-guard":
-        return (bool(os.environ.get("SEA_LION_API_KEY")),
-                "needs SEA_LION_API_KEY")
+        return _require_env("SEA_LION_API_KEY", "needs SEA_LION_API_KEY")
     return False, f"unknown backend {backend!r}"
 
 
@@ -86,10 +92,12 @@ def load_guard(backend: str):
 
     if backend == "lionguard":
         from transformers import AutoModel
+        _patch_lionguard_transformers_compat()
         return AutoModel.from_pretrained("govtech/lionguard-2", trust_remote_code=True)
 
     if backend == "lionguard-2.1":
         from transformers import AutoModel
+        _patch_lionguard_transformers_compat()
         return AutoModel.from_pretrained("govtech/lionguard-2.1", trust_remote_code=True)
 
     if backend == "sea-guard":
@@ -97,6 +105,7 @@ def load_guard(backend: str):
         return OpenAI(
             api_key=os.environ["SEA_LION_API_KEY"],
             base_url="https://api.sea-lion.ai/v1",
+            timeout=API_TIMEOUT_SECONDS,
         )
 
     raise ValueError(f"Unknown backend: {backend!r}. Use one of {KNOWN_BACKENDS}")
@@ -112,6 +121,17 @@ def _empty_result(backend: str, error: str, latency_ms: float = 0.0) -> dict:
         "backend":       backend,
         "error":         error,
     }
+
+
+def _gemini_key() -> Optional[str]:
+    return os.environ.get("GEMINI_KEY") or os.environ.get("GEMINI_API_KEY")
+
+
+def _patch_lionguard_transformers_compat() -> None:
+    from transformers import PreTrainedModel
+
+    if not hasattr(PreTrainedModel, "all_tied_weights_keys"):
+        PreTrainedModel.all_tied_weights_keys = {}
 
 
 def run_guard(
@@ -154,7 +174,7 @@ def run_guard(
         elif backend == "lionguard":
             from openai import OpenAI
             guard = load_guard("lionguard")
-            client = OpenAI()
+            client = OpenAI(timeout=API_TIMEOUT_SECONDS)
             emb = (
                 client.embeddings.create(input=text, model="text-embedding-3-large")
                 .data[0]
@@ -175,7 +195,7 @@ def run_guard(
             from google import genai
 
             guard = load_guard("lionguard-2.1")
-            client = genai.Client(api_key=os.environ["GEMINI_KEY"])
+            client = genai.Client(api_key=_gemini_key())
             response = client.models.embed_content(
                 model="gemini-embedding-001",
                 contents=[text],
@@ -194,7 +214,7 @@ def run_guard(
         elif backend == "sea-guard":
             client = load_guard("sea-guard")
             response = client.chat.completions.create(
-                model="aisingapore/SEA-Guard",
+                model=os.environ.get("SEA_GUARD_MODEL", "aisingapore/SEA-Guard"),
                 messages=[{"role": "user", "content": text}],
             )
             verdict = (response.choices[0].message.content or "").strip().upper()

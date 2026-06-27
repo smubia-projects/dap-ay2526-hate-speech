@@ -1,6 +1,6 @@
 # WIP — Demo Readiness
 
-Current status: **SG-only demo is ready.** The validated path is the local SingBERT guard (`GUARD_MODEL=sg`) through Chat, Arena, Challenge, Leaderboard, and Samples.
+Current status: **SG + API-backed comparison demo is ready.** The local SingBERT guard (`GUARD_MODEL=sg`) is validated through Chat, Arena, Challenge, Leaderboard, and Samples. LionGuard 2.0, LionGuard 2.1, and SEA-Guard also pass direct backend validation with the configured keys.
 
 Use:
 
@@ -18,6 +18,8 @@ Last known passing validation:
 
 ```text
 tmp/playwright-validation/20260628-010735/
+tmp/playwright-validation/20260628-024948/  # SG full UI regression with live OpenRouter config
+tmp/playwright-validation/20260628-025308/  # LionGuard direct + Arena UI validation
 ```
 
 ## Ready
@@ -29,33 +31,42 @@ tmp/playwright-validation/20260628-010735/
 - Leaderboard and Samples render.
 - Startup script writes logs under `tmp/streamlit-demo/`.
 - Playwright validator starts/stops Streamlit and saves artifacts under `tmp/playwright-validation/`.
+- LionGuard 2.0 validates with `OPENAI_API_KEY`.
+- LionGuard 2.1 validates with `GEMINI_KEY` / `GEMINI_API_KEY`.
+- SEA-Guard validates with `SEA_LION_API_KEY`.
 
-## Not Done Yet
+## Backend Status
 
-### Backend Validation
+### Optional / Blocked
 
 - `llmguard`
   - Add `llm-guard` to dependencies if we want this backend live.
+  - Current environment note: `uv add llm-guard==0.3.16` is unsatisfiable because `llm-guard` pins `transformers==4.51.3` while this repo requires `transformers>=5.1.0`.
+  - `uv add llm-guard` without a pin selects `llm-guard==0.3.15` and fails on Python 3.13 because `tiktoken==0.7.0` needs a Rust source build.
+  - Treat as optional unless we either isolate it in a separate environment or intentionally downgrade `transformers` and revalidate SG/LionGuard.
   - Validate one hate and one benign input.
   - Decide whether generic toxicity adds enough value for the demo.
 
+### Validated API Backends
+
 - `lionguard`
   - Requires `OPENAI_API_KEY`.
-  - Validate HF model load for `govtech/lionguard-2`.
-  - Validate OpenAI embedding call and normalized 11-category output.
-  - Measure first-call and warm-call latency.
+  - Validated HF model load for `govtech/lionguard-2`.
+  - Validated OpenAI embedding call and normalized 11-category output.
+  - Observed direct-check latency: first hate call ~4.9-8.3s including model/API warm-up; benign warm call ~0.7-0.8s.
 
 - `lionguard-2.1`
-  - Requires `GEMINI_KEY`.
-  - Validate HF model load for `govtech/lionguard-2.1`.
-  - Validate Gemini embedding shape matches `guard.predict(...)`.
-  - Measure first-call and warm-call latency on available quota.
+  - Requires `GEMINI_KEY` or `GEMINI_API_KEY`.
+  - Validated HF model load for `govtech/lionguard-2.1`.
+  - Validated Gemini embedding shape matches `guard.predict(...)`.
+  - Observed direct-check latency: first hate call ~9.1s including model/API warm-up; benign warm call ~0.5s.
 
 - `sea-guard`
   - Requires `SEA_LION_API_KEY`.
-  - Confirm whether key access is available.
-  - Validate SAFE / UNSAFE parsing.
-  - If key access is not available, decide whether to replace this with an OpenRouter-hosted SEA-LION judge fallback.
+  - `SEA_GUARD_MODEL` can override the default model name.
+  - Confirmed key access is available.
+  - Validated SAFE / UNSAFE parsing.
+  - Observed direct-check latency with `GUARD_API_TIMEOUT_SECONDS=8`: hate ~1.5s, benign ~6.7s.
 
 ### Demo Polish
 

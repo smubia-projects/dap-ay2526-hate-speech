@@ -15,7 +15,7 @@ The demo shows two guard flows:
 
 The validated demo path is powered by [`shareeep/singbert-hatexplain-and-syntheticsghate`](https://huggingface.co/shareeep/singbert-hatexplain-and-syntheticsghate) — a SingBERT model fine-tuned in two stages (HateXplain → SG synthetic data). SG hate recall = **1.00** on the held-out test set.
 
-Other guard backends are scaffolded for comparison in Arena / Challenge, but they still need dependency or API-key validation before they should be presented as working demo paths. See [`../WIP.md`](../WIP.md).
+LionGuard 2.0, LionGuard 2.1, and SEA-Guard are validated as API-backed comparison backends when their keys are configured. `llmguard` remains optional because its dependency stack conflicts with the current `transformers` version. See [`../WIP.md`](../WIP.md).
 
 ---
 
@@ -79,10 +79,10 @@ Manual equivalent:
 GUARD_MODEL=sg .venv/bin/streamlit run demo/app.py --server.fileWatcherType none
 ```
 
-Or with a different guard backend. These are scaffolded, but only SG has been fully validated locally:
+Or with a different guard backend:
 
 ```bash
-GUARD_MODEL=llmguard      scripts/run_demo.sh   # needs llm-guard installed
+GUARD_MODEL=llmguard      scripts/run_demo.sh   # currently optional; dependency conflict noted in WIP.md
 GUARD_MODEL=lionguard     scripts/run_demo.sh   # needs OPENAI_API_KEY
 GUARD_MODEL=lionguard-2.1 scripts/run_demo.sh   # needs GEMINI_KEY
 GUARD_MODEL=sea-guard     scripts/run_demo.sh   # needs SEA_LION_API_KEY
@@ -174,9 +174,9 @@ Useful variants:
 |---|---|---|---|
 | `sg` (default) | `shareeep/singbert-hatexplain-and-syntheticsghate` | none | validated |
 | `llmguard` | LLM Guard Toxicity scanner | add `llm-guard` dependency | scaffolded, currently unavailable |
-| `lionguard` (= 2.0) | [`govtech/lionguard-2`](https://huggingface.co/govtech/lionguard-2) + `text-embedding-3-large` | `OPENAI_API_KEY` | scaffolded, needs live test |
-| `lionguard-2.1` | [`govtech/lionguard-2.1`](https://huggingface.co/govtech/lionguard-2.1) + `gemini-embedding-001` | `GEMINI_KEY` | scaffolded, needs live test |
-| `sea-guard` | AISG SEA-Guard via `api.sea-lion.ai` | `SEA_LION_API_KEY` | scaffolded, key access unresolved |
+| `lionguard` (= 2.0) | [`govtech/lionguard-2`](https://huggingface.co/govtech/lionguard-2) + `text-embedding-3-large` | `OPENAI_API_KEY` | validated |
+| `lionguard-2.1` | [`govtech/lionguard-2.1`](https://huggingface.co/govtech/lionguard-2.1) + `gemini-embedding-001` | `GEMINI_KEY` / `GEMINI_API_KEY` | validated |
+| `sea-guard` | AISG SEA-Guard via `api.sea-lion.ai` | `SEA_LION_API_KEY` | validated |
 
 **LionGuard 2 vs 2.1 — pick the one whose key you already have.** They produce the same 11-category output schema; the only difference is the embedding backbone (OpenAI vs Gemini). Either is a fine reference comparison for the SG-finetuned model.
 
@@ -195,5 +195,6 @@ Adding a new backend is a two-branch change in `guard.py` — one in `load_guard
 | `HATE_THRESHOLD` | `0.6` | Default threshold (overridable via sidebar slider) |
 | `OPENROUTER_MODEL` | `google/gemini-3-flash-preview` | OpenRouter model name |
 | `OPENAI_API_KEY` | — | Only needed for `GUARD_MODEL=lionguard` |
-| `GEMINI_KEY` | — | Only needed for `GUARD_MODEL=lionguard-2.1` |
+| `GEMINI_KEY` / `GEMINI_API_KEY` | — | Only needed for `GUARD_MODEL=lionguard-2.1` |
 | `SEA_LION_API_KEY` | — | Only needed for `GUARD_MODEL=sea-guard` |
+| `SEA_GUARD_MODEL` | `aisingapore/SEA-Guard` | SEA-Guard API model name override |
