@@ -107,6 +107,6 @@ display = display.rename(columns={
 
 st.dataframe(
     display[["Text", "Label", "Term", "Target", "Demo bucket"]],
-    use_container_width=True,
+    width="stretch",
     hide_index=True,
 )

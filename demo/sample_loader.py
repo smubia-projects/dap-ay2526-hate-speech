@@ -57,4 +57,20 @@ def get_demo_samples(seed: Optional[int] = None) -> list:
         ],
     }
 
-    return [rng.choice(v) for v in buckets.values() if v]
+    selected = []
+    used_texts = set()
+    for bucket in buckets.values():
+        if not bucket:
+            continue
+        row = rng.choice(bucket)
+        selected.append(row)
+        used_texts.add(row.get("text"))
+
+    fallback_pool = [r for r in rows if r.get("text") not in used_texts]
+    while len(selected) < len(buckets) and fallback_pool:
+        idx = rng.randrange(len(fallback_pool))
+        row = fallback_pool.pop(idx)
+        selected.append(row)
+        used_texts.add(row.get("text"))
+
+    return selected
