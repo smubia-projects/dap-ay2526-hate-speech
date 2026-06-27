@@ -25,6 +25,9 @@ Best model: [`shareeep/singbert-hatexplain-and-syntheticsghate`](https://hugging
 │   ├── example.env · README.md
 │   └── pages/
 │       ├── chat.py                    · LIVE: chatboard with input/output/advisory guard modes
+│       ├── arena.py                   · LIVE: side-by-side backend comparison
+│       ├── challenge.py               · LIVE: 5-round moderation game
+│       ├── leaderboard.py             · LIVE: metrics + session results
 │       └── samples.py                 · LIVE: dataset browser
 │
 ├── data/
@@ -90,11 +93,11 @@ The synthetic Singlish corpus contains racial slurs targeting specific Singapore
 
 | `GUARD_MODEL` | Source | Status | Key needed |
 |---|---|---|---|
-| `sg` (default) | `shareeep/singbert-hatexplain-and-syntheticsghate` | live | none |
-| `llmguard` | `llm-guard` Toxicity scanner | live | none |
-| `lionguard` (= 2.0) | `govtech/lionguard-2` + `text-embedding-3-large` | live | `OPENAI_API_KEY` |
-| `lionguard-2.1` | `govtech/lionguard-2.1` + `gemini-embedding-001` | planned | `GEMINI_KEY` |
-| `sea-guard` | AISG SEA-Guard via `api.sea-lion.ai` | planned | `SEA_LION_API_KEY` |
+| `sg` (default) | `shareeep/singbert-hatexplain-and-syntheticsghate` | validated | none |
+| `llmguard` | `llm-guard` Toxicity scanner | optional / blocked | none, but dependency conflict |
+| `lionguard` (= 2.0) | `govtech/lionguard-2` + `text-embedding-3-large` | validated | `OPENAI_API_KEY` |
+| `lionguard-2.1` | `govtech/lionguard-2.1` + `gemini-embedding-001` | validated | `GEMINI_KEY` / `GEMINI_API_KEY` |
+| `sea-guard` | AISG SEA-Guard via `api.sea-lion.ai` | validated | `SEA_LION_API_KEY` |
 
 Both LionGuard versions are valid drop-ins — 2.0 if you have an OpenAI key, 2.1 if you have a Gemini key. Same output schema (11 categories), same `{score, passed}` after normalisation. Pick whichever key you already have.
 
@@ -102,4 +105,4 @@ Both LionGuard versions are valid drop-ins — 2.0 if you have an OpenAI key, 2.
 
 ## What's next
 
-The gamified demo extension (Arena / Challenge / Leaderboard pages, plus the LionGuard-2.1 and SEA-Guard backends) is designed in `tmp/gamification-research/DESIGN-DOC.md` and not yet built. See the design doc for build order. `tmp/` is gitignored — pull the research from the project owner if you need it.
+The gamified demo extension is now built on `reorg/core-demo-narrative`. See `HANDOVER.md` for the project narrative and current state, and `WIP.md` for remaining polish.
