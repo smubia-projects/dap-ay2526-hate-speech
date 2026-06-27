@@ -14,4 +14,9 @@ data/embeddings/
 __pycache__/
 *.pyc
 
-.DS_Store
+# Local agent / scratch
+.omc/
+tmp/
+
+# Raw training data — gated; demo loads local files, repo only ships docs
+data/singlish/**/*.jsonl

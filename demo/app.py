@@ -19,7 +19,10 @@ st.set_page_config(
 )
 
 pg = st.navigation([
-    st.Page("pages/chat.py",    title="Chat",    icon=":material/chat:"),
-    st.Page("pages/samples.py", title="Samples", icon=":material/table:"),
+    st.Page("pages/chat.py",        title="Chat",        icon=":material/chat:"),
+    st.Page("pages/arena.py",       title="Arena",       icon=":material/compare_arrows:"),
+    st.Page("pages/challenge.py",   title="Challenge",   icon=":material/sports_esports:"),
+    st.Page("pages/leaderboard.py", title="Leaderboard", icon=":material/leaderboard:"),
+    st.Page("pages/samples.py",     title="Samples",     icon=":material/table:"),
 ])
 pg.run()

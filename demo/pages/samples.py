@@ -16,18 +16,18 @@ if str(_DEMO) not in sys.path:
 
 from sample_loader import (
     BORDERLINE_TERMS,
+    DATA_PATH,
     FALSE_POS_TERMS,
     SINGLISH_SPECIFIC,
-    TEST_PATH,
 )
 
-st.title("Test Set — Sample Browser")
-st.caption(f"Source: `{TEST_PATH.relative_to(_DEMO.parent)}`")
+st.title("Dataset — Sample Browser")
+st.caption(f"Source: `{DATA_PATH.relative_to(_DEMO.parent)}` — 533 consolidated rows")
 
 # ── load ───────────────────────────────────────────────────────────────────────
 @st.cache_data
 def load_df() -> pd.DataFrame:
-    rows = [json.loads(l) for l in TEST_PATH.read_text().splitlines() if l.strip()]
+    rows = [json.loads(l) for l in DATA_PATH.read_text().splitlines() if l.strip()]
     df = pd.DataFrame(rows)
 
     # tag demo bucket
@@ -107,6 +107,6 @@ display = display.rename(columns={
 
 st.dataframe(
     display[["Text", "Label", "Term", "Target", "Demo bucket"]],
-    use_container_width=True,
+    width="stretch",
     hide_index=True,
 )
