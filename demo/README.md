@@ -2,7 +2,6 @@
 
 A Streamlit chatboard that demonstrates a Singapore-specific hate speech guardrail deployed as an input and output filter around a live LLM.
 
-![Layout](https://via.placeholder.com/800x400?text=Chat+panel+%7C+Guard+Trace+panel)
 
 ---
 
@@ -24,8 +23,8 @@ LionGuard 2.0, LionGuard 2.1, and SEA-Guard are validated as API-backed comparis
 **1. Clone and install dependencies**
 
 ```bash
-git clone https://github.com/shareeep/11th-DAP-hate-speech
-cd 11th-DAP-hate-speech
+git clone https://github.com/smubia-projects/dap-ay2526-hate-speech
+cd dap-ay2526-hate-speech
 
 # Create venv and install all dependencies
 uv venv

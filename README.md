@@ -1,4 +1,4 @@
-# 11th-DAP-hate-speech
+# dap-ay2526-hate-speech
 
 Singapore-specific hate speech detection for the 11th DAP Project under SMUBIA. Two arcs:
 
@@ -7,28 +7,56 @@ Singapore-specific hate speech detection for the 11th DAP Project under SMUBIA. 
 
 Best model: [`shareeep/singbert-hatexplain-and-syntheticsghate`](https://huggingface.co/shareeep/singbert-hatexplain-and-syntheticsghate) — SingBERT fine-tuned two-stage (HateXplain → SG synthetic). SG hate recall = **1.00**, macro F1 = **0.91** on the held-out test set.
 
+## Web deployment
+
+The deployment-ready web demo uses the standard DAP Pattern A architecture:
+
+- `backend/` — stateless FastAPI inference API for a Docker Hugging Face Space
+- `frontend/` — React/Vite **Beat the Guard!** for Vercel
+- model weights — two public models downloaded from HF Hub at Space startup
+
+**Beat the Guard!** is a side-by-side comparison: the SG-tuned SingBERT guard
+against a generic English toxicity model. It shows the generic model both
+*missing* local-slur hate and *over-blocking* harmless Singlish, while ours gets
+both right. The deployed experience uses only these two local classifiers — no
+OpenRouter, OpenAI, Gemini, or other LLM API keys. See
+[`docs/BEAT-THE-GUARD.md`](docs/BEAT-THE-GUARD.md) for the design and verified
+model behaviour, and [`DEPLOYMENT.md`](DEPLOYMENT.md) for setup + verification.
+
 ---
 
 ## Repo tree
 
 ```
-11th-DAP-hate-speech/
+dap-ay2526-hate-speech/
 ├── README.md
 ├── CLAUDE.md
 ├── pyproject.toml · uv.lock · .python-version · .gitignore
 │
-├── demo/                              ← the product
+├── backend/                           ← deployed API (HF Space, Docker SDK)
+│   ├── app.py                         · FastAPI, POST /api/predict (two guards)
+│   ├── model_service.py               · CPU-only dual-classifier loader + inference
+│   ├── rate_limit.py                  · adapter for the shared BIA rate-limit engine
+│   ├── Dockerfile · requirements_space.txt · README.md
+│
+├── frontend/                          ← deployed web app (Vercel, Vite + React)
+│   ├── src/App.jsx                    · Beat the Guard!: one-page demo + about
+│   ├── src/data/probes.js             · the six "try these" seeds
+│   ├── src/components/CtaModal.jsx    · DAP engagement CTA modal
+│   └── src/utils/api.js               · backend client
+│
+├── demo/                              ← local research demo (Streamlit, multi-backend)
 │   ├── app.py                         · Streamlit entry, page registration
 │   ├── guard.py                       · swappable guard backend dispatcher
 │   ├── singlish_validator.py          · SinglishHateSpeech wrapper
 │   ├── sample_loader.py               · 5 demo-moment buckets from consolidated set
 │   ├── example.env · README.md
 │   └── pages/
-│       ├── chat.py                    · LIVE: chatboard with input/output/advisory guard modes
-│       ├── arena.py                   · LIVE: side-by-side backend comparison
-│       ├── challenge.py               · LIVE: 5-round moderation game
-│       ├── leaderboard.py             · LIVE: metrics + session results
-│       └── samples.py                 · LIVE: dataset browser
+│       ├── chat.py                    · chatboard with input/output/advisory guard modes
+│       ├── arena.py                   · side-by-side backend comparison
+│       ├── challenge.py               · 5-round moderation game
+│       ├── leaderboard.py             · metrics + session results
+│       └── samples.py                 · dataset browser
 │
 ├── data/
 │   └── README.md                      · schema, the 20 source terms, sample rows
@@ -103,6 +131,24 @@ Both LionGuard versions are valid drop-ins — 2.0 if you have an OpenAI key, 2.
 
 ---
 
-## What's next
+## Naming
 
-The gamified demo extension is now built on `reorg/core-demo-narrative`. See `HANDOVER.md` for the project narrative and current state, and `WIP.md` for remaining polish.
+The full folder name `dap-ay2526-hate-speech` is the canonical identifier and is
+used unabbreviated for the HF Space, the Vercel project, and the rate-limit
+engine slug. **Beat the Guard!** is the public product name for the web demo
+only; it is never used as an infrastructure identifier.
+
+---
+
+## Status
+
+| Piece | State |
+|---|---|
+| SingBERT model on HF Hub | published |
+| `backend/` inference API | built, ready to push to the Space |
+| `frontend/` Beat the Guard! | built (one-page kopitiam face-off + about), ready for Vercel |
+| `demo/` Streamlit research app | complete, local only — needs API keys and the gated corpus |
+
+Work in progress lives on `jayhan/changes-for-deployment`. See `DEPLOYMENT.md`
+for the deploy runbook, `HANDOVER.md` for the project narrative, and `WIP.md`
+for remaining polish on the Streamlit demo.

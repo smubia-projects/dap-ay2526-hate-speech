@@ -1,7 +1,7 @@
 [project]
-name = "11th-dap-hate-speech"
+name = "dap-ay2526-hate-speech"
 version = "0.1.0"
-description = "Add your description here"
+description = "Singapore-specific hate speech guardrail — SingBERT classifier, research notebooks, and the Beat the Guard web demo"
 readme = "README.md"
 requires-python = ">=3.11"
 dependencies = [

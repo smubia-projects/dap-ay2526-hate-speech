@@ -1,0 +1,8 @@
+fastapi>=0.115.0,<1.0
+huggingface-hub>=0.27.0,<2.0
+pydantic>=2.9.0,<3.0
+safetensors>=0.4.5,<1.0
+torch>=2.0.0
+transformers>=4.44.0,<6.0
+upstash-redis>=1.4.0,<2.0
+uvicorn[standard]>=0.30.0,<1.0

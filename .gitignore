@@ -18,5 +18,13 @@ __pycache__/
 .omc/
 tmp/
 
+# Deployment build artifacts
+backend/__pycache__/
+backend/.pytest_cache/
+frontend/node_modules/
+frontend/dist/
+frontend/.npm-cache/
+frontend/vite-qa.*.log
+
 # Raw training data — gated; demo loads local files, repo only ships docs
 data/singlish/**/*.jsonl
