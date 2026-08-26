@@ -1,4 +1,8 @@
-"""Stateless FastAPI backend for the Guardrail Gauntlet web demo."""
+"""Stateless FastAPI backend for the Beat the Guard web demo.
+
+Scores one message with two guards (SG-Tuned SingBERT + a standard toxicity foil)
+and returns both, so the frontend can show them side by side.
+"""
 
 from __future__ import annotations
 
@@ -11,11 +15,11 @@ from fastapi import FastAPI, HTTPException, Request
 from fastapi.middleware.cors import CORSMiddleware
 from pydantic import BaseModel, Field
 
-from model_service import ModelService
+from model_service import GuardService
 from rate_limit import check_rate_limit
 
 logging.basicConfig(level=os.getenv("LOG_LEVEL", "INFO"))
-model_service = ModelService()
+guard_service = GuardService()
 
 
 def allowed_origins() -> list[str]:
@@ -25,11 +29,11 @@ def allowed_origins() -> list[str]:
 
 @asynccontextmanager
 async def lifespan(_: FastAPI):
-    model_service.load()
+    guard_service.load()
     yield
 
 
-app = FastAPI(title="Singlish Hate Speech Guard API", version="1.0.0", lifespan=lifespan)
+app = FastAPI(title="Beat the Guard API", version="2.0.0", lifespan=lifespan)
 origins = allowed_origins()
 app.add_middleware(
     CORSMiddleware,
@@ -45,35 +49,43 @@ class PredictRequest(BaseModel):
     threshold: float = Field(default=0.6, ge=0.2, le=0.95)
 
 
-class PredictResponse(BaseModel):
-    hate_probability: float
+class GuardResult(BaseModel):
+    key: str
+    name: str
+    metric: str
+    probability: float
     verdict: Literal["allow", "review", "block"]
-    threshold: float
     latency_ms: float
     model_repo_id: str
+
+
+class PredictResponse(BaseModel):
+    text: str
+    threshold: float
+    guards: list[GuardResult]
 
 
 @app.get("/")
 def health() -> dict[str, object]:
     return {
         "status": "ok",
-        "model_loaded": model_service.loaded,
-        "model_repo_id": model_service.repo_id,
+        "model_loaded": guard_service.loaded,
+        "guards": guard_service.status(),
     }
 
 
 @app.post("/api/predict", response_model=PredictResponse)
 def predict(payload: PredictRequest, request: Request) -> dict[str, object]:
     check_rate_limit(request, "predict")
-    if not model_service.loaded:
+    if not guard_service.loaded:
         raise HTTPException(
             status_code=503,
-            detail={"message": "The classifier is still warming up. Please try again."},
+            detail={"message": "The guards are still warming up. Please try again."},
         )
     try:
-        return model_service.predict(payload.text.strip(), payload.threshold)
+        return guard_service.predict(payload.text.strip(), payload.threshold)
     except RuntimeError as exc:
         raise HTTPException(
             status_code=503,
-            detail={"message": "The classifier is unavailable. Please try again soon."},
+            detail={"message": "The guards are unavailable. Please try again soon."},
         ) from exc
