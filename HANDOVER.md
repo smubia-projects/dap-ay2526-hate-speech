@@ -84,11 +84,14 @@ tmp/playwright-validation/20260628-025308/  # LionGuard direct + Arena UI valida
 Branch:
 
 ```text
-reorg/core-demo-narrative
+jayhan/changes-for-deployment
 ```
 
 Key files:
 
+- `backend/app.py`: FastAPI inference API for the HF Space.
+- `frontend/src/App.jsx`: Beat the Guard! web app for Vercel.
+- `DEPLOYMENT.md`: Space + Vercel runbook and verification checklist.
 - `demo/app.py`: Streamlit entrypoint and page registration.
 - `demo/guard.py`: swappable backend dispatcher.
 - `demo/pages/`: Chat, Arena, Challenge, Leaderboard, Samples.
@@ -190,4 +193,6 @@ See `WIP.md` for the active checklist. Main remaining items:
 - Add persistent Arena feedback/vote logging.
 - Add live latency aggregation to Leaderboard.
 - Prepare a short presenter script for the final demo flow.
-- Update root `README.md` repo tree/status if this branch is merged.
+- Push `backend/` to the Space and `frontend/` to Vercel per `DEPLOYMENT.md`.
+- Transfer/rename the GitHub remote to `smubia-projects/dap-ay2526-hate-speech`
+  so it matches the canonical project identifier.
