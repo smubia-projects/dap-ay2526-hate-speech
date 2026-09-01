@@ -73,6 +73,30 @@ function TrafficLight({ verdict, loading }) {
 
 const VERDICT_WORD = { allow: 'let through', review: 'send to human', block: 'blocked' }
 
+// The three corpus labels, in the order that makes the distinction land: the hate row
+// first, then the two that look similar to a keyword filter but must be let through.
+// Examples are real rows from the training corpus (see data/README.md).
+const LABELS = [
+  {
+    key: 'hate',
+    verdict: 'block',
+    definition: 'Attacks, dehumanises, or calls for the exclusion of a group defined by race, religion, ethnicity or gender identity.',
+    example: 'Malay Singaporeans are all siao lang and should be locked up because they are a danger to society.',
+  },
+  {
+    key: 'offensive',
+    verdict: 'allow',
+    definition: 'Vulgar, insulting or abusive — but aimed at one person or a situation. No protected group is targeted.',
+    example: 'That CB kia cut my lane without signaling then still want to stare at me, really no manners at all.',
+  },
+  {
+    key: 'normal',
+    verdict: 'allow',
+    definition: 'Carries a loaded term, but quotes it, names it, or describes it rather than using it against anyone.',
+    example: 'Apu neh neh is a slur that we should never use, really insensitive one.',
+  },
+]
+
 function GuardCorner({ label, sublabel, guard, awaiting, loading, highlight }) {
   const verdict = guard?.verdict
   const state = awaiting ? 'idle' : guard ? verdict : 'offline'
@@ -210,10 +234,24 @@ function About() {
         <article><span>02</span><h2>Not an LLM</h2><p>Both verdicts come from compact classifiers running on free CPU — no prompt, no generation, no paid API call. Fast enough to sit in front of a real chat app.</p></article>
         <article><span>03</span><h2>You're the red team</h2><p>Get hate past the generic model and you've shown why it isn't enough. Get it past ours and you've found a blind spot worth fixing — which is exactly the work DAP does.</p></article>
       </section>
+      <section className="taxonomy">
+        <h2>Hate is not the same as rude</h2>
+        <p className="taxonomy-lead">The guard blocks hate, not vulgarity. Singlish is blunt by nature, so a filter that treats every crude message as dangerous is useless — it punishes ordinary people having ordinary conversations. What decides the verdict is <em>who the words are aimed at</em>, not how rude they sound.</p>
+        {LABELS.map((l) => (
+          <article key={l.key} className={`taxonomy-row ${l.verdict}`}>
+            <div className="taxonomy-label"><b>{l.key}</b><span className={l.verdict}>{l.verdict}</span></div>
+            <div className="taxonomy-body">
+              <p className="taxonomy-def">{l.definition}</p>
+              <blockquote>“{l.example}”</blockquote>
+            </div>
+          </article>
+        ))}
+        <p className="taxonomy-foot">All three carry Singlish vulgarity. Only the first targets a group. Terms like <i>ah kua</i>, <i>rabak</i> and <i>siao lang</i> show up under all three labels in our training data — so the word never decides the verdict, the context does. That is the hard half of the problem, and the half a keyword filter cannot touch.</p>
+      </section>
       <div className="research-note">
         <div><b>Held-out SG hate recall</b><strong>1.00</strong></div>
         <div><b>Macro F1</b><strong>0.91</strong></div>
-        <p>The SG-tuned guard is <code>shareeep/singbert-hatexplain-and-syntheticsghate</code>; the foil is <code>s-nlp/roberta_toxicity_classifier</code>. Research metrics describe a test set, not a guarantee — real moderation still needs policy, context, and appeal.</p>
+        <p>The SG-tuned guard is <code>smubiainfrastructure/dap-ay2526-hate-speech-model</code>; the foil is <code>s-nlp/roberta_toxicity_classifier</code>. Research metrics describe a test set, not a guarantee — real moderation still needs policy, context, and appeal.</p>
       </div>
       <div className="recruit">
         <b>Built by the SMU BIA Data Associate Programme.</b>

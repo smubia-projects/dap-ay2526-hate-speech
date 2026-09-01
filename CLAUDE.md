@@ -20,7 +20,7 @@ The demo loads `demo/.env` first, then falls back to the root `.env`. Both are g
 | `OPENROUTER_API_KEY` | Auths the LLM chat in `demo/pages/chat.py` (used via the `openai` Python client against `openrouter.ai`) | always, for live chat |
 | `OPENROUTER_MODEL` | Which LLM to call (default `google/gemini-3-flash-preview`) | optional |
 | `GUARD_MODEL` | Which guard backend to dispatch — `sg` / `llmguard` / `lionguard` / `lionguard-2.1` / `sea-guard` | optional, default `sg` |
-| `SG_MODEL_ID` | HF model for the SG guard (default `shareeep/singbert-hatexplain-and-syntheticsghate`) | optional |
+| `SG_MODEL_ID` | HF model for the SG guard (default `smubiainfrastructure/dap-ay2526-hate-speech-model`) | optional |
 | `HATE_LABEL` | Label name for hate class (default `hate`); cross-check `model.config.id2label` if predictions look off | optional |
 | `HATE_THRESHOLD` | Default block threshold (default `0.6`) | optional |
 | `OPENAI_API_KEY` | LionGuard 2.0 embeddings (`text-embedding-3-large`) | only if `GUARD_MODEL=lionguard` |
@@ -91,7 +91,7 @@ The chat page uses the `openai` Python client pointed at OpenRouter (`base_url="
 
 ### Key models
 
-- **Guard (primary)**: `shareeep/singbert-hatexplain-and-syntheticsghate` — pulled from HF on first run, cached in `~/.cache/huggingface/`.
+- **Guard (primary)**: `smubiainfrastructure/dap-ay2526-hate-speech-model` — pulled from HF on first run, cached in `~/.cache/huggingface/`.
 - **LLM**: whatever `OPENROUTER_MODEL` points at; default `google/gemini-3-flash-preview`.
 
 ### Results tracking
