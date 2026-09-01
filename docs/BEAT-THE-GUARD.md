@@ -76,7 +76,7 @@ POST /api/predict
   "guards": [
     { "key": "sg",      "name": "SG-Tuned Guard", "metric": "hate",
       "probability": 0.94, "verdict": "block", "latency_ms": 120.0,
-      "model_repo_id": "shareeep/singbert-hatexplain-and-syntheticsghate" },
+      "model_repo_id": "smubiainfrastructure/dap-ay2526-hate-speech-model" },
     { "key": "regular", "name": "Standard Guard", "metric": "toxicity",
       "probability": 0.08, "verdict": "allow", "latency_ms": 90.0,
       "model_repo_id": "s-nlp/roberta_toxicity_classifier" }
@@ -104,7 +104,7 @@ cold-start ping keep working.
 
 | Variable | Default | Purpose |
 |---|---|---|
-| `MODEL_REPO_ID` | `shareeep/singbert-hatexplain-and-syntheticsghate` | SG-Tuned guard repo |
+| `MODEL_REPO_ID` | `smubiainfrastructure/dap-ay2526-hate-speech-model` | SG-Tuned guard repo |
 | `REGULAR_MODEL_REPO_ID` | `s-nlp/roberta_toxicity_classifier` | Standard foil repo |
 | `ALLOWED_ORIGINS` | `*` | CORS origins (set to the Vercel URL in prod) |
 | `RATE_LIMIT_PREDICT_MAX` | `30` | Anti-spam: predictions per IP per window |

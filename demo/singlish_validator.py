@@ -39,7 +39,7 @@ class SinglishHateSpeech:
 
     DEFAULT_MODEL = os.environ.get(
         "SG_MODEL_ID",
-        "shareeep/singbert-hatexplain-and-syntheticsghate",
+        "smubiainfrastructure/dap-ay2526-hate-speech-model",
     )
 
     def __init__(

@@ -24,7 +24,7 @@ from transformers import AutoModelForSequenceClassification, AutoTokenizer
 
 LOGGER = logging.getLogger(__name__)
 
-DEFAULT_SG_REPO_ID = "shareeep/singbert-hatexplain-and-syntheticsghate"
+DEFAULT_SG_REPO_ID = "smubiainfrastructure/dap-ay2526-hate-speech-model"
 DEFAULT_REGULAR_REPO_ID = "s-nlp/roberta_toxicity_classifier"
 MAX_TOKENS = 256
 

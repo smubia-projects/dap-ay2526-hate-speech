@@ -4,7 +4,7 @@
 
 | Layer | Target | Directory |
 |---|---|---|
-| Model | Hugging Face Hub | `shareeep/singbert-hatexplain-and-syntheticsghate` |
+| Model | Hugging Face Hub | `smubiainfrastructure/dap-ay2526-hate-speech-model` |
 | API | Hugging Face Spaces, Docker SDK | `backend/` |
 | Web app | Vercel, Vite preset | `frontend/` |
 
@@ -13,6 +13,10 @@ The canonical identifier for this project is its full folder name,
 Vercel project name, and the rate-limit engine slug. `Beat the Guard!` is the
 public-facing product name only — it never appears as an infrastructure
 identifier.
+
+The guard model is a club-owned mirror of the fine-tune published at
+`shareeep/singbert-hatexplain-and-syntheticsghate`. The mirror is what the Space
+loads, so the demo does not depend on a personal account remaining public.
 
 The API is stateless. Every request contains the complete message and policy
 threshold; the only server-side state is the read-only model loaded at startup.
@@ -40,6 +44,11 @@ npm run dev
 
 ## Hugging Face Space
 
+**Prerequisite:** Hugging Face requires a PRO subscription on the owning account to
+host a Docker Space on free `cpu-basic`. Creating one without it fails with
+`402 Payment Required`. Spaces created before this policy took effect keep running,
+so the account's older Spaces are not evidence that a new one can be created.
+
 Create a public Space at `smubiainfrastructure/dap-ay2526-hate-speech` with the **Docker** SDK.
 Push the contents of `backend/` to the Space repository root.
 
@@ -47,7 +56,7 @@ Set these Space variables:
 
 | Variable | Value |
 |---|---|
-| `MODEL_REPO_ID` | `shareeep/singbert-hatexplain-and-syntheticsghate` |
+| `MODEL_REPO_ID` | `smubiainfrastructure/dap-ay2526-hate-speech-model` |
 | `ALLOWED_ORIGINS` | `*` initially; replace after Vercel deployment |
 | `RATE_LIMIT_PREDICT_MAX` | `30` |
 | `RATE_LIMIT_WINDOW_SECONDS` | `60` |
