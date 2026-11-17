@@ -188,6 +188,37 @@ main { min-height: calc(100vh - 148px); }
 .about-grid span { font: 500 10px 'DM Mono'; color: var(--kopi); }
 .about-grid h2 { font-family: 'Fraunces', serif; font-weight: 600; font-size: 21px; margin-top: 22px; }
 .about-grid p { color: #6d5f4d; font-size: 13px; line-height: 1.75; }
+/* ---------- About: label taxonomy ---------- */
+.taxonomy { margin-top: 48px; }
+.taxonomy h2 { font-family: 'Fraunces', serif; font-weight: 600; font-size: clamp(24px, 3vw, 32px); letter-spacing: -.01em; margin: 0; }
+.taxonomy-lead { color: #6d5f4d; max-width: 720px; line-height: 1.75; font-size: 15px; margin: 14px 0 26px; }
+.taxonomy-lead em { color: var(--kopi); font-style: italic; }
+.taxonomy-row {
+  display: grid;
+  grid-template-columns: 150px 1fr;
+  gap: 24px;
+  align-items: start;
+  padding: 22px 24px;
+  background: var(--card);
+  border: 1px solid var(--line);
+  border-left: 3px solid var(--line);
+  border-radius: 12px;
+}
+.taxonomy-row + .taxonomy-row { margin-top: 10px; }
+.taxonomy-row.block { border-left-color: var(--red); }
+.taxonomy-row.allow { border-left-color: var(--green); }
+.taxonomy-label b { display: block; font-family: 'Fraunces', serif; font-weight: 600; font-size: 20px; }
+.taxonomy-label span { display: inline-block; margin-top: 8px; padding: 3px 10px; border-radius: 20px; font: 500 9px 'DM Mono'; letter-spacing: .08em; text-transform: uppercase; }
+.taxonomy-label span.block { background: rgba(207, 70, 54, .12); color: var(--red); }
+.taxonomy-label span.allow { background: rgba(63, 157, 90, .12); color: var(--green); }
+.taxonomy-def { margin: 0; color: #6d5f4d; font-size: 13px; line-height: 1.7; }
+.taxonomy-body blockquote { margin: 12px 0 0; padding-left: 14px; border-left: 2px solid var(--line); font-family: 'Fraunces', serif; font-style: italic; font-size: 14px; line-height: 1.6; color: var(--ink); }
+.taxonomy-foot { color: #6d5f4d; font-size: 13px; line-height: 1.75; max-width: 780px; margin: 20px 0 0; }
+.taxonomy-foot i { color: var(--kopi-2); font-style: italic; }
+@media (max-width: 720px) {
+  .taxonomy-row { grid-template-columns: 1fr; gap: 12px; }
+}
+
 .research-note { display: grid; grid-template-columns: 180px 180px 1fr; align-items: center; margin-top: 32px; padding: 25px 30px; background: var(--card); border: 1px solid var(--line); border-radius: 14px; box-shadow: 0 12px 30px rgba(74, 52, 30, .06); }
 .research-note b, .research-note strong { display: block; }
 .research-note b { color: #8a7a66; font-size: 10px; }

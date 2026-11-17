@@ -1,6 +1,6 @@
 # Singlish Hate Speech Dataset — Overview
 
-This directory describes the dataset used to train the SG-finetuned SingBERT model (`shareeep/singbert-hatexplain-and-syntheticsghate`). **The raw JSONL files are intentionally not part of the public repo** — they exist locally for the demo and the training notebooks in `notebooks/narrative_finals/`, but are gitignored.
+This directory describes the dataset used to train the SG-finetuned SingBERT model (`smubiainfrastructure/dap-ay2526-hate-speech-model`). **The raw JSONL files are intentionally not part of the public repo** — they exist locally for the demo and the training notebooks in `notebooks/narrative_finals/`, but are gitignored.
 
 If you need the data, ask the project owner.
 
@@ -125,6 +125,6 @@ The cleanup, regeneration, and judge-validation notebooks are archived at `archi
 
 ## Why the data is not in the public repo
 
-Singlish hate-speech examples include racial slurs targeting specific Singaporean communities. Even though the data is **synthetic**, broad distribution risks normalising or recirculating the language. The model checkpoint on HuggingFace (`shareeep/singbert-hatexplain-and-syntheticsghate`) is the artifact meant for sharing — the training data stays gated.
+Singlish hate-speech examples include racial slurs targeting specific Singaporean communities. Even though the data is **synthetic**, broad distribution risks normalising or recirculating the language. The model checkpoint on HuggingFace (`smubiainfrastructure/dap-ay2526-hate-speech-model`) is the artifact meant for sharing — the training data stays gated.
 
 The `.gitignore` excludes `data/singlish/**/*.jsonl`. Cloning the repo gives you the model + the documentation, not the corpus.

@@ -1,4 +1,29 @@
-"""Centralised rate-limit engine for FastAPI showcase projects."""
+"""Centralised rate-limit engine — FastAPI.
+
+Copy this file into the project alongside your app entry point (e.g.
+``rate_limit_engine.py``), then add a small adapter that supplies the project
+slug and its buckets:
+
+    from rate_limit_engine import RateLimiter
+
+    limiter = RateLimiter(
+        project="my-project",
+        buckets={"gen": 5, "img": 2},
+        redis_url=settings.upstash_redis_url,
+        redis_token=settings.upstash_redis_token,
+        default_window=settings.rate_limit_window_seconds,
+    )
+
+    def check_rate_limit(request, bucket):
+        limiter.enforce(request, bucket)
+
+Call ``check_rate_limit(request, "gen")`` at the top of each AI route.
+
+Limits and switches are read from the shared Upstash Redis DB at request time,
+cached for ``cache_ttl`` seconds, with the ``buckets`` values as the fallback.
+See the central rate-limit config documentation for the key schema and the
+Google-Sheet control plane.
+"""
 
 from __future__ import annotations
 
@@ -9,15 +34,16 @@ ENGINE_VERSION = "1.3.0"
 
 
 class RateLimitStatus(NamedTuple):
-    status: str
-    max: Optional[int]
+    status: str  # "ok" | "limited" | "killed"
+    max: Optional[int]  # active max when "limited", else None
 
 
 def client_ip(request) -> str:
-    """Return the real client IP when running behind HF Spaces' proxy."""
+    """Real client IP, honouring X-Forwarded-For (Cloud Run / HF / proxies sit in
+    front of the app, so request.client.host is the proxy, not the user)."""
     xff = request.headers.get("x-forwarded-for")
     if xff:
-        return xff.split(",")[0].strip()
+        return xff.split(",")[0].strip()  # leftmost entry is the original client
     return request.client.host if request.client else "unknown"
 
 
@@ -33,7 +59,7 @@ class RateLimiter:
         cache_ttl: int = 90,
     ) -> None:
         self.project = project
-        self.buckets = dict(buckets)
+        self.buckets = dict(buckets)  # action name -> fallback default (from env)
         self._redis_url = redis_url
         self._redis_token = redis_token
         self.default_window = default_window
@@ -50,17 +76,20 @@ class RateLimiter:
     def _get_redis(self):
         if self._redis is None:
             if not self._redis_url or not self._redis_token:
-                return None
+                return None  # limiting disabled (e.g. local dev)
             from upstash_redis import Redis
 
             self._redis = Redis(url=self._redis_url, token=self._redis_token)
         return self._redis
 
     def _refresh(self, redis) -> None:
+        """Refresh cached switches/limits at most once per cache_ttl. Fail open."""
         now = time.time()
         if now - self._cache["t"] < self.cache_ttl:
             return
         try:
+            # One MGET covers globals + both modes, so we never need a second
+            # round trip to resolve the active mode (MGET counts as one command).
             keys = [
                 "config:kill_all",
                 "config:event_mode",
@@ -68,12 +97,11 @@ class RateLimiter:
                 f"config:{self.project}:mode_override",
                 f"config:{self.project}:enabled",
             ]
-            for mode in ("default", "demo"):
-                keys.append(f"config:{self.project}:{mode}:window")
-                keys.extend(
-                    f"config:{self.project}:{mode}:{bucket}" for bucket in self.buckets
-                )
+            for m in ("default", "demo"):
+                keys.append(f"config:{self.project}:{m}:window")
+                keys.extend(f"config:{self.project}:{m}:{b}" for b in self.buckets)
             data = dict(zip(keys, redis.mget(*keys)))
+
             killed = (
                 str(data["config:kill_all"]) == "1"
                 or str(data[f"config:{self.project}:enabled"]) == "0"
@@ -86,28 +114,30 @@ class RateLimiter:
             if mode not in ("default", "demo"):
                 mode = "default"
             salt = data["config:ratelimit_salt"] or ""
-            window_value = data[f"config:{self.project}:{mode}:window"]
-            window = int(window_value) if window_value is not None else self.default_window
+            w = data[f"config:{self.project}:{mode}:window"]
+            window = int(w) if w is not None else self.default_window
             limits = {}
             for bucket, env_default in self.buckets.items():
-                value = data[f"config:{self.project}:{mode}:{bucket}"]
-                limits[bucket] = int(value) if value is not None else env_default
+                v = data[f"config:{self.project}:{mode}:{bucket}"]
+                limits[bucket] = int(v) if v is not None else env_default
             self._cache.update(
-                t=now,
-                salt=salt,
-                killed=killed,
-                limits=limits,
-                window=window,
+                t=now, salt=salt, killed=killed, limits=limits, window=window
             )
         except Exception:
+            # Config unreachable -> keep caller defaults, stay live, never block.
             self._cache.update(
-                t=now,
-                killed=False,
-                limits=dict(self.buckets),
+                t=now, killed=False, limits=dict(self.buckets),
                 window=self.default_window,
             )
 
     def status(self, ip: str, bucket: str) -> RateLimitStatus:
+        """Check/count a hit and return the result as a ``RateLimitStatus``.
+
+        Returns ``RateLimitStatus("ok", None)``, ``("limited", active_max)``,
+        or ``("killed", None)``.  Counts the hit only when not killed and a
+        positive limit applies.  Framework-agnostic — call directly when you
+        don't want ``enforce()`` (e.g. Telegram bots, CLI tools).
+        """
         redis = self._get_redis()
         if redis is None:
             return RateLimitStatus("ok", None)
@@ -126,11 +156,14 @@ class RateLimiter:
                 redis.expire(key, self._cache["window"])
         except Exception:
             return RateLimitStatus("ok", None)
-        if count > max_requests:
-            return RateLimitStatus("limited", max_requests)
-        return RateLimitStatus("ok", None)
+        return RateLimitStatus("limited", max_requests) if count > max_requests else RateLimitStatus("ok", None)
 
     def enforce(self, request, bucket: str) -> None:
+        """Raise HTTP 503 if the demo is paused, or 429 if over the limit.
+
+        The 429 body carries the active max as `queries_used` so the shared
+        rate-limit CTA modal shows the right number.
+        """
         state, value = self.status(client_ip(request), bucket)
         if state == "killed":
             from fastapi import HTTPException

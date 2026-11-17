@@ -12,9 +12,11 @@ The demo shows two guard flows:
 - **Input guard** — user message is scored before reaching the LLM. If hate speech is detected, the request is blocked and the LLM is never called.
 - **Output guard** — LLM response is scored before reaching the user. Catches hate speech that was coaxed out gradually across turns, even when no single input triggered the input guard.
 
-The validated demo path is powered by [`shareeep/singbert-hatexplain-and-syntheticsghate`](https://huggingface.co/shareeep/singbert-hatexplain-and-syntheticsghate) — a SingBERT model fine-tuned in two stages (HateXplain → SG synthetic data). SG hate recall = **1.00** on the held-out test set.
+The validated demo path is powered by [`smubiainfrastructure/dap-ay2526-hate-speech-model`](https://huggingface.co/smubiainfrastructure/dap-ay2526-hate-speech-model) — a SingBERT model fine-tuned in two stages (HateXplain → SG synthetic data). SG hate recall = **1.00** on the held-out test set.
 
-LionGuard 2.0, LionGuard 2.1, and SEA-Guard are validated as API-backed comparison backends when their keys are configured. `llmguard` remains optional because its dependency stack conflicts with the current `transformers` version. See [`../WIP.md`](../WIP.md).
+LionGuard 2.0, LionGuard 2.1, and SEA-Guard are available as API-backed comparison
+backends when their keys are configured. `llmguard` is scaffolded but not installable
+alongside this stack: it pins `transformers==4.51.3` while the repo needs `>=5.1.0`.
 
 ---
 
@@ -81,7 +83,7 @@ GUARD_MODEL=sg .venv/bin/streamlit run demo/app.py --server.fileWatcherType none
 Or with a different guard backend:
 
 ```bash
-GUARD_MODEL=llmguard      scripts/run_demo.sh   # currently optional; dependency conflict noted in WIP.md
+GUARD_MODEL=llmguard      scripts/run_demo.sh   # needs an isolated env; see the backend table
 GUARD_MODEL=lionguard     scripts/run_demo.sh   # needs OPENAI_API_KEY
 GUARD_MODEL=lionguard-2.1 scripts/run_demo.sh   # needs GEMINI_KEY
 GUARD_MODEL=sea-guard     scripts/run_demo.sh   # needs SEA_LION_API_KEY
@@ -171,7 +173,7 @@ Useful variants:
 
 | `GUARD_MODEL` | Model | Extra requirement | Status |
 |---|---|---|---|
-| `sg` (default) | `shareeep/singbert-hatexplain-and-syntheticsghate` | none | validated |
+| `sg` (default) | `smubiainfrastructure/dap-ay2526-hate-speech-model` | none | validated |
 | `llmguard` | LLM Guard Toxicity scanner | add `llm-guard` dependency | scaffolded, currently unavailable |
 | `lionguard` (= 2.0) | [`govtech/lionguard-2`](https://huggingface.co/govtech/lionguard-2) + `text-embedding-3-large` | `OPENAI_API_KEY` | validated |
 | `lionguard-2.1` | [`govtech/lionguard-2.1`](https://huggingface.co/govtech/lionguard-2.1) + `gemini-embedding-001` | `GEMINI_KEY` / `GEMINI_API_KEY` | validated |
@@ -189,7 +191,7 @@ Adding a new backend is a two-branch change in `guard.py` — one in `load_guard
 |---|---|---|
 | `OPENROUTER_API_KEY` | — | OpenRouter key for live chat responses; app uses a stub when missing |
 | `GUARD_MODEL` | `sg` | Guard backend: `sg` / `llmguard` / `lionguard` / `lionguard-2.1` / `sea-guard` |
-| `SG_MODEL_ID` | `shareeep/singbert-hatexplain-and-syntheticsghate` | HuggingFace model for SG guard |
+| `SG_MODEL_ID` | `smubiainfrastructure/dap-ay2526-hate-speech-model` | HuggingFace model for SG guard |
 | `HATE_LABEL` | `hate` | Label name used by the model for hate class |
 | `HATE_THRESHOLD` | `0.6` | Default threshold (overridable via sidebar slider) |
 | `OPENROUTER_MODEL` | `google/gemini-3-flash-preview` | OpenRouter model name |

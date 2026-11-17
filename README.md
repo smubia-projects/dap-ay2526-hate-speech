@@ -1,27 +1,93 @@
 # dap-ay2526-hate-speech
 
-Singapore-specific hate speech detection for the 11th DAP Project under SMUBIA. Two arcs:
+Singapore-specific hate speech detection, built for the 11th DAP Project under SMUBIA.
 
-1. **Pre-midterm — embedding deep-dive.** What encoder embeddings carry, and how far traditional ML classifiers on top of them can go. Notebooks in `notebooks/narrative_pre_midterm/`.
-2. **Finals — production guardrail.** A lightweight SG-finetuned SingBERT deployed as a swappable input + output filter in a Streamlit chatboard. Notebooks in `notebooks/narrative_finals/`; the live product is in `demo/`.
+A generic English toxicity filter fails at Singlish in two directions at once: it misses
+hate carried by local slurs, and it over-blocks ordinary Singlish venting. This project
+fine-tuned SingBERT into a Singapore-specific classifier that gets both right, then
+deployed it as a guardrail you can try yourself.
 
-Best model: [`shareeep/singbert-hatexplain-and-syntheticsghate`](https://huggingface.co/shareeep/singbert-hatexplain-and-syntheticsghate) — SingBERT fine-tuned two-stage (HateXplain → SG synthetic). SG hate recall = **1.00**, macro F1 = **0.91** on the held-out test set.
+Model: [`smubiainfrastructure/dap-ay2526-hate-speech-model`](https://huggingface.co/smubiainfrastructure/dap-ay2526-hate-speech-model)
+— SingBERT fine-tuned in two stages (HateXplain → SG synthetic). Held-out SG hate
+recall **1.00**, macro F1 **0.91**.
 
-## Web deployment
+---
 
-The deployment-ready web demo uses the standard DAP Pattern A architecture:
+## What counts as what
 
-- `backend/` — stateless FastAPI inference API for a Docker Hugging Face Space
-- `frontend/` — React/Vite **Beat the Guard!** for Vercel
-- model weights — two public models downloaded from HF Hub at Space startup
+The corpus separates **hate** from **offensive** deliberately, because a guardrail that
+conflates them is unusable: it either blocks ordinary Singlish or lets targeted attacks
+through.
 
-**Beat the Guard!** is a side-by-side comparison: the SG-tuned SingBERT guard
-against a generic English toxicity model. It shows the generic model both
-*missing* local-slur hate and *over-blocking* harmless Singlish, while ours gets
-both right. The deployed experience uses only these two local classifiers — no
-OpenRouter, OpenAI, Gemini, or other LLM API keys. See
-[`docs/BEAT-THE-GUARD.md`](docs/BEAT-THE-GUARD.md) for the design and verified
-model behaviour, and [`DEPLOYMENT.md`](DEPLOYMENT.md) for setup + verification.
+| Label | Definition | Guard |
+|---|---|---|
+| **hate** | Attacks, dehumanises, or calls for the exclusion of a group defined by race, religion, ethnicity, or gender identity | blocked |
+| **offensive** | Vulgar, insulting, or abusive, but aimed at an individual or a situation — no protected group is targeted | allowed |
+| **normal** | Contains a loaded term used referentially, quoted, or descriptively | allowed |
+
+**The test is who the words are aimed at**, not how rude they are:
+
+> **hate** — *"Malay Singaporeans are all siao lang and should be locked up because they
+> are a danger to society."*
+>
+> **offensive** — *"That CB kia cut my lane without signaling then still want to stare at
+> me, really no manners at all."*
+>
+> **normal** — *"Apu neh neh is a slur that we should never use, really insensitive one."*
+
+All three sentences carry Singlish vulgarity. Only the first targets a group.
+
+### Why this matters to the guard
+
+The guard is **binary** — it scores hate-ness only, so `offensive` and `normal` both
+pass. That is the whole design: a moderation layer that blocks every vulgar message is
+worse than no layer at all, because the false positives fall on ordinary users having
+ordinary conversations. Terms including `ah kua`, `rabak`, `siao lang`, and `Zhu Bajie`
+appear in the corpus under all three labels, so the term never decides the label —
+context does. Getting that right is the model's actual job; catching unambiguous slurs
+is the easy half.
+
+The full label policy, the 20 source terms, and the construction pipeline are in
+[`data/README.md`](data/README.md).
+
+---
+
+## Two surfaces
+
+| | `demo/` — research | `backend/` + `frontend/` — public |
+|---|---|---|
+| Audience | The team | Anyone |
+| UI | Streamlit, 5 pages | React one-pager, **Beat the Guard!** |
+| Guards | 5 swappable backends | 2 fixed classifiers |
+| Needs | 4 API keys + the gated corpus | nothing |
+| Runs | Locally only | HF Space + Vercel |
+
+**Beat the Guard!** puts the SG-tuned guard head-to-head with a generic English toxicity
+model on the same message, so a visitor sees the gap rather than reading about it. It
+makes no LLM, embedding, or paid API calls — two small classifiers on free CPU.
+
+Design and verified model behaviour: [`docs/BEAT-THE-GUARD.md`](docs/BEAT-THE-GUARD.md).
+Deploy runbook: [`DEPLOYMENT.md`](DEPLOYMENT.md).
+
+---
+
+## Project arcs
+
+**Pre-midterm — embedding deep-dive.** What encoder embeddings carry, and how far
+traditional ML classifiers on top of them can go. Notebooks in
+`notebooks/narrative_pre_midterm/`; written findings in
+[`docs/findings-embedding-space.md`](docs/findings-embedding-space.md).
+
+**Finals — production guardrail.** The embedding work established that the signal is
+there; the finals turned it into a deployable safety layer. SingBERT fine-tuned on
+HateXplain then on the SG synthetic corpus, wrapped as an input/output filter around a
+live LLM chat, then opened up as a public comparison demo. Notebooks in
+`notebooks/narrative_finals/`.
+
+LoRA experiments on Llama-Guard-3-8B and SEA-LION sit alongside in
+`notebooks/narrative_finals/llm_*.ipynb`. They are the reason the small encoder won: a
+124M-parameter classifier that answers in ~50ms beats an 8B judge that needs a GPU, when
+the task is one binary decision per message.
 
 ---
 
@@ -29,19 +95,19 @@ model behaviour, and [`DEPLOYMENT.md`](DEPLOYMENT.md) for setup + verification.
 
 ```
 dap-ay2526-hate-speech/
-├── README.md
-├── CLAUDE.md
+├── README.md · CLAUDE.md · DEPLOYMENT.md
 ├── pyproject.toml · uv.lock · .python-version · .gitignore
 │
 ├── backend/                           ← deployed API (HF Space, Docker SDK)
 │   ├── app.py                         · FastAPI, POST /api/predict (two guards)
 │   ├── model_service.py               · CPU-only dual-classifier loader + inference
 │   ├── rate_limit.py                  · adapter for the shared BIA rate-limit engine
-│   ├── Dockerfile · requirements_space.txt · README.md
+│   ├── rate_limit_engine.py           · the shared engine itself
+│   └── Dockerfile · requirements_space.txt · .dockerignore · README.md
 │
 ├── frontend/                          ← deployed web app (Vercel, Vite + React)
 │   ├── src/App.jsx                    · Beat the Guard!: one-page demo + about
-│   ├── src/data/probes.js             · the six "try these" seeds
+│   ├── src/data/probes.js             · the seeded "try these" messages
 │   ├── src/components/CtaModal.jsx    · DAP engagement CTA modal
 │   └── src/utils/api.js               · backend client
 │
@@ -58,97 +124,110 @@ dap-ay2526-hate-speech/
 │       ├── leaderboard.py             · metrics + session results
 │       └── samples.py                 · dataset browser
 │
-├── data/
-│   └── README.md                      · schema, the 20 source terms, sample rows
+├── data/README.md                     · schema, the 20 source terms, sample rows
 │                                        (the raw .jsonl is gitignored — see below)
-│
 ├── notebooks/
 │   ├── narrative_pre_midterm/         · embedding deep-dive (3 notebooks)
 │   └── narrative_finals/              · SingBERT, LoRA, Guardrails-AI (6 notebooks)
-│
-├── results/
-│   └── model_scores.csv               · leaderboard data
-│
-├── docs/
-│   ├── findings-embedding-space.md
-│   ├── findings-roberta-finetune.md
-│   ├── synthetic_dataset_repair_decisions.md
-│   ├── IS469_Shariff_Indiv_Report.pdf
-│   └── IS469_Shariff_Indiv_Presentation_Slides.pdf
-│
+├── results/model_scores.csv           · model comparison metrics
+├── scripts/                           · demo startup + Playwright validation
+├── docs/                              · findings, dataset decisions, reports
 └── archive/                           ← superseded but recoverable
-    ├── data/        ← hatexplain, hatebenchset, wip-files, raw scrapes
-    ├── notebooks/   ← bert, llm, roberta, synthetic, early archive
-    ├── scripts/     ← scrapers, generators, the old predictions_app.py
-    ├── docs/        ← stale planning docs
-    └── demo/        ← original plan / steps / raw idea
 ```
 
 ---
 
 ## Quick start
 
+### The public demo, locally
+
 ```bash
-# 1. Create venv (Python 3.13) and install deps
-uv venv
-uv sync
+# Backend
+cd backend
+python -m venv .venv
+.venv/bin/pip install -r requirements_space.txt
+.venv/bin/uvicorn app:app --host 0.0.0.0 --port 7860
 
-# 2. Provide your keys
-cp demo/example.env demo/.env
-# edit demo/.env — minimum: OPENROUTER_API_KEY
-
-# 3. Restore the dataset locally (it is gitignored)
-#    Drop your consolidated.jsonl at
-#    data/singlish/synthetic/20_terms/consolidated.jsonl
-
-# 4. Launch the demo
-GUARD_MODEL=sg .venv/bin/streamlit run demo/app.py
+# Frontend, in another shell
+cd frontend
+cp .env.example .env
+npm install && npm run dev
 ```
 
-The SG guard model (~500 MB) downloads from HuggingFace on first launch and caches in `~/.cache/huggingface/`.
+Both models download from HF Hub on first run (~1 GB total) and cache in
+`~/.cache/huggingface/`. No API keys.
 
----
+### The Streamlit research demo
 
-## Why the data is gated
+```bash
+uv venv && uv sync
+cp demo/example.env demo/.env      # minimum: OPENROUTER_API_KEY
+# restore data/singlish/synthetic/20_terms/consolidated.jsonl (gitignored)
+GUARD_MODEL=sg scripts/run_demo.sh
+```
 
-The synthetic Singlish corpus contains racial slurs targeting specific Singaporean communities. Even though every row is LLM-generated, the corpus is **not part of the public repo** — the `.gitignore` excludes `data/singlish/**/*.jsonl`. What's shared: the [model on HuggingFace](https://huggingface.co/shareeep/singbert-hatexplain-and-syntheticsghate), `data/README.md` (schema + 20-term table + sample rows), and the held-out test metrics in `results/model_scores.csv`.
+Validate the UI end to end with `.venv/bin/python3 scripts/validate_demo.py`.
 
 ---
 
 ## Guard backends — swap, don't rewrite
 
-`demo/guard.py` is a pure dispatch layer. Every backend implements the same `{score: float, passed: bool}` contract, so the demo pages don't change when you swap models.
+`demo/guard.py` is a pure dispatch layer. Every backend returns the same normalised
+result — `score`, `passed`, `latency_ms`, `backend`, plus optional `fine_grained`,
+`verdict_label`, and `error` — so the demo pages don't change when you swap models.
+Adding a backend is two branches: one in `load_guard()`, one in `run_guard()`.
 
-| `GUARD_MODEL` | Source | Status | Key needed |
-|---|---|---|---|
-| `sg` (default) | `shareeep/singbert-hatexplain-and-syntheticsghate` | validated | none |
-| `llmguard` | `llm-guard` Toxicity scanner | optional / blocked | none, but dependency conflict |
-| `lionguard` (= 2.0) | `govtech/lionguard-2` + `text-embedding-3-large` | validated | `OPENAI_API_KEY` |
-| `lionguard-2.1` | `govtech/lionguard-2.1` + `gemini-embedding-001` | validated | `GEMINI_KEY` / `GEMINI_API_KEY` |
-| `sea-guard` | AISG SEA-Guard via `api.sea-lion.ai` | validated | `SEA_LION_API_KEY` |
+| `GUARD_MODEL` | Source | Key needed |
+|---|---|---|
+| `sg` (default) | this project's SingBERT | none |
+| `lionguard` (= 2.0) | `govtech/lionguard-2` + `text-embedding-3-large` | `OPENAI_API_KEY` |
+| `lionguard-2.1` | `govtech/lionguard-2.1` + `gemini-embedding-001` | `GEMINI_KEY` |
+| `sea-guard` | AISG SEA-Guard via `api.sea-lion.ai` | `SEA_LION_API_KEY` |
+| `llmguard` | `llm-guard` Toxicity scanner | none |
 
-Both LionGuard versions are valid drop-ins — 2.0 if you have an OpenAI key, 2.1 if you have a Gemini key. Same output schema (11 categories), same `{score, passed}` after normalisation. Pick whichever key you already have.
+Both LionGuard versions are drop-in equivalents — same 11-category output schema, same
+normalised result. Pick whichever key you already have. `llmguard` is scaffolded but not
+installable alongside the current stack: it pins `transformers==4.51.3` while this repo
+needs `>=5.1.0`. It stays in the dispatcher for whoever wants to isolate it in a separate
+environment.
+
+The deployed **Beat the Guard!** backend deliberately uses neither — LionGuard and
+SEA-Guard need API keys and carry 4–9s cold-start latency, which is acceptable in a
+research tool and not in a public demo.
+
+---
+
+## Why the data is gated
+
+The synthetic Singlish corpus contains racial slurs targeting specific Singaporean
+communities. Every row is LLM-generated, but broad distribution still risks normalising
+the language, so the corpus is **not in the public repo** — `.gitignore` excludes
+`data/singlish/**/*.jsonl`.
+
+What is shared: the model on HF Hub, [`data/README.md`](data/README.md) (schema, the
+20-term table, sample rows, and the generation pipeline), and the held-out metrics in
+`results/model_scores.csv`.
+
+---
+
+## What the project found
+
+- Embeddings are not just abstract vectors — they expose structure that ordinary
+  classifiers can use, which is what made the small-model path credible.
+- Generic hate-speech models are not enough for local language. The failure is
+  bidirectional, and the over-blocking half is the one people underestimate.
+- A production safety layer is more than accuracy: it needs latency, failure handling,
+  a clear UX, and an honest account of what it does not catch.
+- Letting people try to bypass the guard teaches more than a metrics table does.
+- Every guard backend carries operational trade-offs — keys, latency, hosted
+  availability, output schema. The swappable interface exists so those trade-offs stay
+  a deployment decision rather than a rewrite.
 
 ---
 
 ## Naming
 
-The full folder name `dap-ay2526-hate-speech` is the canonical identifier and is
-used unabbreviated for the HF Space, the Vercel project, and the rate-limit
-engine slug. **Beat the Guard!** is the public product name for the web demo
-only; it is never used as an infrastructure identifier.
-
----
-
-## Status
-
-| Piece | State |
-|---|---|
-| SingBERT model on HF Hub | published |
-| `backend/` inference API | built, ready to push to the Space |
-| `frontend/` Beat the Guard! | built (one-page kopitiam face-off + about), ready for Vercel |
-| `demo/` Streamlit research app | complete, local only — needs API keys and the gated corpus |
-
-Work in progress lives on `jayhan/changes-for-deployment`. See `DEPLOYMENT.md`
-for the deploy runbook, `HANDOVER.md` for the project narrative, and `WIP.md`
-for remaining polish on the Streamlit demo.
+The full folder name `dap-ay2526-hate-speech` is the canonical identifier, used
+unabbreviated for the HF Space, the Vercel project, and the rate-limit engine slug.
+**Beat the Guard!** is the public product name for the web demo only; it is never an
+infrastructure identifier.

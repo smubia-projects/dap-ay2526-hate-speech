@@ -17,7 +17,7 @@ USER user
 ENV HOME=/home/user \
     PATH=/home/user/.local/bin:$PATH \
     HF_HOME=/home/user/.cache/huggingface \
-    MODEL_REPO_ID=shareeep/singbert-hatexplain-and-syntheticsghate \
+    MODEL_REPO_ID=smubiainfrastructure/dap-ay2526-hate-speech-model \
     REGULAR_MODEL_REPO_ID=s-nlp/roberta_toxicity_classifier \
     RATE_LIMIT_PREDICT_MAX=30 \
     RATE_LIMIT_WINDOW_SECONDS=60

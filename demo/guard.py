@@ -81,7 +81,7 @@ def load_guard(backend: str):
         return SinglishHateSpeech(
             model_name=os.environ.get(
                 "SG_MODEL_ID",
-                "shareeep/singbert-hatexplain-and-syntheticsghate",
+                "smubiainfrastructure/dap-ay2526-hate-speech-model",
             ),
             hate_label=os.environ.get("HATE_LABEL", "hate"),
         )
